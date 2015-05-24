@@ -471,6 +471,16 @@ proc hexDigest*(s: Sha512): string =
 proc `$`*(s: Sha512): string =
   result = s.hexDigest
 
+proc `$`*(s: Sha384): string =
+  result = s.hexDigest
+
+proc sha512*(s = ""): string =
+  let hash = initSha512(s)
+  result = $hash
+
+proc sha384*(s = ""): string =
+  result = initSha384(s).hexDigest
+
 when isMainModule:
   var s = initSha512()
   let astr = "just a test string"
@@ -484,5 +494,5 @@ when isMainModule:
   s.update(astr)
   assert(s.hexDigest == "341aeb668730bbb48127d5531115f3c39d12cb9586a6ca770898398aff2" &
     "411087cfe0b570689adf328cddeb1f00803acce6737a19f310b53bbdb0320828f75bb")
-
-echo initSha384("just a test string").hexDigest
+  assert(sha384() == "38b060a751ac96384cd9327eb1b1e36a21fdb71114be07434c0cc7bf63f6e1" &
+    "da274edebfe76f65fbd51ad2f14898b95b")

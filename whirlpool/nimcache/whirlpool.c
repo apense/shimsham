@@ -3,7 +3,7 @@
 /* The generated code is subject to the original license. */
 /* Compiled for: Windows, amd64, gcc */
 /* Command for C compiler:
-   gcc.exe -c  -w  -IC:\Users\apens_000\Downloads\nim-original\lib -o c:\users\apens_000\documents\nimcode\nimdigest\whirlpool\nimcache\whirlpool.o c:\users\apens_000\documents\nimcode\nimdigest\whirlpool\nimcache\whirlpool.c */
+   gcc.exe -c  -w  -IC:\Users\apens_000\Downloads\nim-original\lib -o c:\users\apens_000\documents\shimsham\whirlpool\nimcache\whirlpool.o c:\users\apens_000\documents\shimsham\whirlpool\nimcache\whirlpool.c */
 #define NIM_INTBITS 64
 #include "nimbase.h"
 
@@ -76,7 +76,7 @@ N_NOINLINE(void, stackoverflow_19801)(void);
 static N_INLINE(void, popFrame)(void);
 N_NIMCALL(void, reset_100168)(Whirlpool100005* w);
 N_NIMCALL(void, genericReset)(void* dest, TNimType* mt);
-N_NIMCALL(NI, size_100199)(Whirlpool100005* w);
+N_NIMCALL(NI, digestsize_100199)(Whirlpool100005* w);
 N_NIMCALL(NI, blocksize_100209)(Whirlpool100005* w);
 N_NIMCALL(TY100022*, HEX5BHEX5D_100279)(TY100009 a, Slice85461 x);
 N_NIMCALL(void, TMP147)(void* p, NI op);
@@ -103,6 +103,7 @@ N_NIMCALL(NimStringDesc*, nsuToHex)(NI64 x, NI len);
 static N_INLINE(void, appendString)(NimStringDesc* dest, NimStringDesc* src);
 N_NIMCALL(NimStringDesc*, resizeString)(NimStringDesc* dest, NI addlen);
 N_NIMCALL(Whirlpool100005, initwhirlpool_102241)(NimStringDesc* s);
+N_NIMCALL(NimStringDesc*, whirlpool_102253)(NimStringDesc* s);
 static N_INLINE(NIM_BOOL, eqStrings)(NimStringDesc* a, NimStringDesc* b);
 static N_INLINE(void, initStackBottomWith)(void* locals);
 N_NOINLINE(void, setStackBottom)(void* thestackbottom);
@@ -2200,6 +2201,13 @@ STRING_LITERAL(TMP252, "761d7db6292384ccc4a806a18404031d89dbbce5c22bb284a1e5d597
 STRING_LITERAL(TMP253, "$ w ==\015\012    \"761d7db6292384ccc4a806a18404031d89dbbce5c22bb284a1"
 "e5d5979f44e37348857e555babf61b7eacbdc8df543f6477a5611330866d6660"
 "ed7c62655a5555\" ", 143);
+STRING_LITERAL(TMP254, "a", 1);
+STRING_LITERAL(TMP255, "8aca2602792aec6f11a67206531fb7d7f0dff59413145e6973c45001d0087b4"
+"2d11bc645413aeff63a42391a39145a591a92200d560195e53b478584fdae231"
+"a", 128);
+STRING_LITERAL(TMP256, "whirlpool(\"a\") ==\015\012    \"8aca2602792aec6f11a67206531fb7d7f0dff59"
+"413145e6973c45001d0087b42d11bc645413aeff63a42391a39145a591a92200"
+"d560195e53b478584fdae231a\" ", 154);
 extern TFrame* frameptr_17042;
 extern TNimType NTI3405; /* byte */
 TNimType NTI100009; /* array[0..63, byte] */
@@ -2207,7 +2215,7 @@ extern TNimType NTI126; /* uint64 */
 TNimType NTI100014; /* array[0..7, uint64] */
 TNimType NTI100006; /* array[0..31, byte] */
 TNimType NTI100022; /* seq[byte] */
-Whirlpool100005 w_102253;
+Whirlpool100005 w_102267;
 
 static N_INLINE(void, nimFrame)(TFrame* s) {
 	NI LOC1;
@@ -2283,11 +2291,11 @@ N_NIMCALL(void, reset_100168)(Whirlpool100005* w) {
 	popFrame();
 }
 
-N_NIMCALL(NI, size_100199)(Whirlpool100005* w) {
+N_NIMCALL(NI, digestsize_100199)(Whirlpool100005* w) {
 	NI result;
-	nimfr("size", "whirlpool.nim")
+	nimfr("digestsize", "whirlpool.nim")
 	result = 0;
-	nimln(35, "whirlpool.nim");
+	nimln(36, "whirlpool.nim");
 	result = ((NI) 64);
 	popFrame();
 	return result;
@@ -2297,7 +2305,7 @@ N_NIMCALL(NI, blocksize_100209)(Whirlpool100005* w) {
 	NI result;
 	nimfr("blocksize", "whirlpool.nim")
 	result = 0;
-	nimln(38, "whirlpool.nim");
+	nimln(40, "whirlpool.nim");
 	result = ((NI) 64);
 	popFrame();
 	return result;
@@ -2384,10 +2392,10 @@ N_NIMCALL(void, transform_100219)(Whirlpool100005* w) {
 				if (!(res_100897 <= ((NI) 7))) goto LA3;
 				nimln(1600, "system.nim");
 				i_100253 = res_100897;
-				nimln(49, "whirlpool.nim");
+				nimln(51, "whirlpool.nim");
 				TMP150 = mulInt(((NI) 8), i_100253);
 				b = (NI)(TMP150);
-				nimln(50, "whirlpool.nim");
+				nimln(52, "whirlpool.nim");
 				if ((NU)(i_100253) > (NU)(7)) raiseIndexError();
 				LOC4 = HEX2EHEX2E_100266(b, ((NI) 63));
 				LOC5 = 0;
@@ -2412,11 +2420,11 @@ N_NIMCALL(void, transform_100219)(Whirlpool100005* w) {
 				if (!(res_100904 <= ((NI) 7))) goto LA8;
 				nimln(1600, "system.nim");
 				i_100469 = res_100904;
-				nimln(54, "whirlpool.nim");
+				nimln(56, "whirlpool.nim");
 				if ((NU)(i_100469) > (NU)(7)) raiseIndexError();
 				if ((NU)(i_100469) > (NU)(7)) raiseIndexError();
 				K[(i_100469)- 0] = (*w).hash[(i_100469)- 0];
-				nimln(55, "whirlpool.nim");
+				nimln(57, "whirlpool.nim");
 				if ((NU)(i_100469) > (NU)(7)) raiseIndexError();
 				if ((NU)(i_100469) > (NU)(7)) raiseIndexError();
 				if ((NU)(i_100469) > (NU)(7)) raiseIndexError();
@@ -2468,42 +2476,42 @@ N_NIMCALL(void, transform_100219)(Whirlpool100005* w) {
 							if (!(res_100920 <= ((NI) 7))) goto LA14;
 							nimln(1600, "system.nim");
 							i_100508 = res_100920;
-							nimln(61, "whirlpool.nim");
+							nimln(63, "whirlpool.nim");
 							if ((NU)(i_100508) > (NU)(7)) raiseIndexError();
+							nimln(69, "whirlpool.nim");
+							nimln(68, "whirlpool.nim");
 							nimln(67, "whirlpool.nim");
 							nimln(66, "whirlpool.nim");
 							nimln(65, "whirlpool.nim");
 							nimln(64, "whirlpool.nim");
 							nimln(63, "whirlpool.nim");
-							nimln(62, "whirlpool.nim");
-							nimln(61, "whirlpool.nim");
 							TMP153 = modInt(i_100508, ((NI) 8));
 							if ((NU)((NI)(TMP153)) > (NU)(7)) raiseIndexError();
-							nimln(62, "whirlpool.nim");
+							nimln(64, "whirlpool.nim");
 							TMP154 = addInt(i_100508, ((NI) 7));
 							TMP155 = modInt((NI)(TMP154), ((NI) 8));
 							if ((NU)((NI)(TMP155)) > (NU)(7)) raiseIndexError();
-							nimln(63, "whirlpool.nim");
+							nimln(65, "whirlpool.nim");
 							TMP156 = addInt(i_100508, ((NI) 6));
 							TMP157 = modInt((NI)(TMP156), ((NI) 8));
 							if ((NU)((NI)(TMP157)) > (NU)(7)) raiseIndexError();
-							nimln(64, "whirlpool.nim");
+							nimln(66, "whirlpool.nim");
 							TMP158 = addInt(i_100508, ((NI) 5));
 							TMP159 = modInt((NI)(TMP158), ((NI) 8));
 							if ((NU)((NI)(TMP159)) > (NU)(7)) raiseIndexError();
-							nimln(65, "whirlpool.nim");
+							nimln(67, "whirlpool.nim");
 							TMP160 = addInt(i_100508, ((NI) 4));
 							TMP161 = modInt((NI)(TMP160), ((NI) 8));
 							if ((NU)((NI)(TMP161)) > (NU)(7)) raiseIndexError();
-							nimln(66, "whirlpool.nim");
+							nimln(68, "whirlpool.nim");
 							TMP162 = addInt(i_100508, ((NI) 3));
 							TMP163 = modInt((NI)(TMP162), ((NI) 8));
 							if ((NU)((NI)(TMP163)) > (NU)(7)) raiseIndexError();
-							nimln(67, "whirlpool.nim");
+							nimln(69, "whirlpool.nim");
 							TMP164 = addInt(i_100508, ((NI) 2));
 							TMP165 = modInt((NI)(TMP164), ((NI) 8));
 							if ((NU)((NI)(TMP165)) > (NU)(7)) raiseIndexError();
-							nimln(68, "whirlpool.nim");
+							nimln(70, "whirlpool.nim");
 							TMP166 = addInt(i_100508, ((NI) 1));
 							TMP167 = modInt((NI)(TMP166), ((NI) 8));
 							if ((NU)((NI)(TMP167)) > (NU)(7)) raiseIndexError();
@@ -2514,7 +2522,7 @@ N_NIMCALL(void, transform_100219)(Whirlpool100005* w) {
 						} LA14: ;
 					}
 				}
-				nimln(70, "whirlpool.nim");
+				nimln(72, "whirlpool.nim");
 				if ((NU)(r_100489) > (NU)(10)) raiseIndexError();
 				L_100234[(((NI) 0))- 0] = (NU64)(L_100234[(((NI) 0))- 0] ^ Rc_89061[(r_100489)- 0]);
 				{
@@ -2530,7 +2538,7 @@ N_NIMCALL(void, transform_100219)(Whirlpool100005* w) {
 							if (!(res_100927 <= ((NI) 7))) goto LA17;
 							nimln(1600, "system.nim");
 							i_100670 = res_100927;
-							nimln(73, "whirlpool.nim");
+							nimln(75, "whirlpool.nim");
 							if ((NU)(i_100670) > (NU)(7)) raiseIndexError();
 							if ((NU)(i_100670) > (NU)(7)) raiseIndexError();
 							K[(i_100670)- 0] = L_100234[(i_100670)- 0];
@@ -2569,47 +2577,47 @@ N_NIMCALL(void, transform_100219)(Whirlpool100005* w) {
 							if (!(res_100942 <= ((NI) 7))) goto LA20;
 							nimln(1600, "system.nim");
 							i_100689 = res_100942;
-							nimln(77, "whirlpool.nim");
+							nimln(79, "whirlpool.nim");
 							if ((NU)(i_100689) > (NU)(7)) raiseIndexError();
+							nimln(86, "whirlpool.nim");
+							nimln(85, "whirlpool.nim");
 							nimln(84, "whirlpool.nim");
 							nimln(83, "whirlpool.nim");
 							nimln(82, "whirlpool.nim");
 							nimln(81, "whirlpool.nim");
 							nimln(80, "whirlpool.nim");
 							nimln(79, "whirlpool.nim");
-							nimln(78, "whirlpool.nim");
-							nimln(77, "whirlpool.nim");
 							TMP170 = modInt(i_100689, ((NI) 8));
 							if ((NU)((NI)(TMP170)) > (NU)(7)) raiseIndexError();
-							nimln(78, "whirlpool.nim");
+							nimln(80, "whirlpool.nim");
 							TMP171 = addInt(i_100689, ((NI) 7));
 							TMP172 = modInt((NI)(TMP171), ((NI) 8));
 							if ((NU)((NI)(TMP172)) > (NU)(7)) raiseIndexError();
-							nimln(79, "whirlpool.nim");
+							nimln(81, "whirlpool.nim");
 							TMP173 = addInt(i_100689, ((NI) 6));
 							TMP174 = modInt((NI)(TMP173), ((NI) 8));
 							if ((NU)((NI)(TMP174)) > (NU)(7)) raiseIndexError();
-							nimln(80, "whirlpool.nim");
+							nimln(82, "whirlpool.nim");
 							TMP175 = addInt(i_100689, ((NI) 5));
 							TMP176 = modInt((NI)(TMP175), ((NI) 8));
 							if ((NU)((NI)(TMP176)) > (NU)(7)) raiseIndexError();
-							nimln(81, "whirlpool.nim");
+							nimln(83, "whirlpool.nim");
 							TMP177 = addInt(i_100689, ((NI) 4));
 							TMP178 = modInt((NI)(TMP177), ((NI) 8));
 							if ((NU)((NI)(TMP178)) > (NU)(7)) raiseIndexError();
-							nimln(82, "whirlpool.nim");
+							nimln(84, "whirlpool.nim");
 							TMP179 = addInt(i_100689, ((NI) 3));
 							TMP180 = modInt((NI)(TMP179), ((NI) 8));
 							if ((NU)((NI)(TMP180)) > (NU)(7)) raiseIndexError();
-							nimln(83, "whirlpool.nim");
+							nimln(85, "whirlpool.nim");
 							TMP181 = addInt(i_100689, ((NI) 2));
 							TMP182 = modInt((NI)(TMP181), ((NI) 8));
 							if ((NU)((NI)(TMP182)) > (NU)(7)) raiseIndexError();
-							nimln(84, "whirlpool.nim");
+							nimln(86, "whirlpool.nim");
 							TMP183 = addInt(i_100689, ((NI) 1));
 							TMP184 = modInt((NI)(TMP183), ((NI) 8));
 							if ((NU)((NI)(TMP184)) > (NU)(7)) raiseIndexError();
-							nimln(85, "whirlpool.nim");
+							nimln(87, "whirlpool.nim");
 							TMP185 = modInt(i_100689, ((NI) 8));
 							if ((NU)((NI)(TMP185)) > (NU)(7)) raiseIndexError();
 							L_100234[(i_100689)- 0] = (NU64)((NU64)((NU64)((NU64)((NU64)((NU64)((NU64)((NU64)(C0_89013[(((NU8) ((NU64)((NU64)(state[((NI)(TMP170))- 0]) >> (NU64)(((NI) 56))))))- 0] ^ C1_89019[(((NU8) ((NU64)((NU64)(state[((NI)(TMP172))- 0]) >> (NU64)(((NI) 48))))))- 0]) ^ C2_89025[(((NU8) ((NU64)((NU64)(state[((NI)(TMP174))- 0]) >> (NU64)(((NI) 40))))))- 0]) ^ C3_89031[(((NU8) ((NU64)((NU64)(state[((NI)(TMP176))- 0]) >> (NU64)(((NI) 32))))))- 0]) ^ C4_89037[(((NU8) ((NU64)((NU64)(state[((NI)(TMP178))- 0]) >> (NU64)(((NI) 24))))))- 0]) ^ C5_89043[(((NU8) ((NU64)((NU64)(state[((NI)(TMP180))- 0]) >> (NU64)(((NI) 16))))))- 0]) ^ C6_89049[(((NU8) ((NU64)((NU64)(state[((NI)(TMP182))- 0]) >> (NU64)(((NI) 8))))))- 0]) ^ C7_89055[(((NU8) (state[((NI)(TMP184))- 0])))- 0]) ^ K[((NI)(TMP185))- 0]);
@@ -2632,7 +2640,7 @@ N_NIMCALL(void, transform_100219)(Whirlpool100005* w) {
 							if (!(res_100949 <= ((NI) 7))) goto LA23;
 							nimln(1600, "system.nim");
 							i_100852 = res_100949;
-							nimln(88, "whirlpool.nim");
+							nimln(90, "whirlpool.nim");
 							if ((NU)(i_100852) > (NU)(7)) raiseIndexError();
 							if ((NU)(i_100852) > (NU)(7)) raiseIndexError();
 							state[(i_100852)- 0] = L_100234[(i_100852)- 0];
@@ -2660,7 +2668,7 @@ N_NIMCALL(void, transform_100219)(Whirlpool100005* w) {
 				if (!(res_100962 <= ((NI) 7))) goto LA26;
 				nimln(1600, "system.nim");
 				i_100871 = res_100962;
-				nimln(92, "whirlpool.nim");
+				nimln(94, "whirlpool.nim");
 				if ((NU)(i_100871) > (NU)(7)) raiseIndexError();
 				if ((NU)(i_100871) > (NU)(7)) raiseIndexError();
 				if ((NU)(i_100871) > (NU)(7)) raiseIndexError();
@@ -2710,18 +2718,18 @@ N_NIMCALL(void, write_101044)(Whirlpool100005* w, NU8* src, NI srcLen0) {
 	NU64 value;
 	nimfr("write", "whirlpool.nim")
 	sourcepos = 0;
-	nimln(97, "whirlpool.nim");
+	nimln(101, "whirlpool.nim");
 	nn = srcLen0;
-	nimln(98, "whirlpool.nim");
+	nimln(102, "whirlpool.nim");
 	TMP190 = mulInt(nn, ((NI) 8));
 	sourcebits = ((NU64) ((NI)(TMP190)));
-	nimln(99, "whirlpool.nim");
+	nimln(103, "whirlpool.nim");
 	TMP191 = subInt(((NI) 8), ((NI) ((NU64)(sourcebits & ((NI) 7)))));
 	sourcegap = ((NU) ((NI)((NI)(TMP191) & ((NI) 7))));
-	nimln(100, "whirlpool.nim");
+	nimln(104, "whirlpool.nim");
 	bufferrem = ((NU) ((NI)((*w).bufferbits & ((NI) 7))));
 	b = 0;
-	nimln(104, "whirlpool.nim");
+	nimln(108, "whirlpool.nim");
 	LOC1.Field0 = ((NI) 31);
 	LOC1.Field1 = ((NU32) 0);
 	LOC1.Field2 = sourcebits;
@@ -2729,7 +2737,7 @@ N_NIMCALL(void, write_101044)(Whirlpool100005* w, NU8* src, NI srcLen0) {
 	carry = LOC1.Field1;
 	value = LOC1.Field2;
 	{
-		nimln(105, "whirlpool.nim");
+		nimln(109, "whirlpool.nim");
 		while (1) {
 			NIM_BOOL LOC4;
 			NIM_BOOL LOC6;
@@ -2745,23 +2753,23 @@ N_NIMCALL(void, write_101044)(Whirlpool100005* w, NU8* src, NI srcLen0) {
 			LOC4 = LOC6;
 			LA5: ;
 			if (!LOC4) goto LA3;
-			nimln(106, "whirlpool.nim");
+			nimln(110, "whirlpool.nim");
 			if ((NU)(i) > (NU)(31)) raiseIndexError();
 			carry += (NU32)((NU32)(((NU32) ((*w).bitlength[(i)- 0]))) + (NU32)(((NU32) ((NU32)(((NU32) (value)) & ((NI) 255))))));
-			nimln(107, "whirlpool.nim");
+			nimln(111, "whirlpool.nim");
 			if ((NU)(i) > (NU)(31)) raiseIndexError();
 			(*w).bitlength[(i)- 0] = ((NU8) (carry));
-			nimln(108, "whirlpool.nim");
+			nimln(112, "whirlpool.nim");
 			carry = (NU32)((NU64)(carry) >> (NU64)(((NI) 8)));
-			nimln(109, "whirlpool.nim");
+			nimln(113, "whirlpool.nim");
 			value = (NU64)((NU64)(value) >> (NU64)(((NI) 8)));
-			nimln(110, "whirlpool.nim");
+			nimln(114, "whirlpool.nim");
 			TMP192 = subInt(i, ((NI) 1));
 			i = (NI)(TMP192);
 		} LA3: ;
 	}
 	{
-		nimln(113, "whirlpool.nim");
+		nimln(117, "whirlpool.nim");
 		while (1) {
 			NI TMP193;
 			NI TMP194;
@@ -2769,53 +2777,53 @@ N_NIMCALL(void, write_101044)(Whirlpool100005* w, NU8* src, NI srcLen0) {
 			NI TMP196;
 			NI TMP197;
 			if (!((NU64)(8ULL) < (NU64)(sourcebits))) goto LA9;
-			nimln(115, "whirlpool.nim");
+			nimln(119, "whirlpool.nim");
 			if ((NU)(sourcepos) >= (NU)(srcLen0)) raiseIndexError();
-			nimln(116, "whirlpool.nim");
+			nimln(120, "whirlpool.nim");
 			TMP193 = addInt(sourcepos, ((NI) 1));
 			if ((NU)((NI)(TMP193)) >= (NU)(srcLen0)) raiseIndexError();
 			b = (NU32)(((NU32) ((NU)((NU)((NU64)(((NU) (src[sourcepos]))) << (NU64)(sourcegap)) & ((NI) 255)))) | ((NU32) ((NU8)((NU8)((NU8)(src[(NI)(TMP193)] & ((NI) 255))) >> (NU8)(((NU8) ((NU64)((NU64)(8ULL) - (NU64)(((NU64) (sourcegap)))))))))));
-			nimln(119, "whirlpool.nim");
+			nimln(123, "whirlpool.nim");
 			if ((NU)((*w).bufferpos) > (NU)(63)) raiseIndexError();
 			if ((NU)((*w).bufferpos) > (NU)(63)) raiseIndexError();
 			(*w).buffer[((*w).bufferpos)- 0] = (NU8)((*w).buffer[((*w).bufferpos)- 0] | ((NU8) ((NU32)((NU32)(b) >> (NU32)(((NU32) (bufferrem)))))));
-			nimln(120, "whirlpool.nim");
+			nimln(124, "whirlpool.nim");
 			TMP194 = addInt((*w).bufferpos, ((NI) 1));
 			(*w).bufferpos = (NI)(TMP194);
-			nimln(121, "whirlpool.nim");
+			nimln(125, "whirlpool.nim");
 			TMP195 = addInt((*w).bufferbits, ((NI) ((NU64)((NU64)(8ULL) - (NU64)(((NU64) (bufferrem)))))));
 			(*w).bufferbits = (NI)(TMP195);
-			nimln(123, "whirlpool.nim");
+			nimln(127, "whirlpool.nim");
 			{
 				if (!((*w).bufferbits == ((NI) 512))) goto LA12;
-				nimln(125, "whirlpool.nim");
+				nimln(129, "whirlpool.nim");
 				transform_100219(w);
-				nimln(127, "whirlpool.nim");
+				nimln(131, "whirlpool.nim");
 				(*w).bufferbits = ((NI) 0);
-				nimln(128, "whirlpool.nim");
+				nimln(132, "whirlpool.nim");
 				(*w).bufferpos = ((NI) 0);
 			}
 			LA12: ;
-			nimln(130, "whirlpool.nim");
+			nimln(134, "whirlpool.nim");
 			if ((NU)((*w).bufferpos) > (NU)(63)) raiseIndexError();
 			(*w).buffer[((*w).bufferpos)- 0] = ((NU8) ((NU32)((NU32)(b) << (NU32)(((NU32) ((NU64)((NU64)(8ULL) - (NU64)(((NU64) (bufferrem))))))))));
-			nimln(131, "whirlpool.nim");
+			nimln(135, "whirlpool.nim");
 			TMP196 = addInt((*w).bufferbits, ((NI) (bufferrem)));
 			(*w).bufferbits = (NI)(TMP196);
-			nimln(134, "whirlpool.nim");
+			nimln(138, "whirlpool.nim");
 			sourcebits -= ((NI) 8);
-			nimln(135, "whirlpool.nim");
+			nimln(139, "whirlpool.nim");
 			TMP197 = addInt(sourcepos, ((NI) 1));
 			sourcepos = (NI)(TMP197);
 		} LA9: ;
 	}
-	nimln(138, "whirlpool.nim");
+	nimln(142, "whirlpool.nim");
 	{
 		if (!((NU64)(0ULL) < (NU64)(sourcebits))) goto LA16;
-		nimln(139, "whirlpool.nim");
+		nimln(143, "whirlpool.nim");
 		if ((NU)(sourcepos) >= (NU)(srcLen0)) raiseIndexError();
 		b = ((NU32) ((NU)((NU)((NU64)(((NU) (src[sourcepos]))) << (NU64)(sourcegap)) & ((NI) 255))));
-		nimln(141, "whirlpool.nim");
+		nimln(145, "whirlpool.nim");
 		if ((NU)((*w).bufferpos) > (NU)(63)) raiseIndexError();
 		if ((NU)((*w).bufferpos) > (NU)(63)) raiseIndexError();
 		(*w).buffer[((*w).bufferpos)- 0] = (NU8)((*w).buffer[((*w).bufferpos)- 0] | ((NU8) ((NU32)((NU32)(b) >> (NU32)(((NU32) (bufferrem)))))));
@@ -2823,15 +2831,15 @@ N_NIMCALL(void, write_101044)(Whirlpool100005* w, NU8* src, NI srcLen0) {
 	goto LA14;
 	LA16: ;
 	{
-		nimln(143, "whirlpool.nim");
+		nimln(147, "whirlpool.nim");
 		b = ((NU32) 0);
 	}
 	LA14: ;
-	nimln(145, "whirlpool.nim");
+	nimln(149, "whirlpool.nim");
 	{
 		NI TMP198;
 		if (!((NU64)((NU64)((NU64)(((NU64) (bufferrem))) + (NU64)(sourcebits))) < (NU64)(8ULL))) goto LA21;
-		nimln(147, "whirlpool.nim");
+		nimln(151, "whirlpool.nim");
 		TMP198 = addInt((*w).bufferbits, ((NI) (sourcebits)));
 		(*w).bufferbits = (NI)(TMP198);
 	}
@@ -2841,29 +2849,29 @@ N_NIMCALL(void, write_101044)(Whirlpool100005* w, NU8* src, NI srcLen0) {
 		NI TMP199;
 		NI TMP200;
 		NI TMP201;
-		nimln(150, "whirlpool.nim");
+		nimln(154, "whirlpool.nim");
 		TMP199 = addInt((*w).bufferpos, ((NI) 1));
 		(*w).bufferpos = (NI)(TMP199);
-		nimln(151, "whirlpool.nim");
+		nimln(155, "whirlpool.nim");
 		TMP200 = addInt((*w).bufferbits, ((NI) ((NU64)((NU64)(8ULL) - (NU64)(((NU64) (bufferrem)))))));
 		(*w).bufferbits = (NI)(TMP200);
-		nimln(152, "whirlpool.nim");
+		nimln(156, "whirlpool.nim");
 		sourcebits -= (NU64)((NU64)(8ULL) - (NU64)(((NU64) (bufferrem))));
-		nimln(155, "whirlpool.nim");
+		nimln(159, "whirlpool.nim");
 		{
 			if (!((*w).bufferbits == ((NI) 512))) goto LA26;
-			nimln(157, "whirlpool.nim");
+			nimln(161, "whirlpool.nim");
 			transform_100219(w);
-			nimln(159, "whirlpool.nim");
+			nimln(163, "whirlpool.nim");
 			(*w).bufferbits = ((NI) 0);
-			nimln(160, "whirlpool.nim");
+			nimln(164, "whirlpool.nim");
 			(*w).bufferpos = ((NI) 0);
 		}
 		LA26: ;
-		nimln(162, "whirlpool.nim");
+		nimln(166, "whirlpool.nim");
 		if ((NU)((*w).bufferpos) > (NU)(63)) raiseIndexError();
 		(*w).buffer[((*w).bufferpos)- 0] = ((NU8) ((NU32)((NU32)(b) << (NU32)(((NU32) ((NU64)((NU64)(8ULL) - (NU64)(((NU64) (bufferrem))))))))));
-		nimln(163, "whirlpool.nim");
+		nimln(167, "whirlpool.nim");
 		TMP201 = addInt((*w).bufferbits, ((NI) (sourcebits)));
 		(*w).bufferbits = (NI)(TMP201);
 	}
@@ -2874,7 +2882,7 @@ N_NIMCALL(void, write_101044)(Whirlpool100005* w, NU8* src, NI srcLen0) {
 N_NIMCALL(void, write_101501)(Whirlpool100005* w, NimStringDesc* s) {
 	TY100022* bytes;
 	nimfr("write", "whirlpool.nim")
-	nimln(166, "whirlpool.nim");
+	nimln(172, "whirlpool.nim");
 	bytes = newseq_101508(((NI) 0));
 	{
 		NIM_CHAR c_101547;
@@ -2893,7 +2901,7 @@ N_NIMCALL(void, write_101501)(Whirlpool100005* w, NimStringDesc* s) {
 				nimln(3106, "system.nim");
 				if ((NU)(i_101562) > (NU)(s->Sup.len)) raiseIndexError();
 				c_101547 = s->data[i_101562];
-				nimln(168, "whirlpool.nim");
+				nimln(174, "whirlpool.nim");
 				bytes = (TY100022*) incrSeq(&(bytes)->Sup, sizeof(NU8));
 				bytes->data[bytes->Sup.len-1] = ((NU8) (((NU8)(c_101547))));
 				nimln(3107, "system.nim");
@@ -2908,7 +2916,7 @@ N_NIMCALL(void, write_101501)(Whirlpool100005* w, NimStringDesc* s) {
 			} LA3: ;
 		}
 	}
-	nimln(169, "whirlpool.nim");
+	nimln(175, "whirlpool.nim");
 	write_101044(w, bytes->data, bytes->Sup.len);
 	popFrame();
 }
@@ -2922,19 +2930,19 @@ N_NIMCALL(TY100022*, sum_101580)(Whirlpool100005* w, TY100022* data) {
 	TY100022* LOC26;
 	nimfr("sum", "whirlpool.nim")
 	result = 0;
-	nimln(173, "whirlpool.nim");
+	nimln(179, "whirlpool.nim");
 	n = (*w);
-	nimln(176, "whirlpool.nim");
+	nimln(182, "whirlpool.nim");
 	if ((NU)(n.bufferpos) > (NU)(63)) raiseIndexError();
 	if ((NU)(n.bufferpos) > (NU)(63)) raiseIndexError();
 	n.buffer[(n.bufferpos)- 0] = (NU8)(n.buffer[(n.bufferpos)- 0] | ((NU8) ((NU64)((NU64)(128ULL) >> (NU64)(((NU64) ((NI)(n.bufferbits & ((NI) 7)))))))));
-	nimln(177, "whirlpool.nim");
+	nimln(183, "whirlpool.nim");
 	TMP214 = addInt(n.bufferpos, ((NI) 1));
 	n.bufferpos = (NI)(TMP214);
-	nimln(180, "whirlpool.nim");
+	nimln(186, "whirlpool.nim");
 	{
 		if (!(((NI) 32) < n.bufferpos)) goto LA3;
-		nimln(181, "whirlpool.nim");
+		nimln(187, "whirlpool.nim");
 		{
 			if (!(n.bufferpos < ((NI) 64))) goto LA7;
 			{
@@ -2944,7 +2952,7 @@ N_NIMCALL(TY100022*, sum_101580)(Whirlpool100005* w, TY100022* data) {
 				NI res_101984;
 				i_101634 = 0;
 				HEX3Atmp_101981 = 0;
-				nimln(182, "whirlpool.nim");
+				nimln(188, "whirlpool.nim");
 				TMP215 = subInt(((NI) 64), n.bufferpos);
 				HEX3Atmp_101981 = subInt((NI)(TMP215), 1);
 				nimln(1598, "system.nim");
@@ -2957,7 +2965,7 @@ N_NIMCALL(TY100022*, sum_101580)(Whirlpool100005* w, TY100022* data) {
 						if (!(res_101984 <= HEX3Atmp_101981)) goto LA11;
 						nimln(1600, "system.nim");
 						i_101634 = res_101984;
-						nimln(183, "whirlpool.nim");
+						nimln(189, "whirlpool.nim");
 						TMP216 = addInt(n.bufferpos, i_101634);
 						if ((NU)((NI)(TMP216)) > (NU)(63)) raiseIndexError();
 						n.buffer[((NI)(TMP216))- 0] = ((NU8) 0);
@@ -2969,13 +2977,13 @@ N_NIMCALL(TY100022*, sum_101580)(Whirlpool100005* w, TY100022* data) {
 			}
 		}
 		LA7: ;
-		nimln(185, "whirlpool.nim");
+		nimln(191, "whirlpool.nim");
 		transform_100219((&n));
-		nimln(187, "whirlpool.nim");
+		nimln(193, "whirlpool.nim");
 		n.bufferpos = ((NI) 0);
 	}
 	LA3: ;
-	nimln(189, "whirlpool.nim");
+	nimln(195, "whirlpool.nim");
 	{
 		if (!(n.bufferpos < ((NI) 32))) goto LA14;
 		{
@@ -2985,7 +2993,7 @@ N_NIMCALL(TY100022*, sum_101580)(Whirlpool100005* w, TY100022* data) {
 			NI res_101992;
 			i_101654 = 0;
 			HEX3Atmp_101989 = 0;
-			nimln(190, "whirlpool.nim");
+			nimln(196, "whirlpool.nim");
 			TMP218 = subInt(((NI) 32), n.bufferpos);
 			HEX3Atmp_101989 = subInt((NI)(TMP218), 1);
 			nimln(1598, "system.nim");
@@ -2998,7 +3006,7 @@ N_NIMCALL(TY100022*, sum_101580)(Whirlpool100005* w, TY100022* data) {
 					if (!(res_101992 <= HEX3Atmp_101989)) goto LA18;
 					nimln(1600, "system.nim");
 					i_101654 = res_101992;
-					nimln(191, "whirlpool.nim");
+					nimln(197, "whirlpool.nim");
 					TMP219 = addInt(n.bufferpos, i_101654);
 					if ((NU)((NI)(TMP219)) > (NU)(63)) raiseIndexError();
 					n.buffer[((NI)(TMP219))- 0] = ((NU8) 0);
@@ -3010,7 +3018,7 @@ N_NIMCALL(TY100022*, sum_101580)(Whirlpool100005* w, TY100022* data) {
 		}
 	}
 	LA14: ;
-	nimln(192, "whirlpool.nim");
+	nimln(198, "whirlpool.nim");
 	n.bufferpos = ((NI) 32);
 	{
 		NI i_101673;
@@ -3026,7 +3034,7 @@ N_NIMCALL(TY100022*, sum_101580)(Whirlpool100005* w, TY100022* data) {
 				if (!(res_101999 <= ((NI) 31))) goto LA21;
 				nimln(1600, "system.nim");
 				i_101673 = res_101999;
-				nimln(196, "whirlpool.nim");
+				nimln(202, "whirlpool.nim");
 				TMP221 = addInt(n.bufferpos, i_101673);
 				if ((NU)((NI)(TMP221)) > (NU)(63)) raiseIndexError();
 				if ((NU)(i_101673) > (NU)(31)) raiseIndexError();
@@ -3037,9 +3045,9 @@ N_NIMCALL(TY100022*, sum_101580)(Whirlpool100005* w, TY100022* data) {
 			} LA21: ;
 		}
 	}
-	nimln(199, "whirlpool.nim");
+	nimln(205, "whirlpool.nim");
 	transform_100219((&n));
-	nimln(202, "whirlpool.nim");
+	nimln(208, "whirlpool.nim");
 	digest = newseq_101508(((NI) 64));
 	{
 		NI i_101721;
@@ -3070,49 +3078,49 @@ N_NIMCALL(TY100022*, sum_101580)(Whirlpool100005* w, TY100022* data) {
 				if (!(res_102014 <= ((NI) 7))) goto LA24;
 				nimln(1600, "system.nim");
 				i_101721 = res_102014;
-				nimln(204, "whirlpool.nim");
+				nimln(210, "whirlpool.nim");
 				TMP223 = mulInt(i_101721, ((NI) 8));
 				TMP224 = addInt((NI)(TMP223), ((NI) 0));
 				if ((NU)((NI)(TMP224)) >= (NU)(digest->Sup.len)) raiseIndexError();
 				if ((NU)(i_101721) > (NU)(7)) raiseIndexError();
 				digest->data[(NI)(TMP224)] = ((NU8) ((NU64)((NU64)(n.hash[(i_101721)- 0]) >> (NU64)(((NI) 56)))));
-				nimln(205, "whirlpool.nim");
+				nimln(211, "whirlpool.nim");
 				TMP225 = mulInt(i_101721, ((NI) 8));
 				TMP226 = addInt((NI)(TMP225), ((NI) 1));
 				if ((NU)((NI)(TMP226)) >= (NU)(digest->Sup.len)) raiseIndexError();
 				if ((NU)(i_101721) > (NU)(7)) raiseIndexError();
 				digest->data[(NI)(TMP226)] = ((NU8) ((NU64)((NU64)(n.hash[(i_101721)- 0]) >> (NU64)(((NI) 48)))));
-				nimln(206, "whirlpool.nim");
+				nimln(212, "whirlpool.nim");
 				TMP227 = mulInt(i_101721, ((NI) 8));
 				TMP228 = addInt((NI)(TMP227), ((NI) 2));
 				if ((NU)((NI)(TMP228)) >= (NU)(digest->Sup.len)) raiseIndexError();
 				if ((NU)(i_101721) > (NU)(7)) raiseIndexError();
 				digest->data[(NI)(TMP228)] = ((NU8) ((NU64)((NU64)(n.hash[(i_101721)- 0]) >> (NU64)(((NI) 40)))));
-				nimln(207, "whirlpool.nim");
+				nimln(213, "whirlpool.nim");
 				TMP229 = mulInt(i_101721, ((NI) 8));
 				TMP230 = addInt((NI)(TMP229), ((NI) 3));
 				if ((NU)((NI)(TMP230)) >= (NU)(digest->Sup.len)) raiseIndexError();
 				if ((NU)(i_101721) > (NU)(7)) raiseIndexError();
 				digest->data[(NI)(TMP230)] = ((NU8) ((NU64)((NU64)(n.hash[(i_101721)- 0]) >> (NU64)(((NI) 32)))));
-				nimln(208, "whirlpool.nim");
+				nimln(214, "whirlpool.nim");
 				TMP231 = mulInt(i_101721, ((NI) 8));
 				TMP232 = addInt((NI)(TMP231), ((NI) 4));
 				if ((NU)((NI)(TMP232)) >= (NU)(digest->Sup.len)) raiseIndexError();
 				if ((NU)(i_101721) > (NU)(7)) raiseIndexError();
 				digest->data[(NI)(TMP232)] = ((NU8) ((NU64)((NU64)(n.hash[(i_101721)- 0]) >> (NU64)(((NI) 24)))));
-				nimln(209, "whirlpool.nim");
+				nimln(215, "whirlpool.nim");
 				TMP233 = mulInt(i_101721, ((NI) 8));
 				TMP234 = addInt((NI)(TMP233), ((NI) 5));
 				if ((NU)((NI)(TMP234)) >= (NU)(digest->Sup.len)) raiseIndexError();
 				if ((NU)(i_101721) > (NU)(7)) raiseIndexError();
 				digest->data[(NI)(TMP234)] = ((NU8) ((NU64)((NU64)(n.hash[(i_101721)- 0]) >> (NU64)(((NI) 16)))));
-				nimln(210, "whirlpool.nim");
+				nimln(216, "whirlpool.nim");
 				TMP235 = mulInt(i_101721, ((NI) 8));
 				TMP236 = addInt((NI)(TMP235), ((NI) 6));
 				if ((NU)((NI)(TMP236)) >= (NU)(digest->Sup.len)) raiseIndexError();
 				if ((NU)(i_101721) > (NU)(7)) raiseIndexError();
 				digest->data[(NI)(TMP236)] = ((NU8) ((NU64)((NU64)(n.hash[(i_101721)- 0]) >> (NU64)(((NI) 8)))));
-				nimln(211, "whirlpool.nim");
+				nimln(217, "whirlpool.nim");
 				TMP237 = mulInt(i_101721, ((NI) 8));
 				TMP238 = addInt((NI)(TMP237), ((NI) 7));
 				if ((NU)((NI)(TMP238)) >= (NU)(digest->Sup.len)) raiseIndexError();
@@ -3124,7 +3132,7 @@ N_NIMCALL(TY100022*, sum_101580)(Whirlpool100005* w, TY100022* data) {
 			} LA24: ;
 		}
 	}
-	nimln(213, "whirlpool.nim");
+	nimln(219, "whirlpool.nim");
 	LOC25 = HEX2EHEX2E_100266(((NI) 0), ((NI) 63));
 	LOC26 = 0;
 	LOC26 = HEX5BHEX5D_101796(digest, LOC25);
@@ -3144,11 +3152,11 @@ N_NIMCALL(NimStringDesc*, HEX24_102060)(Whirlpool100005* w) {
 	TY100022* res;
 	nimfr("$", "whirlpool.nim")
 	result = 0;
-	nimln(216, "whirlpool.nim");
+	nimln(223, "whirlpool.nim");
 	m = (*w);
-	nimln(217, "whirlpool.nim");
+	nimln(224, "whirlpool.nim");
 	res = sum_101580((&m), NIM_NIL);
-	nimln(218, "whirlpool.nim");
+	nimln(225, "whirlpool.nim");
 	result = copyString(((NimStringDesc*) &TMP240));
 	{
 		NU8 c_102211;
@@ -3169,7 +3177,7 @@ N_NIMCALL(NimStringDesc*, HEX24_102060)(Whirlpool100005* w) {
 				nimln(3088, "system.nim");
 				if ((NU)(i_102223) >= (NU)(res->Sup.len)) raiseIndexError();
 				c_102211 = res->data[i_102223];
-				nimln(220, "whirlpool.nim");
+				nimln(227, "whirlpool.nim");
 				LOC4 = 0;
 				LOC4 = nsuToHex(((NI64) (c_102211)), ((NI) 2));
 				LOC5 = 0;
@@ -3196,15 +3204,36 @@ N_NIMCALL(Whirlpool100005, initwhirlpool_102241)(NimStringDesc* s) {
 	Whirlpool100005 result;
 	nimfr("initWhirlpool", "whirlpool.nim")
 	memset((void*)(&result), 0, sizeof(result));
-	nimln(223, "whirlpool.nim");
+	nimln(231, "whirlpool.nim");
 	reset_100168((&result));
-	nimln(224, "whirlpool.nim");
+	nimln(232, "whirlpool.nim");
 	{
 		if (!!((s == NIM_NIL))) goto LA3;
-		nimln(225, "whirlpool.nim");
+		nimln(233, "whirlpool.nim");
 		write_101501((&result), s);
 	}
 	LA3: ;
+	popFrame();
+	return result;
+}
+
+N_NIMCALL(NimStringDesc*, whirlpool_102253)(NimStringDesc* s) {
+	NimStringDesc* result;
+	Whirlpool100005 m;
+	nimfr("whirlpool", "whirlpool.nim")
+	result = 0;
+	memset((void*)(&m), 0, sizeof(m));
+	nimln(238, "whirlpool.nim");
+	reset_100168((&m));
+	nimln(239, "whirlpool.nim");
+	{
+		if (!!((s == NIM_NIL))) goto LA3;
+		nimln(240, "whirlpool.nim");
+		write_101501((&m), s);
+	}
+	LA3: ;
+	nimln(241, "whirlpool.nim");
+	result = HEX24_102060((&m));
 	popFrame();
 	return result;
 }
@@ -3292,28 +3321,37 @@ int main(int argc, char** args, char** env) {
 
 NIM_EXTERNC N_NOINLINE(void, whirlpoolInit)(void) {
 	nimfr("whirlpool", "whirlpool.nim")
-	nimln(228, "whirlpool.nim");
-	w_102253 = initwhirlpool_102241(((NimStringDesc*) &TMP240));
-	nimln(229, "whirlpool.nim");
+	nimln(244, "whirlpool.nim");
+	w_102267 = initwhirlpool_102241(((NimStringDesc*) &TMP240));
+	nimln(245, "whirlpool.nim");
 	{
 		NimStringDesc* LOC3;
 		LOC3 = 0;
-		LOC3 = HEX24_102060((&w_102253));
+		LOC3 = HEX24_102060((&w_102267));
 		if (!!(eqStrings(LOC3, ((NimStringDesc*) &TMP249)))) goto LA4;
 		failedassertimpl_86189(((NimStringDesc*) &TMP250));
 	}
 	LA4: ;
-	nimln(231, "whirlpool.nim");
-	write_101501((&w_102253), ((NimStringDesc*) &TMP251));
-	nimln(232, "whirlpool.nim");
+	nimln(247, "whirlpool.nim");
+	write_101501((&w_102267), ((NimStringDesc*) &TMP251));
+	nimln(248, "whirlpool.nim");
 	{
 		NimStringDesc* LOC8;
 		LOC8 = 0;
-		LOC8 = HEX24_102060((&w_102253));
+		LOC8 = HEX24_102060((&w_102267));
 		if (!!(eqStrings(LOC8, ((NimStringDesc*) &TMP252)))) goto LA9;
 		failedassertimpl_86189(((NimStringDesc*) &TMP253));
 	}
 	LA9: ;
+	nimln(250, "whirlpool.nim");
+	{
+		NimStringDesc* LOC13;
+		LOC13 = 0;
+		LOC13 = whirlpool_102253(((NimStringDesc*) &TMP254));
+		if (!!(eqStrings(LOC13, ((NimStringDesc*) &TMP255)))) goto LA14;
+		failedassertimpl_86189(((NimStringDesc*) &TMP256));
+	}
+	LA14: ;
 	popFrame();
 }
 

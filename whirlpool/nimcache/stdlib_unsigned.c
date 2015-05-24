@@ -3,7 +3,7 @@
 /* The generated code is subject to the original license. */
 /* Compiled for: Windows, amd64, gcc */
 /* Command for C compiler:
-   gcc.exe -c  -w  -IC:\Users\apens_000\Downloads\nim-original\lib -o c:\users\apens_000\documents\nimcode\nimdigest\whirlpool\nimcache\stdlib_unsigned.o c:\users\apens_000\documents\nimcode\nimdigest\whirlpool\nimcache\stdlib_unsigned.c */
+   gcc.exe -c  -w  -IC:\Users\apens_000\Downloads\nim-original\lib -o c:\users\apens_000\documents\shimsham\whirlpool\nimcache\stdlib_unsigned.o c:\users\apens_000\documents\shimsham\whirlpool\nimcache\stdlib_unsigned.c */
 #define NIM_INTBITS 64
 #include "nimbase.h"
 static N_INLINE(void, nimFrame)(TFrame* s);

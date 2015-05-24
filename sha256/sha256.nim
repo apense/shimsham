@@ -409,6 +409,15 @@ proc hexDigest*(s: Sha256): string =
 proc `$`*(s: Sha256): string =
   result = s.hexDigest
 
+proc `$`*(s: Sha224): string =
+  result = s.hexDigest
+
+proc sha256*(s = ""): string =
+  result = initSha256(s).hexDigest
+
+proc sha224*(s = ""): string =
+  result = initSha224(s).hexDigest
+
 when isMainModule:
   var s = initSha256()
   let astr = "just a test string"
@@ -419,3 +428,4 @@ when isMainModule:
   s = initSha256(astr)
   s.update(astr)
   assert(s.hexDigest == "03d9963e05a094593190b6fc794cb1a3e1ac7d7883f0b5855268afeccc70d461")
+  assert(sha224() == "d14a028c2a3a2bc9476102bb288234c415a2b01f828ea62ac5b3e42f")

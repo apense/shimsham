@@ -31,10 +31,12 @@ proc reset*(w: var Whirlpool) =
   # clean up the number of hashed bits
   reset(w.bitLength)
 
-proc size*(w: Whirlpool): int =
+proc digestsize*(w: Whirlpool): int =
+  ## The Digest Size of `w`
   result = DigestBytes
 
 proc blocksize*(w: Whirlpool): int =
+  ## The Block Size of `w`
   result = WBlockBytes
 
 proc transform(w: var Whirlpool) =
@@ -92,6 +94,8 @@ proc transform(w: var Whirlpool) =
     w.hash[i] = w.hash[i] xor (state[i] xor blk[i])
 
 proc write*(w: var Whirlpool, src: openarray[byte]) =
+  ## Write the byte sequence `src` into the Whirlpool object `w` 
+  ## (this is how you will get a hash of some list of bytes)
   var
     sourcePos: int                                              # index of the leftmost source
     nn: int = len(src)                                          # num of bytes to process
@@ -163,6 +167,8 @@ proc write*(w: var Whirlpool, src: openarray[byte]) =
     w.bufferBits += int(sourceBits)
 
 proc write*(w: var Whirlpool, s = "") =
+  ## Write the string `s` into the Whirlpool object `w` (this is how
+  ## you will get a hash of string)
   var bytes = newSeq[byte]()
   for c in s:
     bytes.add(byte(c))
@@ -213,6 +219,7 @@ proc sum*(w: Whirlpool, data: seq[byte] = nil): seq[byte] =
   result = data & digest[0..DigestBytes-1]
 
 proc `$`*(w: Whirlpool): string =
+  ## Return the hexadecimal string for the Whirlpool object `w`
   var m = w
   var res = m.sum()
   result = ""
@@ -220,9 +227,18 @@ proc `$`*(w: Whirlpool): string =
     result.add(toLower(toHex(ord(c), 2)))
 
 proc initWhirlpool*(s = ""): Whirlpool =
+  ## Initialize a Whirlpool object for the string `s`
   result.reset()
   if s != nil:
     result.write(s)
+
+proc whirlpool*(s = ""): string =
+  ## Return the Whirlpool hash of string `s`
+  var m: Whirlpool
+  m.reset()
+  if s != nil:
+    m.write(s)
+  result = $m
 
 when isMainModule:
   var w = initWhirlpool()
@@ -231,3 +247,5 @@ when isMainModule:
   w.write("I wouldn't marry him with a ten foot pole.")
   assert($w == "761d7db6292384ccc4a806a18404031d89dbbce5c22bb284a1e5d5979f44e3" &
     "7348857e555babf61b7eacbdc8df543f6477a5611330866d6660ed7c62655a5555")
+  assert(whirlpool("a") == "8aca2602792aec6f11a67206531fb7d7f0dff59413145e6973" &
+    "c45001d0087b42d11bc645413aeff63a42391a39145a591a92200d560195e53b478584fdae231a")

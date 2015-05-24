@@ -3,32 +3,32 @@
 /* The generated code is subject to the original license. */
 /* Compiled for: Windows, amd64, gcc */
 /* Command for C compiler:
-   gcc.exe -c  -w  -IC:\Users\apens_000\Downloads\nim-original\lib -o c:\users\apens_000\documents\nimcode\nimdigest\tiger\nimcache\tiger.o c:\users\apens_000\documents\nimcode\nimdigest\tiger\nimcache\tiger.c */
+   gcc.exe -c  -w  -IC:\Users\apens_000\Downloads\nim-original\lib -o c:\users\apens_000\documents\shimsham\tiger\nimcache\tiger.o c:\users\apens_000\documents\shimsham\tiger\nimcache\tiger.c */
 #define NIM_INTBITS 64
 #include "nimbase.h"
 
 #include <string.h>
 
 #include <stdio.h>
-typedef struct Tigerdigest102008 Tigerdigest102008;
-typedef struct TY102013 TY102013;
-typedef struct TY102016 TY102016;
+typedef struct Tigerdigest101005 Tigerdigest101005;
+typedef struct TY101010 TY101010;
+typedef struct TY101013 TY101013;
 typedef struct TGenericSeq TGenericSeq;
 typedef struct TNimType TNimType;
 typedef struct TNimNode TNimNode;
-typedef struct TY103106 TY103106;
-typedef struct TY103428 TY103428;
+typedef struct TY102103 TY102103;
+typedef struct TY102425 TY102425;
 typedef struct NimStringDesc NimStringDesc;
 typedef struct Slice85461 Slice85461;
-typedef struct TY103661 TY103661;
-struct  Tigerdigest102008  {
+typedef struct TY102657 TY102657;
+struct  Tigerdigest101005  {
 NU64 a;
 NU64 b;
 NU64 c;
 NI bytecount;
-TY102013* buf;
+TY101010* buf;
 NI boff;
-TY102016* x;
+TY101013* x;
 NI xoff;
 };
 struct  TGenericSeq  {
@@ -55,13 +55,13 @@ NCSTRING name;
 NI len;
 TNimNode** sons;
 };
-typedef NU64 TY89006[256];
-struct TY103106 {
+typedef NU64 TY89012[256];
+struct TY102103 {
 NU64 Field0;
 NU64 Field1;
 NU64 Field2;
 };
-struct TY103428 {
+struct TY102425 {
 NI Field0;
 NI Field1;
 };
@@ -73,64 +73,64 @@ struct  Slice85461  {
 NI a;
 NI b;
 };
-struct TY103661 {
-TY102013* Field0;
-TY102013* Field1;
-TY102013* Field2;
+struct TY102657 {
+TY101010* Field0;
+TY101010* Field1;
+TY101010* Field2;
 };
-struct TY102013 {
+struct TY101010 {
   TGenericSeq Sup;
   NU8 data[SEQ_DECL_SIZE];
 };
-struct TY102016 {
+struct TY101013 {
   TGenericSeq Sup;
   NU64 data[SEQ_DECL_SIZE];
 };
-N_NIMCALL(void, reset_102022)(Tigerdigest102008* t);
+N_NIMCALL(void, reset_101019)(Tigerdigest101005* t);
 N_NOINLINE(void, raiseIndexError)(void);
 static N_INLINE(NI, addInt)(NI a, NI b);
 N_NOINLINE(void, raiseOverflow)(void);
 static N_INLINE(void, nimFrame)(TFrame* s);
 N_NOINLINE(void, stackoverflow_19801)(void);
 static N_INLINE(void, popFrame)(void);
-N_NIMCALL(TY102013*, newseq_102108)(NI len);
-N_NIMCALL(void, TMP151)(void* p, NI op);
-N_NIMCALL(TY102016*, newseq_102148)(NI len);
-N_NIMCALL(void, TMP152)(void* p, NI op);
-N_NIMCALL(void, inittigerdigest_102103)(Tigerdigest102008* Result);
+N_NIMCALL(TY101010*, newseq_101105)(NI len);
+N_NIMCALL(void, TMP149)(void* p, NI op);
+N_NIMCALL(TY101013*, newseq_101145)(NI len);
+N_NIMCALL(void, TMP150)(void* p, NI op);
+N_NIMCALL(void, inittigerdigest_101100)(Tigerdigest101005* Result);
 N_NIMCALL(void, unsureAsgnRef)(void** dest, void* src);
-static N_INLINE(void, HEX2AHEX3D_102370)(NU64* x, NU64 y);
-N_NIMCALL(void, roundabc_102193)(Tigerdigest102008* t, NU64 x, NU64 mul);
-N_NIMCALL(void, roundbca_102415)(Tigerdigest102008* t, NU64 x, NU64 mul);
-N_NIMCALL(void, roundcab_102621)(Tigerdigest102008* t, NU64 x, NU64 mul);
-N_NIMCALL(void, keyschedule_102827)(Tigerdigest102008* t);
-N_NIMCALL(void, processblock_103102)(Tigerdigest102008* t);
-N_NIMCALL(void, processword_103179)(Tigerdigest102008* t, TY102013* b, NI off);
-N_NIMCALL(void, unpackword_103357)(NI r, TY102013** outbytes, NI outoff);
-N_NIMCALL(void, processlength_103370)(Tigerdigest102008* t, NI bitlength);
-N_NIMCALL(void, update_103382)(Tigerdigest102008* t, NU8 inbyte);
-N_NIMCALL(void, update_103419)(Tigerdigest102008* t, TY102013** inbytes, NI inoff, NI length);
+static N_INLINE(void, HEX2AHEX3D_101367)(NU64* x, NU64 y);
+N_NIMCALL(void, roundabc_101190)(Tigerdigest101005* t, NU64 x, NU64 mul);
+N_NIMCALL(void, roundbca_101412)(Tigerdigest101005* t, NU64 x, NU64 mul);
+N_NIMCALL(void, roundcab_101618)(Tigerdigest101005* t, NU64 x, NU64 mul);
+N_NIMCALL(void, keyschedule_101824)(Tigerdigest101005* t);
+N_NIMCALL(void, processblock_102099)(Tigerdigest101005* t);
+N_NIMCALL(void, processword_102176)(Tigerdigest101005* t, TY101010* b, NI off);
+N_NIMCALL(void, unpackword_102354)(NI r, TY101010** outbytes, NI outoff);
+N_NIMCALL(void, processlength_102367)(Tigerdigest101005* t, NI bitlength);
+N_NIMCALL(void, update_102379)(Tigerdigest101005* t, NU8 inbyte);
+N_NIMCALL(void, update_102416)(Tigerdigest101005* t, TY101010** inbytes, NI inoff, NI length);
 static N_INLINE(NI, subInt)(NI a, NI b);
-N_NIMCALL(void, finish_103521)(Tigerdigest102008* t);
-N_NIMCALL(NI, dofinal_103539)(Tigerdigest102008* t, TY102013** outbytes, NI outoff);
-N_NIMCALL(TY102013*, getbytes_103557)(NimStringDesc* s);
+N_NIMCALL(void, finish_102518)(Tigerdigest101005* t);
+N_NIMCALL(void, dofinal_102536)(Tigerdigest101005* t, TY101010** outbytes, NI outoff);
+N_NIMCALL(TY101010*, getbytes_102553)(NimStringDesc* s);
 static N_INLINE(NI, chckRange)(NI i, NI a, NI b);
 N_NOINLINE(void, raiseRangeError)(NI64 val);
 N_NIMCALL(void, genericSeqAssign)(void* dest, void* src_81004, TNimType* mt);
-N_NIMCALL(TY102013*, HEX5BHEX5D_103676)(TY102013* s, Slice85461 x);
-N_NIMCALL(TY102013*, HEX26_103786)(TY102013* x, TY102013* y);
-N_NIMCALL(TY102013*, tigerbytes_103615)(NimStringDesc* s);
+N_NIMCALL(TY101010*, HEX5BHEX5D_102672)(TY101010* s, Slice85461 x);
+N_NIMCALL(TY101010*, HEX26_102782)(TY101010* x, TY101010* y);
+N_NIMCALL(TY101010*, tigerbytes_102611)(NimStringDesc* s);
 N_NOINLINE(void, chckNil)(void* p);
-static N_INLINE(Slice85461, HEX2EHEX2E_103663)(NI a, NI b);
-N_NIMCALL(TY102013*, tigerbytes_103924)(TY102013* s);
-N_NIMCALL(NimStringDesc*, tiger_104071)(NimStringDesc* s);
+static N_INLINE(Slice85461, HEX2EHEX2E_102659)(NI a, NI b);
+N_NIMCALL(TY101010*, tigerbytes_102920)(TY101010* s);
+N_NIMCALL(NimStringDesc*, tiger_103067)(NimStringDesc* s);
 N_NIMCALL(NimStringDesc*, copyString)(NimStringDesc* src);
 N_NIMCALL(NimStringDesc*, nsuToLowerStr)(NimStringDesc* s);
 N_NIMCALL(NimStringDesc*, nsuToHex)(NI64 x, NI len);
 static N_INLINE(void, appendString)(NimStringDesc* dest, NimStringDesc* src);
 N_NIMCALL(NimStringDesc*, rawNewString)(NI space);
 N_NIMCALL(void, failedassertimpl_86189)(NimStringDesc* msg);
-N_NIMCALL(NimStringDesc*, tiger_104235)(TY102013* s);
+N_NIMCALL(NimStringDesc*, tiger_103235)(TY101010* s);
 static N_INLINE(NIM_BOOL, eqStrings)(NimStringDesc* a, NimStringDesc* b);
 static N_INLINE(void, initStackBottomWith)(void* locals);
 N_NOINLINE(void, setStackBottom)(void* thestackbottom);
@@ -138,38 +138,37 @@ NIM_EXTERNC N_NOINLINE(void, systemInit)(void);
 NIM_EXTERNC N_NOINLINE(void, systemDatInit)(void);
 NIM_EXTERNC N_NOINLINE(void, HEX00_sboxesInit)(void);
 NIM_EXTERNC N_NOINLINE(void, HEX00_sboxesDatInit)(void);
-NIM_EXTERNC N_NOINLINE(void, stdlib_unsignedInit)(void);
-NIM_EXTERNC N_NOINLINE(void, stdlib_unsignedDatInit)(void);
-NIM_EXTERNC N_NOINLINE(void, HEX00_compressInit)(void);
-NIM_EXTERNC N_NOINLINE(void, HEX00_compressDatInit)(void);
 NIM_EXTERNC N_NOINLINE(void, stdlib_parseutilsInit)(void);
 NIM_EXTERNC N_NOINLINE(void, stdlib_parseutilsDatInit)(void);
 NIM_EXTERNC N_NOINLINE(void, stdlib_strutilsInit)(void);
 NIM_EXTERNC N_NOINLINE(void, stdlib_strutilsDatInit)(void);
+NIM_EXTERNC N_NOINLINE(void, stdlib_unsignedInit)(void);
+NIM_EXTERNC N_NOINLINE(void, stdlib_unsignedDatInit)(void);
 NIM_EXTERNC N_NOINLINE(void, tigerInit)(void);
 NIM_EXTERNC N_NOINLINE(void, tigerDatInit)(void);
-extern NIM_CONST TY89006 Table1_89005;
-extern NIM_CONST TY89006 Table2_89011;
-extern NIM_CONST TY89006 Table3_89017;
-extern NIM_CONST TY89006 Table4_89023;
-STRING_LITERAL(TMP193, "", 0);
-STRING_LITERAL(TMP201, "len(a) == L seq modified while iterating over it", 48);
-STRING_LITERAL(TMP203, "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+"
+extern NIM_CONST TY89012 Table1_89011;
+extern NIM_CONST TY89012 Table2_89017;
+extern NIM_CONST TY89012 Table3_89023;
+extern NIM_CONST TY89012 Table4_89029;
+STRING_LITERAL(TMP191, "", 0);
+STRING_LITERAL(TMP199, "len(a) == L seq modified while iterating over it", 48);
+STRING_LITERAL(TMP201, "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+"
 "-ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+"
 "-", 128);
-STRING_LITERAL(TMP204, "00b83eb4e53440c576ac6aaee0a7485825fd15e70a59ffe4", 48);
-STRING_LITERAL(TMP205, "tiger(\"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123"
+STRING_LITERAL(TMP202, "00b83eb4e53440c576ac6aaee0a7485825fd15e70a59ffe4", 48);
+STRING_LITERAL(TMP203, "tiger(\"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123"
 "456789+-ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123"
 "456789+-\") ==\015\012    \"00b83eb4e53440c576ac6aaee0a7485825fd15e70a59"
 "ffe4\" ", 197);
-STRING_LITERAL(TMP206, "24f0130c63ac933216166e76b1bb925ff373de2d49584e7a", 48);
-STRING_LITERAL(TMP207, "tiger(\"\") == \"24f0130c63ac933216166e76b1bb925ff373de2d49584e7a\""
+STRING_LITERAL(TMP204, "24f0130c63ac933216166e76b1bb925ff373de2d49584e7a", 48);
+STRING_LITERAL(TMP205, "tiger(\"\") == \"24f0130c63ac933216166e76b1bb925ff373de2d49584e7a\""
 " ", 64);
+STRING_LITERAL(TMP206, "abc", 3);
 extern TFrame* frameptr_17042;
 extern TNimType NTI3405; /* byte */
-TNimType NTI102013; /* seq[byte] */
+TNimType NTI101010; /* seq[byte] */
 extern TNimType NTI126; /* uint64 */
-TNimType NTI102016; /* seq[uint64] */
+TNimType NTI101013; /* seq[uint64] */
 
 static N_INLINE(NI, addInt)(NI a, NI b) {
 	NI result;
@@ -218,363 +217,365 @@ static N_INLINE(void, popFrame)(void) {
 	frameptr_17042 = (*frameptr_17042).prev;
 }
 
-N_NIMCALL(void, reset_102022)(Tigerdigest102008* t) {
+N_NIMCALL(void, reset_101019)(Tigerdigest101005* t) {
 	nimfr("reset", "tiger.nim")
-	nimln(20, "tiger.nim");
-	(*t).a = 81985529216486895ULL;
 	nimln(21, "tiger.nim");
-	(*t).b = 18364758544493064720ULL;
+	(*t).a = 81985529216486895ULL;
 	nimln(22, "tiger.nim");
-	(*t).c = 17336226011405279623ULL;
+	(*t).b = 18364758544493064720ULL;
 	nimln(23, "tiger.nim");
+	(*t).c = 17336226011405279623ULL;
+	nimln(24, "tiger.nim");
 	(*t).xoff = ((NI) 0);
 	{
-		NI i_102044;
-		NI res_102068;
-		i_102044 = 0;
+		NI i_101041;
+		NI res_101065;
+		i_101041 = 0;
 		nimln(1598, "system.nim");
-		res_102068 = ((NI) 0);
+		res_101065 = ((NI) 0);
 		{
 			nimln(1599, "system.nim");
 			while (1) {
-				NI TMP149;
-				if (!(res_102068 <= ((NI) 7))) goto LA3;
+				NI TMP147;
+				if (!(res_101065 <= ((NI) 7))) goto LA3;
 				nimln(1600, "system.nim");
-				i_102044 = res_102068;
-				nimln(25, "tiger.nim");
-				if ((NU)(i_102044) >= (NU)((*t).x->Sup.len)) raiseIndexError();
-				(*t).x->data[i_102044] = 0ULL;
+				i_101041 = res_101065;
+				nimln(26, "tiger.nim");
+				if ((NU)(i_101041) >= (NU)((*t).x->Sup.len)) raiseIndexError();
+				(*t).x->data[i_101041] = 0ULL;
 				nimln(1619, "system.nim");
-				TMP149 = addInt(res_102068, ((NI) 1));
-				res_102068 = (NI)(TMP149);
+				TMP147 = addInt(res_101065, ((NI) 1));
+				res_101065 = (NI)(TMP147);
 			} LA3: ;
 		}
 	}
-	nimln(26, "tiger.nim");
+	nimln(27, "tiger.nim");
 	(*t).boff = ((NI) 0);
 	{
-		NI i_102063;
-		NI res_102075;
-		i_102063 = 0;
+		NI i_101060;
+		NI res_101072;
+		i_101060 = 0;
 		nimln(1598, "system.nim");
-		res_102075 = ((NI) 0);
+		res_101072 = ((NI) 0);
 		{
 			nimln(1599, "system.nim");
 			while (1) {
-				NI TMP150;
-				if (!(res_102075 <= ((NI) 7))) goto LA6;
+				NI TMP148;
+				if (!(res_101072 <= ((NI) 7))) goto LA6;
 				nimln(1600, "system.nim");
-				i_102063 = res_102075;
-				nimln(28, "tiger.nim");
-				if ((NU)(i_102063) >= (NU)((*t).buf->Sup.len)) raiseIndexError();
-				(*t).buf->data[i_102063] = ((NU8) 0);
+				i_101060 = res_101072;
+				nimln(29, "tiger.nim");
+				if ((NU)(i_101060) >= (NU)((*t).buf->Sup.len)) raiseIndexError();
+				(*t).buf->data[i_101060] = ((NU8) 0);
 				nimln(1619, "system.nim");
-				TMP150 = addInt(res_102075, ((NI) 1));
-				res_102075 = (NI)(TMP150);
+				TMP148 = addInt(res_101072, ((NI) 1));
+				res_101072 = (NI)(TMP148);
 			} LA6: ;
 		}
 	}
-	nimln(29, "tiger.nim");
+	nimln(30, "tiger.nim");
 	(*t).bytecount = ((NI) 0);
 	popFrame();
 }
-N_NIMCALL(void, TMP151)(void* p, NI op) {
-	TY102013* a;
+N_NIMCALL(void, TMP149)(void* p, NI op) {
+	TY101010* a;
 	NI LOC1;
-	a = (TY102013*)p;
+	a = (TY101010*)p;
 	LOC1 = 0;
 	for (LOC1 = 0; LOC1 < a->Sup.len; LOC1++) {
 	}
 }
-N_NIMCALL(void, TMP152)(void* p, NI op) {
-	TY102016* a;
+N_NIMCALL(void, TMP150)(void* p, NI op) {
+	TY101013* a;
 	NI LOC1;
-	a = (TY102016*)p;
+	a = (TY101013*)p;
 	LOC1 = 0;
 	for (LOC1 = 0; LOC1 < a->Sup.len; LOC1++) {
 	}
 }
 
-N_NIMCALL(void, inittigerdigest_102103)(Tigerdigest102008* Result) {
+N_NIMCALL(void, inittigerdigest_101100)(Tigerdigest101005* Result) {
 	nimfr("initTigerDigest", "tiger.nim")
-	nimln(32, "tiger.nim");
-	unsureAsgnRef((void**) (&(*Result).buf), newseq_102108(((NI) 8)));
 	nimln(33, "tiger.nim");
-	unsureAsgnRef((void**) (&(*Result).x), newseq_102148(((NI) 8)));
+	unsureAsgnRef((void**) (&(*Result).buf), newseq_101105(((NI) 8)));
 	nimln(34, "tiger.nim");
-	(*Result).boff = ((NI) 0);
+	unsureAsgnRef((void**) (&(*Result).x), newseq_101145(((NI) 8)));
 	nimln(35, "tiger.nim");
-	(*Result).xoff = ((NI) 0);
+	(*Result).boff = ((NI) 0);
 	nimln(36, "tiger.nim");
-	reset_102022(Result);
+	(*Result).xoff = ((NI) 0);
+	nimln(37, "tiger.nim");
+	reset_101019(Result);
 	popFrame();
 }
 
-static N_INLINE(void, HEX2AHEX3D_102370)(NU64* x, NU64 y) {
+static N_INLINE(void, HEX2AHEX3D_101367)(NU64* x, NU64 y) {
 	nimfr("*=", "system.nim")
 	nimln(2989, "system.nim");
 	(*x) = (NU64)((NU64)((*x)) * (NU64)(y));
 	popFrame();
 }
 
-N_NIMCALL(void, roundabc_102193)(Tigerdigest102008* t, NU64 x, NU64 mul) {
+N_NIMCALL(void, roundabc_101190)(Tigerdigest101005* t, NU64 x, NU64 mul) {
 	nimfr("roundABC", "tiger.nim")
-	nimln(39, "tiger.nim");
+	nimln(40, "tiger.nim");
 	(*t).c = (NU64)((*t).c ^ x);
-	nimln(40, "tiger.nim");
 	nimln(41, "tiger.nim");
-	nimln(40, "tiger.nim");
+	nimln(42, "tiger.nim");
 	nimln(41, "tiger.nim");
-	(*t).a -= (NU64)((NU64)((NU64)(Table1_89005[((NI)(((NI) ((*t).c)) & ((NI) 255)))- 0] ^ Table2_89011[((NI)(((NI) ((NU64)((NU64)((*t).c) >> (NU64)(16ULL)))) & ((NI) 255)))- 0]) ^ Table3_89017[((NI)(((NI) ((NU64)((NU64)((*t).c) >> (NU64)(32ULL)))) & ((NI) 255)))- 0]) ^ Table4_89023[((NI)(((NI) ((NU64)((NU64)((*t).c) >> (NU64)(48ULL)))) & ((NI) 255)))- 0]);
 	nimln(42, "tiger.nim");
+	(*t).a -= (NU64)((NU64)((NU64)(Table1_89011[((NI)(((NI) ((*t).c)) & ((NI) 255)))- 0] ^ Table2_89017[((NI)(((NI) ((NU64)((NU64)((*t).c) >> (NU64)(16ULL)))) & ((NI) 255)))- 0]) ^ Table3_89023[((NI)(((NI) ((NU64)((NU64)((*t).c) >> (NU64)(32ULL)))) & ((NI) 255)))- 0]) ^ Table4_89029[((NI)(((NI) ((NU64)((NU64)((*t).c) >> (NU64)(48ULL)))) & ((NI) 255)))- 0]);
 	nimln(43, "tiger.nim");
-	nimln(42, "tiger.nim");
-	nimln(43, "tiger.nim");
-	(*t).b += (NU64)((NU64)((NU64)(Table4_89023[((NI)(((NI) ((NU64)((NU64)((*t).c) >> (NU64)(8ULL)))) & ((NI) 255)))- 0] ^ Table3_89017[((NI)(((NI) ((NU64)((NU64)((*t).c) >> (NU64)(24ULL)))) & ((NI) 255)))- 0]) ^ Table2_89011[((NI)(((NI) ((NU64)((NU64)((*t).c) >> (NU64)(40ULL)))) & ((NI) 255)))- 0]) ^ Table1_89005[((NI)(((NI) ((NU64)((NU64)((*t).c) >> (NU64)(56ULL)))) & ((NI) 255)))- 0]);
 	nimln(44, "tiger.nim");
-	HEX2AHEX3D_102370((&(*t).b), mul);
+	nimln(43, "tiger.nim");
+	nimln(44, "tiger.nim");
+	(*t).b += (NU64)((NU64)((NU64)(Table4_89029[((NI)(((NI) ((NU64)((NU64)((*t).c) >> (NU64)(8ULL)))) & ((NI) 255)))- 0] ^ Table3_89023[((NI)(((NI) ((NU64)((NU64)((*t).c) >> (NU64)(24ULL)))) & ((NI) 255)))- 0]) ^ Table2_89017[((NI)(((NI) ((NU64)((NU64)((*t).c) >> (NU64)(40ULL)))) & ((NI) 255)))- 0]) ^ Table1_89011[((NI)(((NI) ((NU64)((NU64)((*t).c) >> (NU64)(56ULL)))) & ((NI) 255)))- 0]);
+	nimln(45, "tiger.nim");
+	HEX2AHEX3D_101367((&(*t).b), mul);
 	popFrame();
 }
 
-N_NIMCALL(void, roundbca_102415)(Tigerdigest102008* t, NU64 x, NU64 mul) {
+N_NIMCALL(void, roundbca_101412)(Tigerdigest101005* t, NU64 x, NU64 mul) {
 	nimfr("roundBCA", "tiger.nim")
-	nimln(47, "tiger.nim");
+	nimln(48, "tiger.nim");
 	(*t).a = (NU64)((*t).a ^ x);
-	nimln(48, "tiger.nim");
 	nimln(49, "tiger.nim");
-	nimln(48, "tiger.nim");
+	nimln(50, "tiger.nim");
 	nimln(49, "tiger.nim");
-	(*t).b -= (NU64)((NU64)((NU64)(Table1_89005[((NI)(((NI) ((*t).a)) & ((NI) 255)))- 0] ^ Table2_89011[((NI)(((NI) ((NU64)((NU64)((*t).a) >> (NU64)(16ULL)))) & ((NI) 255)))- 0]) ^ Table3_89017[((NI)(((NI) ((NU64)((NU64)((*t).a) >> (NU64)(32ULL)))) & ((NI) 255)))- 0]) ^ Table4_89023[((NI)(((NI) ((NU64)((NU64)((*t).a) >> (NU64)(48ULL)))) & ((NI) 255)))- 0]);
 	nimln(50, "tiger.nim");
+	(*t).b -= (NU64)((NU64)((NU64)(Table1_89011[((NI)(((NI) ((*t).a)) & ((NI) 255)))- 0] ^ Table2_89017[((NI)(((NI) ((NU64)((NU64)((*t).a) >> (NU64)(16ULL)))) & ((NI) 255)))- 0]) ^ Table3_89023[((NI)(((NI) ((NU64)((NU64)((*t).a) >> (NU64)(32ULL)))) & ((NI) 255)))- 0]) ^ Table4_89029[((NI)(((NI) ((NU64)((NU64)((*t).a) >> (NU64)(48ULL)))) & ((NI) 255)))- 0]);
 	nimln(51, "tiger.nim");
-	nimln(50, "tiger.nim");
-	nimln(51, "tiger.nim");
-	(*t).c += (NU64)((NU64)((NU64)(Table4_89023[((NI)(((NI) ((NU64)((NU64)((*t).a) >> (NU64)(8ULL)))) & ((NI) 255)))- 0] ^ Table3_89017[((NI)(((NI) ((NU64)((NU64)((*t).a) >> (NU64)(24ULL)))) & ((NI) 255)))- 0]) ^ Table2_89011[((NI)(((NI) ((NU64)((NU64)((*t).a) >> (NU64)(40ULL)))) & ((NI) 255)))- 0]) ^ Table1_89005[((NI)(((NI) ((NU64)((NU64)((*t).a) >> (NU64)(56ULL)))) & ((NI) 255)))- 0]);
 	nimln(52, "tiger.nim");
-	HEX2AHEX3D_102370((&(*t).c), mul);
+	nimln(51, "tiger.nim");
+	nimln(52, "tiger.nim");
+	(*t).c += (NU64)((NU64)((NU64)(Table4_89029[((NI)(((NI) ((NU64)((NU64)((*t).a) >> (NU64)(8ULL)))) & ((NI) 255)))- 0] ^ Table3_89023[((NI)(((NI) ((NU64)((NU64)((*t).a) >> (NU64)(24ULL)))) & ((NI) 255)))- 0]) ^ Table2_89017[((NI)(((NI) ((NU64)((NU64)((*t).a) >> (NU64)(40ULL)))) & ((NI) 255)))- 0]) ^ Table1_89011[((NI)(((NI) ((NU64)((NU64)((*t).a) >> (NU64)(56ULL)))) & ((NI) 255)))- 0]);
+	nimln(53, "tiger.nim");
+	HEX2AHEX3D_101367((&(*t).c), mul);
 	popFrame();
 }
 
-N_NIMCALL(void, roundcab_102621)(Tigerdigest102008* t, NU64 x, NU64 mul) {
+N_NIMCALL(void, roundcab_101618)(Tigerdigest101005* t, NU64 x, NU64 mul) {
 	nimfr("roundCAB", "tiger.nim")
-	nimln(55, "tiger.nim");
+	nimln(56, "tiger.nim");
 	(*t).b = (NU64)((*t).b ^ x);
-	nimln(56, "tiger.nim");
 	nimln(57, "tiger.nim");
-	nimln(56, "tiger.nim");
+	nimln(58, "tiger.nim");
 	nimln(57, "tiger.nim");
-	(*t).c -= (NU64)((NU64)((NU64)(Table1_89005[((NI)(((NI) ((*t).b)) & ((NI) 255)))- 0] ^ Table2_89011[((NI)(((NI) ((NU64)((NU64)((*t).b) >> (NU64)(16ULL)))) & ((NI) 255)))- 0]) ^ Table3_89017[((NI)(((NI) ((NU64)((NU64)((*t).b) >> (NU64)(32ULL)))) & ((NI) 255)))- 0]) ^ Table4_89023[((NI)(((NI) ((NU64)((NU64)((*t).b) >> (NU64)(48ULL)))) & ((NI) 255)))- 0]);
 	nimln(58, "tiger.nim");
+	(*t).c -= (NU64)((NU64)((NU64)(Table1_89011[((NI)(((NI) ((*t).b)) & ((NI) 255)))- 0] ^ Table2_89017[((NI)(((NI) ((NU64)((NU64)((*t).b) >> (NU64)(16ULL)))) & ((NI) 255)))- 0]) ^ Table3_89023[((NI)(((NI) ((NU64)((NU64)((*t).b) >> (NU64)(32ULL)))) & ((NI) 255)))- 0]) ^ Table4_89029[((NI)(((NI) ((NU64)((NU64)((*t).b) >> (NU64)(48ULL)))) & ((NI) 255)))- 0]);
 	nimln(59, "tiger.nim");
-	nimln(58, "tiger.nim");
-	nimln(59, "tiger.nim");
-	(*t).a += (NU64)((NU64)((NU64)(Table4_89023[((NI)(((NI) ((NU64)((NU64)((*t).b) >> (NU64)(8ULL)))) & ((NI) 255)))- 0] ^ Table3_89017[((NI)(((NI) ((NU64)((NU64)((*t).b) >> (NU64)(24ULL)))) & ((NI) 255)))- 0]) ^ Table2_89011[((NI)(((NI) ((NU64)((NU64)((*t).b) >> (NU64)(40ULL)))) & ((NI) 255)))- 0]) ^ Table1_89005[((NI)(((NI) ((NU64)((NU64)((*t).b) >> (NU64)(56ULL)))) & ((NI) 255)))- 0]);
 	nimln(60, "tiger.nim");
-	HEX2AHEX3D_102370((&(*t).a), mul);
+	nimln(59, "tiger.nim");
+	nimln(60, "tiger.nim");
+	(*t).a += (NU64)((NU64)((NU64)(Table4_89029[((NI)(((NI) ((NU64)((NU64)((*t).b) >> (NU64)(8ULL)))) & ((NI) 255)))- 0] ^ Table3_89023[((NI)(((NI) ((NU64)((NU64)((*t).b) >> (NU64)(24ULL)))) & ((NI) 255)))- 0]) ^ Table2_89017[((NI)(((NI) ((NU64)((NU64)((*t).b) >> (NU64)(40ULL)))) & ((NI) 255)))- 0]) ^ Table1_89011[((NI)(((NI) ((NU64)((NU64)((*t).b) >> (NU64)(56ULL)))) & ((NI) 255)))- 0]);
+	nimln(61, "tiger.nim");
+	HEX2AHEX3D_101367((&(*t).a), mul);
 	popFrame();
 }
 
-N_NIMCALL(void, keyschedule_102827)(Tigerdigest102008* t) {
+N_NIMCALL(void, keyschedule_101824)(Tigerdigest101005* t) {
 	nimfr("keySchedule", "tiger.nim")
-	nimln(63, "tiger.nim");
+	nimln(64, "tiger.nim");
 	if ((NU)(((NI) 0)) >= (NU)((*t).x->Sup.len)) raiseIndexError();
 	if ((NU)(((NI) 7)) >= (NU)((*t).x->Sup.len)) raiseIndexError();
 	(*t).x->data[((NI) 0)] -= (NU64)((*t).x->data[((NI) 7)] ^ 11936128518282651045ULL);
-	nimln(64, "tiger.nim");
+	nimln(65, "tiger.nim");
 	if ((NU)(((NI) 1)) >= (NU)((*t).x->Sup.len)) raiseIndexError();
 	if ((NU)(((NI) 1)) >= (NU)((*t).x->Sup.len)) raiseIndexError();
 	if ((NU)(((NI) 0)) >= (NU)((*t).x->Sup.len)) raiseIndexError();
 	(*t).x->data[((NI) 1)] = (NU64)((*t).x->data[((NI) 1)] ^ (*t).x->data[((NI) 0)]);
-	nimln(65, "tiger.nim");
+	nimln(66, "tiger.nim");
 	if ((NU)(((NI) 2)) >= (NU)((*t).x->Sup.len)) raiseIndexError();
 	if ((NU)(((NI) 1)) >= (NU)((*t).x->Sup.len)) raiseIndexError();
 	(*t).x->data[((NI) 2)] += (*t).x->data[((NI) 1)];
-	nimln(66, "tiger.nim");
+	nimln(67, "tiger.nim");
 	if ((NU)(((NI) 3)) >= (NU)((*t).x->Sup.len)) raiseIndexError();
 	if ((NU)(((NI) 2)) >= (NU)((*t).x->Sup.len)) raiseIndexError();
 	if ((NU)(((NI) 1)) >= (NU)((*t).x->Sup.len)) raiseIndexError();
 	(*t).x->data[((NI) 3)] -= (NU64)((*t).x->data[((NI) 2)] ^ (NU64)((NU64)((NU64)((NU64) ~((*t).x->data[((NI) 1)]))) << (NU64)(((NI) 19))));
-	nimln(67, "tiger.nim");
+	nimln(68, "tiger.nim");
 	if ((NU)(((NI) 4)) >= (NU)((*t).x->Sup.len)) raiseIndexError();
 	if ((NU)(((NI) 4)) >= (NU)((*t).x->Sup.len)) raiseIndexError();
 	if ((NU)(((NI) 3)) >= (NU)((*t).x->Sup.len)) raiseIndexError();
 	(*t).x->data[((NI) 4)] = (NU64)((*t).x->data[((NI) 4)] ^ (*t).x->data[((NI) 3)]);
-	nimln(68, "tiger.nim");
+	nimln(69, "tiger.nim");
 	if ((NU)(((NI) 5)) >= (NU)((*t).x->Sup.len)) raiseIndexError();
 	if ((NU)(((NI) 4)) >= (NU)((*t).x->Sup.len)) raiseIndexError();
 	(*t).x->data[((NI) 5)] += (*t).x->data[((NI) 4)];
-	nimln(69, "tiger.nim");
+	nimln(70, "tiger.nim");
 	if ((NU)(((NI) 6)) >= (NU)((*t).x->Sup.len)) raiseIndexError();
 	if ((NU)(((NI) 5)) >= (NU)((*t).x->Sup.len)) raiseIndexError();
 	if ((NU)(((NI) 4)) >= (NU)((*t).x->Sup.len)) raiseIndexError();
 	(*t).x->data[((NI) 6)] -= (NU64)((*t).x->data[((NI) 5)] ^ (NU64)((NU64)((NU64)((NU64) ~((*t).x->data[((NI) 4)]))) >> (NU64)(((NI) 23))));
-	nimln(70, "tiger.nim");
+	nimln(71, "tiger.nim");
 	if ((NU)(((NI) 7)) >= (NU)((*t).x->Sup.len)) raiseIndexError();
 	if ((NU)(((NI) 7)) >= (NU)((*t).x->Sup.len)) raiseIndexError();
 	if ((NU)(((NI) 6)) >= (NU)((*t).x->Sup.len)) raiseIndexError();
 	(*t).x->data[((NI) 7)] = (NU64)((*t).x->data[((NI) 7)] ^ (*t).x->data[((NI) 6)]);
-	nimln(71, "tiger.nim");
+	nimln(72, "tiger.nim");
 	if ((NU)(((NI) 0)) >= (NU)((*t).x->Sup.len)) raiseIndexError();
 	if ((NU)(((NI) 7)) >= (NU)((*t).x->Sup.len)) raiseIndexError();
 	(*t).x->data[((NI) 0)] += (*t).x->data[((NI) 7)];
-	nimln(72, "tiger.nim");
+	nimln(73, "tiger.nim");
 	if ((NU)(((NI) 1)) >= (NU)((*t).x->Sup.len)) raiseIndexError();
 	if ((NU)(((NI) 0)) >= (NU)((*t).x->Sup.len)) raiseIndexError();
 	if ((NU)(((NI) 7)) >= (NU)((*t).x->Sup.len)) raiseIndexError();
 	(*t).x->data[((NI) 1)] -= (NU64)((*t).x->data[((NI) 0)] ^ (NU64)((NU64)((NU64)((NU64) ~((*t).x->data[((NI) 7)]))) << (NU64)(((NI) 19))));
-	nimln(73, "tiger.nim");
+	nimln(74, "tiger.nim");
 	if ((NU)(((NI) 2)) >= (NU)((*t).x->Sup.len)) raiseIndexError();
 	if ((NU)(((NI) 2)) >= (NU)((*t).x->Sup.len)) raiseIndexError();
 	if ((NU)(((NI) 1)) >= (NU)((*t).x->Sup.len)) raiseIndexError();
 	(*t).x->data[((NI) 2)] = (NU64)((*t).x->data[((NI) 2)] ^ (*t).x->data[((NI) 1)]);
-	nimln(74, "tiger.nim");
+	nimln(75, "tiger.nim");
 	if ((NU)(((NI) 3)) >= (NU)((*t).x->Sup.len)) raiseIndexError();
 	if ((NU)(((NI) 2)) >= (NU)((*t).x->Sup.len)) raiseIndexError();
 	(*t).x->data[((NI) 3)] += (*t).x->data[((NI) 2)];
-	nimln(75, "tiger.nim");
+	nimln(76, "tiger.nim");
 	if ((NU)(((NI) 4)) >= (NU)((*t).x->Sup.len)) raiseIndexError();
 	if ((NU)(((NI) 3)) >= (NU)((*t).x->Sup.len)) raiseIndexError();
 	if ((NU)(((NI) 2)) >= (NU)((*t).x->Sup.len)) raiseIndexError();
 	(*t).x->data[((NI) 4)] -= (NU64)((*t).x->data[((NI) 3)] ^ (NU64)((NU64)((NU64)((NU64) ~((*t).x->data[((NI) 2)]))) >> (NU64)(((NI) 23))));
-	nimln(76, "tiger.nim");
+	nimln(77, "tiger.nim");
 	if ((NU)(((NI) 5)) >= (NU)((*t).x->Sup.len)) raiseIndexError();
 	if ((NU)(((NI) 5)) >= (NU)((*t).x->Sup.len)) raiseIndexError();
 	if ((NU)(((NI) 4)) >= (NU)((*t).x->Sup.len)) raiseIndexError();
 	(*t).x->data[((NI) 5)] = (NU64)((*t).x->data[((NI) 5)] ^ (*t).x->data[((NI) 4)]);
-	nimln(77, "tiger.nim");
+	nimln(78, "tiger.nim");
 	if ((NU)(((NI) 6)) >= (NU)((*t).x->Sup.len)) raiseIndexError();
 	if ((NU)(((NI) 5)) >= (NU)((*t).x->Sup.len)) raiseIndexError();
 	(*t).x->data[((NI) 6)] += (*t).x->data[((NI) 5)];
-	nimln(78, "tiger.nim");
+	nimln(79, "tiger.nim");
 	if ((NU)(((NI) 7)) >= (NU)((*t).x->Sup.len)) raiseIndexError();
 	if ((NU)(((NI) 6)) >= (NU)((*t).x->Sup.len)) raiseIndexError();
 	(*t).x->data[((NI) 7)] -= (NU64)((*t).x->data[((NI) 6)] ^ ((NI) IL64(81985529216486895)));
 	popFrame();
 }
 
-N_NIMCALL(void, processblock_103102)(Tigerdigest102008* t) {
-	TY103106 LOC1;
+N_NIMCALL(void, processblock_102099)(Tigerdigest101005* t) {
+	TY102103 LOC1;
 	NU64 aa;
 	NU64 bb;
 	NU64 cc;
 	nimfr("processBlock", "tiger.nim")
-	nimln(82, "tiger.nim");
+	nimln(83, "tiger.nim");
 	LOC1.Field0 = (*t).a;
 	LOC1.Field1 = (*t).b;
 	LOC1.Field2 = (*t).c;
 	aa = LOC1.Field0;
 	bb = LOC1.Field1;
 	cc = LOC1.Field2;
-	nimln(85, "tiger.nim");
-	if ((NU)(((NI) 0)) >= (NU)((*t).x->Sup.len)) raiseIndexError();
-	roundabc_102193(t, (*t).x->data[((NI) 0)], 5ULL);
 	nimln(86, "tiger.nim");
-	if ((NU)(((NI) 1)) >= (NU)((*t).x->Sup.len)) raiseIndexError();
-	roundbca_102415(t, (*t).x->data[((NI) 1)], 5ULL);
+	if ((NU)(((NI) 0)) >= (NU)((*t).x->Sup.len)) raiseIndexError();
+	roundabc_101190(t, (*t).x->data[((NI) 0)], 5ULL);
 	nimln(87, "tiger.nim");
-	if ((NU)(((NI) 2)) >= (NU)((*t).x->Sup.len)) raiseIndexError();
-	roundcab_102621(t, (*t).x->data[((NI) 2)], 5ULL);
+	if ((NU)(((NI) 1)) >= (NU)((*t).x->Sup.len)) raiseIndexError();
+	roundbca_101412(t, (*t).x->data[((NI) 1)], 5ULL);
 	nimln(88, "tiger.nim");
-	if ((NU)(((NI) 3)) >= (NU)((*t).x->Sup.len)) raiseIndexError();
-	roundabc_102193(t, (*t).x->data[((NI) 3)], 5ULL);
+	if ((NU)(((NI) 2)) >= (NU)((*t).x->Sup.len)) raiseIndexError();
+	roundcab_101618(t, (*t).x->data[((NI) 2)], 5ULL);
 	nimln(89, "tiger.nim");
-	if ((NU)(((NI) 4)) >= (NU)((*t).x->Sup.len)) raiseIndexError();
-	roundbca_102415(t, (*t).x->data[((NI) 4)], 5ULL);
+	if ((NU)(((NI) 3)) >= (NU)((*t).x->Sup.len)) raiseIndexError();
+	roundabc_101190(t, (*t).x->data[((NI) 3)], 5ULL);
 	nimln(90, "tiger.nim");
-	if ((NU)(((NI) 5)) >= (NU)((*t).x->Sup.len)) raiseIndexError();
-	roundcab_102621(t, (*t).x->data[((NI) 5)], 5ULL);
+	if ((NU)(((NI) 4)) >= (NU)((*t).x->Sup.len)) raiseIndexError();
+	roundbca_101412(t, (*t).x->data[((NI) 4)], 5ULL);
 	nimln(91, "tiger.nim");
-	if ((NU)(((NI) 6)) >= (NU)((*t).x->Sup.len)) raiseIndexError();
-	roundabc_102193(t, (*t).x->data[((NI) 6)], 5ULL);
+	if ((NU)(((NI) 5)) >= (NU)((*t).x->Sup.len)) raiseIndexError();
+	roundcab_101618(t, (*t).x->data[((NI) 5)], 5ULL);
 	nimln(92, "tiger.nim");
+	if ((NU)(((NI) 6)) >= (NU)((*t).x->Sup.len)) raiseIndexError();
+	roundabc_101190(t, (*t).x->data[((NI) 6)], 5ULL);
+	nimln(93, "tiger.nim");
 	if ((NU)(((NI) 7)) >= (NU)((*t).x->Sup.len)) raiseIndexError();
-	roundbca_102415(t, (*t).x->data[((NI) 7)], 5ULL);
-	nimln(94, "tiger.nim");
-	keyschedule_102827(t);
-	nimln(96, "tiger.nim");
-	if ((NU)(((NI) 0)) >= (NU)((*t).x->Sup.len)) raiseIndexError();
-	roundcab_102621(t, (*t).x->data[((NI) 0)], 7ULL);
+	roundbca_101412(t, (*t).x->data[((NI) 7)], 5ULL);
+	nimln(95, "tiger.nim");
+	keyschedule_101824(t);
 	nimln(97, "tiger.nim");
-	if ((NU)(((NI) 1)) >= (NU)((*t).x->Sup.len)) raiseIndexError();
-	roundabc_102193(t, (*t).x->data[((NI) 1)], 7ULL);
-	nimln(98, "tiger.nim");
-	if ((NU)(((NI) 2)) >= (NU)((*t).x->Sup.len)) raiseIndexError();
-	roundbca_102415(t, (*t).x->data[((NI) 2)], 7ULL);
-	nimln(99, "tiger.nim");
-	if ((NU)(((NI) 3)) >= (NU)((*t).x->Sup.len)) raiseIndexError();
-	roundcab_102621(t, (*t).x->data[((NI) 3)], 7ULL);
-	nimln(100, "tiger.nim");
-	if ((NU)(((NI) 4)) >= (NU)((*t).x->Sup.len)) raiseIndexError();
-	roundabc_102193(t, (*t).x->data[((NI) 4)], 7ULL);
-	nimln(101, "tiger.nim");
-	if ((NU)(((NI) 5)) >= (NU)((*t).x->Sup.len)) raiseIndexError();
-	roundbca_102415(t, (*t).x->data[((NI) 5)], 7ULL);
-	nimln(102, "tiger.nim");
-	if ((NU)(((NI) 6)) >= (NU)((*t).x->Sup.len)) raiseIndexError();
-	roundcab_102621(t, (*t).x->data[((NI) 6)], 7ULL);
-	nimln(103, "tiger.nim");
-	if ((NU)(((NI) 7)) >= (NU)((*t).x->Sup.len)) raiseIndexError();
-	roundabc_102193(t, (*t).x->data[((NI) 7)], 7ULL);
-	nimln(105, "tiger.nim");
-	keyschedule_102827(t);
-	nimln(107, "tiger.nim");
 	if ((NU)(((NI) 0)) >= (NU)((*t).x->Sup.len)) raiseIndexError();
-	roundbca_102415(t, (*t).x->data[((NI) 0)], 9ULL);
-	nimln(108, "tiger.nim");
+	roundcab_101618(t, (*t).x->data[((NI) 0)], 7ULL);
+	nimln(98, "tiger.nim");
 	if ((NU)(((NI) 1)) >= (NU)((*t).x->Sup.len)) raiseIndexError();
-	roundcab_102621(t, (*t).x->data[((NI) 1)], 9ULL);
-	nimln(109, "tiger.nim");
+	roundabc_101190(t, (*t).x->data[((NI) 1)], 7ULL);
+	nimln(99, "tiger.nim");
 	if ((NU)(((NI) 2)) >= (NU)((*t).x->Sup.len)) raiseIndexError();
-	roundabc_102193(t, (*t).x->data[((NI) 2)], 9ULL);
-	nimln(110, "tiger.nim");
+	roundbca_101412(t, (*t).x->data[((NI) 2)], 7ULL);
+	nimln(100, "tiger.nim");
 	if ((NU)(((NI) 3)) >= (NU)((*t).x->Sup.len)) raiseIndexError();
-	roundbca_102415(t, (*t).x->data[((NI) 3)], 9ULL);
-	nimln(111, "tiger.nim");
+	roundcab_101618(t, (*t).x->data[((NI) 3)], 7ULL);
+	nimln(101, "tiger.nim");
 	if ((NU)(((NI) 4)) >= (NU)((*t).x->Sup.len)) raiseIndexError();
-	roundcab_102621(t, (*t).x->data[((NI) 4)], 9ULL);
-	nimln(112, "tiger.nim");
+	roundabc_101190(t, (*t).x->data[((NI) 4)], 7ULL);
+	nimln(102, "tiger.nim");
 	if ((NU)(((NI) 5)) >= (NU)((*t).x->Sup.len)) raiseIndexError();
-	roundabc_102193(t, (*t).x->data[((NI) 5)], 9ULL);
-	nimln(113, "tiger.nim");
+	roundbca_101412(t, (*t).x->data[((NI) 5)], 7ULL);
+	nimln(103, "tiger.nim");
 	if ((NU)(((NI) 6)) >= (NU)((*t).x->Sup.len)) raiseIndexError();
-	roundbca_102415(t, (*t).x->data[((NI) 6)], 9ULL);
-	nimln(114, "tiger.nim");
+	roundcab_101618(t, (*t).x->data[((NI) 6)], 7ULL);
+	nimln(104, "tiger.nim");
 	if ((NU)(((NI) 7)) >= (NU)((*t).x->Sup.len)) raiseIndexError();
-	roundcab_102621(t, (*t).x->data[((NI) 7)], 9ULL);
-	nimln(117, "tiger.nim");
-	(*t).a = (NU64)((*t).a ^ aa);
+	roundabc_101190(t, (*t).x->data[((NI) 7)], 7ULL);
+	nimln(106, "tiger.nim");
+	keyschedule_101824(t);
+	nimln(108, "tiger.nim");
+	if ((NU)(((NI) 0)) >= (NU)((*t).x->Sup.len)) raiseIndexError();
+	roundbca_101412(t, (*t).x->data[((NI) 0)], 9ULL);
+	nimln(109, "tiger.nim");
+	if ((NU)(((NI) 1)) >= (NU)((*t).x->Sup.len)) raiseIndexError();
+	roundcab_101618(t, (*t).x->data[((NI) 1)], 9ULL);
+	nimln(110, "tiger.nim");
+	if ((NU)(((NI) 2)) >= (NU)((*t).x->Sup.len)) raiseIndexError();
+	roundabc_101190(t, (*t).x->data[((NI) 2)], 9ULL);
+	nimln(111, "tiger.nim");
+	if ((NU)(((NI) 3)) >= (NU)((*t).x->Sup.len)) raiseIndexError();
+	roundbca_101412(t, (*t).x->data[((NI) 3)], 9ULL);
+	nimln(112, "tiger.nim");
+	if ((NU)(((NI) 4)) >= (NU)((*t).x->Sup.len)) raiseIndexError();
+	roundcab_101618(t, (*t).x->data[((NI) 4)], 9ULL);
+	nimln(113, "tiger.nim");
+	if ((NU)(((NI) 5)) >= (NU)((*t).x->Sup.len)) raiseIndexError();
+	roundabc_101190(t, (*t).x->data[((NI) 5)], 9ULL);
+	nimln(114, "tiger.nim");
+	if ((NU)(((NI) 6)) >= (NU)((*t).x->Sup.len)) raiseIndexError();
+	roundbca_101412(t, (*t).x->data[((NI) 6)], 9ULL);
+	nimln(115, "tiger.nim");
+	if ((NU)(((NI) 7)) >= (NU)((*t).x->Sup.len)) raiseIndexError();
+	roundcab_101618(t, (*t).x->data[((NI) 7)], 9ULL);
 	nimln(118, "tiger.nim");
-	(*t).b -= bb;
+	(*t).a = (NU64)((*t).a ^ aa);
 	nimln(119, "tiger.nim");
+	(*t).b -= bb;
+	nimln(120, "tiger.nim");
 	(*t).c += cc;
-	nimln(122, "tiger.nim");
+	nimln(123, "tiger.nim");
 	(*t).xoff = ((NI) 0);
 	{
-		NI i_103155;
-		NI res_103160;
-		i_103155 = 0;
+		NI i_102152;
+		NI res_102157;
+		i_102152 = 0;
 		nimln(1598, "system.nim");
-		res_103160 = ((NI) 0);
+		res_102157 = ((NI) 0);
 		{
 			nimln(1599, "system.nim");
 			while (1) {
-				NI TMP153;
-				if (!(res_103160 <= ((NI) 7))) goto LA4;
+				NI TMP151;
+				if (!(res_102157 <= ((NI) 7))) goto LA4;
 				nimln(1600, "system.nim");
-				i_103155 = res_103160;
-				nimln(124, "tiger.nim");
-				if ((NU)(i_103155) >= (NU)((*t).x->Sup.len)) raiseIndexError();
-				(*t).x->data[i_103155] = 0ULL;
+				i_102152 = res_102157;
+				nimln(125, "tiger.nim");
+				if ((NU)(i_102152) >= (NU)((*t).x->Sup.len)) raiseIndexError();
+				(*t).x->data[i_102152] = 0ULL;
 				nimln(1619, "system.nim");
-				TMP153 = addInt(res_103160, ((NI) 1));
-				res_103160 = (NI)(TMP153);
+				TMP151 = addInt(res_102157, ((NI) 1));
+				res_102157 = (NI)(TMP151);
 			} LA4: ;
 		}
 	}
 	popFrame();
 }
 
-N_NIMCALL(void, processword_103179)(Tigerdigest102008* t, TY102013* b, NI off) {
+N_NIMCALL(void, processword_102176)(Tigerdigest101005* t, TY101010* b, NI off) {
+	NI TMP152;
+	NI TMP153;
 	NI TMP154;
 	NI TMP155;
 	NI TMP156;
@@ -582,130 +583,128 @@ N_NIMCALL(void, processword_103179)(Tigerdigest102008* t, TY102013* b, NI off) {
 	NI TMP158;
 	NI TMP159;
 	NI TMP160;
-	NI TMP161;
-	NI TMP162;
 	nimfr("processWord", "tiger.nim")
-	nimln(129, "tiger.nim");
+	nimln(130, "tiger.nim");
 	if ((NU)((*t).xoff) >= (NU)((*t).x->Sup.len)) raiseIndexError();
-	nimln(135, "tiger.nim");
-	nimln(134, "tiger.nim");
-	nimln(133, "tiger.nim");
-	nimln(132, "tiger.nim");
-	nimln(131, "tiger.nim");
-	nimln(130, "tiger.nim");
-	nimln(129, "tiger.nim");
-	TMP154 = addInt(off, ((NI) 7));
-	if ((NU)((NI)(TMP154)) >= (NU)(b->Sup.len)) raiseIndexError();
-	nimln(130, "tiger.nim");
-	TMP155 = addInt(off, ((NI) 6));
-	if ((NU)((NI)(TMP155)) >= (NU)(b->Sup.len)) raiseIndexError();
-	nimln(131, "tiger.nim");
-	TMP156 = addInt(off, ((NI) 5));
-	if ((NU)((NI)(TMP156)) >= (NU)(b->Sup.len)) raiseIndexError();
-	nimln(132, "tiger.nim");
-	TMP157 = addInt(off, ((NI) 4));
-	if ((NU)((NI)(TMP157)) >= (NU)(b->Sup.len)) raiseIndexError();
-	nimln(133, "tiger.nim");
-	TMP158 = addInt(off, ((NI) 3));
-	if ((NU)((NI)(TMP158)) >= (NU)(b->Sup.len)) raiseIndexError();
-	nimln(134, "tiger.nim");
-	TMP159 = addInt(off, ((NI) 2));
-	if ((NU)((NI)(TMP159)) >= (NU)(b->Sup.len)) raiseIndexError();
-	nimln(135, "tiger.nim");
-	TMP160 = addInt(off, ((NI) 1));
-	if ((NU)((NI)(TMP160)) >= (NU)(b->Sup.len)) raiseIndexError();
 	nimln(136, "tiger.nim");
-	TMP161 = addInt(off, ((NI) 0));
-	if ((NU)((NI)(TMP161)) >= (NU)(b->Sup.len)) raiseIndexError();
-	(*t).x->data[(*t).xoff] = (NU64)((NU64)((NU64)((NU64)((NU64)((NU64)((NU64)(((NU64) ((NI)((NU64)(((NI) ((NU8)(b->data[(NI)(TMP154)] & ((NI) 255))))) << (NU64)(((NI) 56))))) | ((NU64) ((NI)((NU64)(((NI) ((NU8)(b->data[(NI)(TMP155)] & ((NI) 255))))) << (NU64)(((NI) 48)))))) | ((NU64) ((NI)((NU64)(((NI) ((NU8)(b->data[(NI)(TMP156)] & ((NI) 255))))) << (NU64)(((NI) 40)))))) | ((NU64) ((NI)((NU64)(((NI) ((NU8)(b->data[(NI)(TMP157)] & ((NI) 255))))) << (NU64)(((NI) 32)))))) | ((NU64) ((NI)((NU64)(((NI) ((NU8)(b->data[(NI)(TMP158)] & ((NI) 255))))) << (NU64)(((NI) 24)))))) | ((NU64) ((NI)((NU64)(((NI) ((NU8)(b->data[(NI)(TMP159)] & ((NI) 255))))) << (NU64)(((NI) 16)))))) | ((NU64) ((NI)((NU64)(((NI) ((NU8)(b->data[(NI)(TMP160)] & ((NI) 255))))) << (NU64)(((NI) 8)))))) | ((NU64) (b->data[(NI)(TMP161)])));
+	nimln(135, "tiger.nim");
+	nimln(134, "tiger.nim");
+	nimln(133, "tiger.nim");
+	nimln(132, "tiger.nim");
+	nimln(131, "tiger.nim");
+	nimln(130, "tiger.nim");
+	TMP152 = addInt(off, ((NI) 7));
+	if ((NU)((NI)(TMP152)) >= (NU)(b->Sup.len)) raiseIndexError();
+	nimln(131, "tiger.nim");
+	TMP153 = addInt(off, ((NI) 6));
+	if ((NU)((NI)(TMP153)) >= (NU)(b->Sup.len)) raiseIndexError();
+	nimln(132, "tiger.nim");
+	TMP154 = addInt(off, ((NI) 5));
+	if ((NU)((NI)(TMP154)) >= (NU)(b->Sup.len)) raiseIndexError();
+	nimln(133, "tiger.nim");
+	TMP155 = addInt(off, ((NI) 4));
+	if ((NU)((NI)(TMP155)) >= (NU)(b->Sup.len)) raiseIndexError();
+	nimln(134, "tiger.nim");
+	TMP156 = addInt(off, ((NI) 3));
+	if ((NU)((NI)(TMP156)) >= (NU)(b->Sup.len)) raiseIndexError();
+	nimln(135, "tiger.nim");
+	TMP157 = addInt(off, ((NI) 2));
+	if ((NU)((NI)(TMP157)) >= (NU)(b->Sup.len)) raiseIndexError();
+	nimln(136, "tiger.nim");
+	TMP158 = addInt(off, ((NI) 1));
+	if ((NU)((NI)(TMP158)) >= (NU)(b->Sup.len)) raiseIndexError();
 	nimln(137, "tiger.nim");
-	TMP162 = addInt((*t).xoff, ((NI) 1));
-	(*t).xoff = (NI)(TMP162);
-	nimln(139, "tiger.nim");
+	TMP159 = addInt(off, ((NI) 0));
+	if ((NU)((NI)(TMP159)) >= (NU)(b->Sup.len)) raiseIndexError();
+	(*t).x->data[(*t).xoff] = (NU64)((NU64)((NU64)((NU64)((NU64)((NU64)((NU64)(((NU64) ((NI)((NU64)(((NI) ((NU8)(b->data[(NI)(TMP152)] & ((NI) 255))))) << (NU64)(((NI) 56))))) | ((NU64) ((NI)((NU64)(((NI) ((NU8)(b->data[(NI)(TMP153)] & ((NI) 255))))) << (NU64)(((NI) 48)))))) | ((NU64) ((NI)((NU64)(((NI) ((NU8)(b->data[(NI)(TMP154)] & ((NI) 255))))) << (NU64)(((NI) 40)))))) | ((NU64) ((NI)((NU64)(((NI) ((NU8)(b->data[(NI)(TMP155)] & ((NI) 255))))) << (NU64)(((NI) 32)))))) | ((NU64) ((NI)((NU64)(((NI) ((NU8)(b->data[(NI)(TMP156)] & ((NI) 255))))) << (NU64)(((NI) 24)))))) | ((NU64) ((NI)((NU64)(((NI) ((NU8)(b->data[(NI)(TMP157)] & ((NI) 255))))) << (NU64)(((NI) 16)))))) | ((NU64) ((NI)((NU64)(((NI) ((NU8)(b->data[(NI)(TMP158)] & ((NI) 255))))) << (NU64)(((NI) 8)))))) | ((NU64) (b->data[(NI)(TMP159)])));
+	nimln(138, "tiger.nim");
+	TMP160 = addInt((*t).xoff, ((NI) 1));
+	(*t).xoff = (NI)(TMP160);
+	nimln(140, "tiger.nim");
 	{
 		if (!((*t).xoff == ((*t).x ? (*t).x->Sup.len : 0))) goto LA3;
-		nimln(140, "tiger.nim");
-		processblock_103102(t);
+		nimln(141, "tiger.nim");
+		processblock_102099(t);
 	}
 	LA3: ;
-	nimln(142, "tiger.nim");
+	nimln(143, "tiger.nim");
 	(*t).boff = ((NI) 0);
 	popFrame();
 }
 
-N_NIMCALL(void, unpackword_103357)(NI r, TY102013** outbytes, NI outoff) {
+N_NIMCALL(void, unpackword_102354)(NI r, TY101010** outbytes, NI outoff) {
+	NI TMP161;
+	NI TMP162;
 	NI TMP163;
 	NI TMP164;
 	NI TMP165;
 	NI TMP166;
 	NI TMP167;
 	NI TMP168;
-	NI TMP169;
-	NI TMP170;
 	nimfr("unpackWord", "tiger.nim")
-	nimln(145, "tiger.nim");
-	TMP163 = addInt(outoff, ((NI) 7));
-	if ((NU)((NI)(TMP163)) >= (NU)((*outbytes)->Sup.len)) raiseIndexError();
-	(*outbytes)->data[(NI)(TMP163)] = ((NU8) ((NI)((NU64)(r) >> (NU64)(((NI) 56)))));
 	nimln(146, "tiger.nim");
-	TMP164 = addInt(outoff, ((NI) 6));
-	if ((NU)((NI)(TMP164)) >= (NU)((*outbytes)->Sup.len)) raiseIndexError();
-	(*outbytes)->data[(NI)(TMP164)] = ((NU8) ((NI)((NU64)(r) >> (NU64)(((NI) 48)))));
+	TMP161 = addInt(outoff, ((NI) 7));
+	if ((NU)((NI)(TMP161)) >= (NU)((*outbytes)->Sup.len)) raiseIndexError();
+	(*outbytes)->data[(NI)(TMP161)] = ((NU8) ((NI)((NU64)(r) >> (NU64)(((NI) 56)))));
 	nimln(147, "tiger.nim");
-	TMP165 = addInt(outoff, ((NI) 5));
-	if ((NU)((NI)(TMP165)) >= (NU)((*outbytes)->Sup.len)) raiseIndexError();
-	(*outbytes)->data[(NI)(TMP165)] = ((NU8) ((NI)((NU64)(r) >> (NU64)(((NI) 40)))));
+	TMP162 = addInt(outoff, ((NI) 6));
+	if ((NU)((NI)(TMP162)) >= (NU)((*outbytes)->Sup.len)) raiseIndexError();
+	(*outbytes)->data[(NI)(TMP162)] = ((NU8) ((NI)((NU64)(r) >> (NU64)(((NI) 48)))));
 	nimln(148, "tiger.nim");
-	TMP166 = addInt(outoff, ((NI) 4));
-	if ((NU)((NI)(TMP166)) >= (NU)((*outbytes)->Sup.len)) raiseIndexError();
-	(*outbytes)->data[(NI)(TMP166)] = ((NU8) ((NI)((NU64)(r) >> (NU64)(((NI) 32)))));
+	TMP163 = addInt(outoff, ((NI) 5));
+	if ((NU)((NI)(TMP163)) >= (NU)((*outbytes)->Sup.len)) raiseIndexError();
+	(*outbytes)->data[(NI)(TMP163)] = ((NU8) ((NI)((NU64)(r) >> (NU64)(((NI) 40)))));
 	nimln(149, "tiger.nim");
-	TMP167 = addInt(outoff, ((NI) 3));
-	if ((NU)((NI)(TMP167)) >= (NU)((*outbytes)->Sup.len)) raiseIndexError();
-	(*outbytes)->data[(NI)(TMP167)] = ((NU8) ((NI)((NU64)(r) >> (NU64)(((NI) 24)))));
+	TMP164 = addInt(outoff, ((NI) 4));
+	if ((NU)((NI)(TMP164)) >= (NU)((*outbytes)->Sup.len)) raiseIndexError();
+	(*outbytes)->data[(NI)(TMP164)] = ((NU8) ((NI)((NU64)(r) >> (NU64)(((NI) 32)))));
 	nimln(150, "tiger.nim");
-	TMP168 = addInt(outoff, ((NI) 2));
-	if ((NU)((NI)(TMP168)) >= (NU)((*outbytes)->Sup.len)) raiseIndexError();
-	(*outbytes)->data[(NI)(TMP168)] = ((NU8) ((NI)((NU64)(r) >> (NU64)(((NI) 16)))));
+	TMP165 = addInt(outoff, ((NI) 3));
+	if ((NU)((NI)(TMP165)) >= (NU)((*outbytes)->Sup.len)) raiseIndexError();
+	(*outbytes)->data[(NI)(TMP165)] = ((NU8) ((NI)((NU64)(r) >> (NU64)(((NI) 24)))));
 	nimln(151, "tiger.nim");
-	TMP169 = addInt(outoff, ((NI) 1));
-	if ((NU)((NI)(TMP169)) >= (NU)((*outbytes)->Sup.len)) raiseIndexError();
-	(*outbytes)->data[(NI)(TMP169)] = ((NU8) ((NI)((NU64)(r) >> (NU64)(((NI) 8)))));
+	TMP166 = addInt(outoff, ((NI) 2));
+	if ((NU)((NI)(TMP166)) >= (NU)((*outbytes)->Sup.len)) raiseIndexError();
+	(*outbytes)->data[(NI)(TMP166)] = ((NU8) ((NI)((NU64)(r) >> (NU64)(((NI) 16)))));
 	nimln(152, "tiger.nim");
-	TMP170 = addInt(outoff, ((NI) 0));
-	if ((NU)((NI)(TMP170)) >= (NU)((*outbytes)->Sup.len)) raiseIndexError();
-	(*outbytes)->data[(NI)(TMP170)] = ((NU8) (r));
+	TMP167 = addInt(outoff, ((NI) 1));
+	if ((NU)((NI)(TMP167)) >= (NU)((*outbytes)->Sup.len)) raiseIndexError();
+	(*outbytes)->data[(NI)(TMP167)] = ((NU8) ((NI)((NU64)(r) >> (NU64)(((NI) 8)))));
+	nimln(153, "tiger.nim");
+	TMP168 = addInt(outoff, ((NI) 0));
+	if ((NU)((NI)(TMP168)) >= (NU)((*outbytes)->Sup.len)) raiseIndexError();
+	(*outbytes)->data[(NI)(TMP168)] = ((NU8) (r));
 	popFrame();
 }
 
-N_NIMCALL(void, processlength_103370)(Tigerdigest102008* t, NI bitlength) {
+N_NIMCALL(void, processlength_102367)(Tigerdigest101005* t, NI bitlength) {
 	nimfr("processLength", "tiger.nim")
-	nimln(155, "tiger.nim");
+	nimln(156, "tiger.nim");
 	if ((NU)(((NI) 7)) >= (NU)((*t).x->Sup.len)) raiseIndexError();
 	(*t).x->data[((NI) 7)] = ((NU64) (bitlength));
 	popFrame();
 }
 
-N_NIMCALL(void, update_103382)(Tigerdigest102008* t, NU8 inbyte) {
-	NI TMP171;
-	NI TMP172;
+N_NIMCALL(void, update_102379)(Tigerdigest101005* t, NU8 inbyte) {
+	NI TMP169;
+	NI TMP170;
 	nimfr("update", "tiger.nim")
-	nimln(158, "tiger.nim");
+	nimln(159, "tiger.nim");
 	if ((NU)((*t).boff) >= (NU)((*t).buf->Sup.len)) raiseIndexError();
 	(*t).buf->data[(*t).boff] = inbyte;
-	nimln(159, "tiger.nim");
-	TMP171 = addInt((*t).boff, ((NI) 1));
-	(*t).boff = (NI)(TMP171);
-	nimln(161, "tiger.nim");
+	nimln(160, "tiger.nim");
+	TMP169 = addInt((*t).boff, ((NI) 1));
+	(*t).boff = (NI)(TMP169);
+	nimln(162, "tiger.nim");
 	{
 		if (!((*t).boff == ((*t).buf ? (*t).buf->Sup.len : 0))) goto LA3;
-		nimln(162, "tiger.nim");
-		processword_103179(t, (*t).buf, ((NI) 0));
+		nimln(163, "tiger.nim");
+		processword_102176(t, (*t).buf, ((NI) 0));
 	}
 	LA3: ;
-	nimln(164, "tiger.nim");
-	TMP172 = addInt((*t).bytecount, ((NI) 1));
-	(*t).bytecount = (NI)(TMP172);
+	nimln(165, "tiger.nim");
+	TMP170 = addInt((*t).bytecount, ((NI) 1));
+	(*t).bytecount = (NI)(TMP170);
 	popFrame();
 }
 
@@ -729,123 +728,118 @@ static N_INLINE(NI, subInt)(NI a, NI b) {
 	return result;
 }
 
-N_NIMCALL(void, update_103419)(Tigerdigest102008* t, TY102013** inbytes, NI inoff, NI length) {
-	TY103428 LOC1;
+N_NIMCALL(void, update_102416)(Tigerdigest101005* t, TY101010** inbytes, NI inoff, NI length) {
+	TY102425 LOC1;
 	NI myinoff;
 	NI mylen;
 	nimfr("update", "tiger.nim")
-	nimln(168, "tiger.nim");
+	nimln(169, "tiger.nim");
 	LOC1.Field0 = inoff;
 	LOC1.Field1 = length;
 	myinoff = LOC1.Field0;
 	mylen = LOC1.Field1;
 	{
-		nimln(169, "tiger.nim");
+		nimln(170, "tiger.nim");
 		while (1) {
 			NIM_BOOL LOC4;
-			NI TMP173;
-			NI TMP174;
+			NI TMP171;
+			NI TMP172;
 			LOC4 = 0;
 			LOC4 = !(((*t).boff == ((NI) 0)));
 			if (!(LOC4)) goto LA5;
 			LOC4 = (((NI) 0) < mylen);
 			LA5: ;
 			if (!LOC4) goto LA3;
-			nimln(170, "tiger.nim");
-			if ((NU)(myinoff) >= (NU)((*inbytes)->Sup.len)) raiseIndexError();
-			update_103382(t, (*inbytes)->data[myinoff]);
 			nimln(171, "tiger.nim");
-			TMP173 = addInt(myinoff, ((NI) 1));
-			myinoff = (NI)(TMP173);
+			if ((NU)(myinoff) >= (NU)((*inbytes)->Sup.len)) raiseIndexError();
+			update_102379(t, (*inbytes)->data[myinoff]);
 			nimln(172, "tiger.nim");
-			TMP174 = subInt(mylen, ((NI) 1));
-			mylen = (NI)(TMP174);
+			TMP171 = addInt(myinoff, ((NI) 1));
+			myinoff = (NI)(TMP171);
+			nimln(173, "tiger.nim");
+			TMP172 = subInt(mylen, ((NI) 1));
+			mylen = (NI)(TMP172);
 		} LA3: ;
 	}
 	{
-		nimln(175, "tiger.nim");
+		nimln(176, "tiger.nim");
 		while (1) {
+			NI TMP173;
+			NI TMP174;
 			NI TMP175;
-			NI TMP176;
-			NI TMP177;
 			if (!(((NI) 8) < mylen)) goto LA7;
-			nimln(176, "tiger.nim");
-			processword_103179(t, (*inbytes), myinoff);
-			nimln(178, "tiger.nim");
-			TMP175 = addInt(myinoff, ((NI) 8));
-			myinoff = (NI)(TMP175);
+			nimln(177, "tiger.nim");
+			processword_102176(t, (*inbytes), myinoff);
 			nimln(179, "tiger.nim");
-			TMP176 = subInt(mylen, ((NI) 8));
-			mylen = (NI)(TMP176);
+			TMP173 = addInt(myinoff, ((NI) 8));
+			myinoff = (NI)(TMP173);
 			nimln(180, "tiger.nim");
-			TMP177 = addInt((*t).bytecount, ((NI) 8));
-			(*t).bytecount = (NI)(TMP177);
+			TMP174 = subInt(mylen, ((NI) 8));
+			mylen = (NI)(TMP174);
+			nimln(181, "tiger.nim");
+			TMP175 = addInt((*t).bytecount, ((NI) 8));
+			(*t).bytecount = (NI)(TMP175);
 		} LA7: ;
 	}
 	{
-		nimln(183, "tiger.nim");
+		nimln(184, "tiger.nim");
 		while (1) {
-			NI TMP178;
-			NI TMP179;
+			NI TMP176;
+			NI TMP177;
 			if (!(((NI) 0) < mylen)) goto LA9;
-			nimln(184, "tiger.nim");
-			if ((NU)(myinoff) >= (NU)((*inbytes)->Sup.len)) raiseIndexError();
-			update_103382(t, (*inbytes)->data[myinoff]);
 			nimln(185, "tiger.nim");
-			TMP178 = addInt(myinoff, ((NI) 1));
-			myinoff = (NI)(TMP178);
+			if ((NU)(myinoff) >= (NU)((*inbytes)->Sup.len)) raiseIndexError();
+			update_102379(t, (*inbytes)->data[myinoff]);
 			nimln(186, "tiger.nim");
-			TMP179 = subInt(mylen, ((NI) 1));
-			mylen = (NI)(TMP179);
+			TMP176 = addInt(myinoff, ((NI) 1));
+			myinoff = (NI)(TMP176);
+			nimln(187, "tiger.nim");
+			TMP177 = subInt(mylen, ((NI) 1));
+			mylen = (NI)(TMP177);
 		} LA9: ;
 	}
 	popFrame();
 }
 
-N_NIMCALL(void, finish_103521)(Tigerdigest102008* t) {
+N_NIMCALL(void, finish_102518)(Tigerdigest101005* t) {
 	NI bitlength;
 	nimfr("finish", "tiger.nim")
-	nimln(189, "tiger.nim");
+	nimln(190, "tiger.nim");
 	bitlength = (NI)((NU64)((*t).bytecount) << (NU64)(((NI) 3)));
-	nimln(191, "tiger.nim");
-	update_103382(t, ((NU8) 1));
+	nimln(192, "tiger.nim");
+	update_102379(t, ((NU8) 1));
 	{
-		nimln(193, "tiger.nim");
+		nimln(194, "tiger.nim");
 		while (1) {
 			if (!!(((*t).boff == ((NI) 0)))) goto LA2;
-			nimln(194, "tiger.nim");
-			update_103382(t, ((NU8) 0));
+			nimln(195, "tiger.nim");
+			update_102379(t, ((NU8) 0));
 		} LA2: ;
 	}
-	nimln(196, "tiger.nim");
-	processlength_103370(t, bitlength);
-	nimln(198, "tiger.nim");
-	processblock_103102(t);
+	nimln(197, "tiger.nim");
+	processlength_102367(t, bitlength);
+	nimln(199, "tiger.nim");
+	processblock_102099(t);
 	popFrame();
 }
 
-N_NIMCALL(NI, dofinal_103539)(Tigerdigest102008* t, TY102013** outbytes, NI outoff) {
-	NI result;
-	NI TMP180;
-	NI TMP181;
+N_NIMCALL(void, dofinal_102536)(Tigerdigest101005* t, TY101010** outbytes, NI outoff) {
+	NI TMP178;
+	NI TMP179;
 	nimfr("doFinal", "tiger.nim")
-	result = 0;
-	nimln(201, "tiger.nim");
-	finish_103521(t);
-	nimln(203, "tiger.nim");
-	unpackword_103357(((NI) ((*t).a)), outbytes, outoff);
+	nimln(202, "tiger.nim");
+	finish_102518(t);
 	nimln(204, "tiger.nim");
-	TMP180 = addInt(outoff, ((NI) 8));
-	unpackword_103357(((NI) ((*t).b)), outbytes, (NI)(TMP180));
+	unpackword_102354(((NI) ((*t).a)), outbytes, outoff);
 	nimln(205, "tiger.nim");
-	TMP181 = addInt(outoff, ((NI) 16));
-	unpackword_103357(((NI) ((*t).c)), outbytes, (NI)(TMP181));
-	nimln(207, "tiger.nim");
-	reset_102022(t);
-	nimln(209, "tiger.nim");
-	result = ((NI) 24);
+	TMP178 = addInt(outoff, ((NI) 8));
+	unpackword_102354(((NI) ((*t).b)), outbytes, (NI)(TMP178));
+	nimln(206, "tiger.nim");
+	TMP179 = addInt(outoff, ((NI) 16));
+	unpackword_102354(((NI) ((*t).c)), outbytes, (NI)(TMP179));
+	nimln(208, "tiger.nim");
+	reset_101019(t);
 	popFrame();
-	return result;
 }
 
 static N_INLINE(NI, chckRange)(NI i, NI a, NI b) {
@@ -872,40 +866,40 @@ static N_INLINE(NI, chckRange)(NI i, NI a, NI b) {
 	return result;
 }
 
-N_NIMCALL(TY102013*, getbytes_103557)(NimStringDesc* s) {
-	TY102013* result;
+N_NIMCALL(TY101010*, getbytes_102553)(NimStringDesc* s) {
+	TY101010* result;
 	NI i;
-	TY102013* abyte0;
+	TY101010* abyte0;
 	NI j;
 	nimfr("getBytes", "tiger.nim")
 	result = 0;
-	nimln(213, "tiger.nim");
+	nimln(212, "tiger.nim");
 	i = (s ? s->Sup.len : 0);
+	nimln(213, "tiger.nim");
+	abyte0 = newseq_101105(((NI)chckRange(i, ((NI) 0), ((NI) IL64(9223372036854775807)))));
 	nimln(214, "tiger.nim");
-	abyte0 = newseq_102108(((NI)chckRange(i, ((NI) 0), ((NI) IL64(9223372036854775807)))));
-	nimln(215, "tiger.nim");
 	j = ((NI) 0);
 	{
-		nimln(217, "tiger.nim");
+		nimln(216, "tiger.nim");
 		while (1) {
-			NI TMP182;
+			NI TMP180;
 			if (!(j < i)) goto LA2;
-			nimln(218, "tiger.nim");
+			nimln(217, "tiger.nim");
 			if ((NU)(j) >= (NU)(abyte0->Sup.len)) raiseIndexError();
 			if ((NU)(j) > (NU)(s->Sup.len)) raiseIndexError();
 			abyte0->data[j] = ((NU8) (((NU8)(s->data[j]))));
-			nimln(219, "tiger.nim");
-			TMP182 = addInt(j, ((NI) 1));
-			j = (NI)(TMP182);
+			nimln(218, "tiger.nim");
+			TMP180 = addInt(j, ((NI) 1));
+			j = (NI)(TMP180);
 		} LA2: ;
 	}
-	nimln(221, "tiger.nim");
-	genericSeqAssign((&result), abyte0, (&NTI102013));
+	nimln(220, "tiger.nim");
+	genericSeqAssign((&result), abyte0, (&NTI101010));
 	popFrame();
 	return result;
 }
 
-static N_INLINE(Slice85461, HEX2EHEX2E_103663)(NI a, NI b) {
+static N_INLINE(Slice85461, HEX2EHEX2E_102659)(NI a, NI b) {
 	Slice85461 result;
 	nimfr("..", "system.nim")
 	memset((void*)(&result), 0, sizeof(result));
@@ -917,104 +911,100 @@ static N_INLINE(Slice85461, HEX2EHEX2E_103663)(NI a, NI b) {
 	return result;
 }
 
-N_NIMCALL(TY102013*, tigerbytes_103615)(NimStringDesc* s) {
-	TY102013* result;
-	Tigerdigest102008 m;
-	TY102013* message;
-	NI LOC1;
-	TY103661 LOC2;
+N_NIMCALL(TY101010*, tigerbytes_102611)(NimStringDesc* s) {
+	TY101010* result;
+	Tigerdigest101005 m;
+	TY101010* message;
+	TY102657 LOC1;
+	Slice85461 LOC2;
 	Slice85461 LOC3;
 	Slice85461 LOC4;
-	Slice85461 LOC5;
-	TY102013* tmp0;
-	TY102013* tmp1;
-	TY102013* tmp2;
-	TY102013* LOC6;
+	TY101010* tmp0;
+	TY101010* tmp1;
+	TY101010* tmp2;
+	TY101010* LOC5;
 	nimfr("tigerBytes", "tiger.nim")
 	result = 0;
 	memset((void*)(&m), 0, sizeof(m));
-	nimln(224, "tiger.nim");
+	nimln(223, "tiger.nim");
 	chckNil((void*)(&m));
 	memset((void*)(&m), 0, sizeof(m));
-	inittigerdigest_102103((&m));
+	inittigerdigest_101100((&m));
+	nimln(224, "tiger.nim");
+	message = getbytes_102553(s);
 	nimln(225, "tiger.nim");
-	message = getbytes_103557(s);
+	update_102416((&m), (&message), ((NI) 0), (message ? message->Sup.len : 0));
 	nimln(226, "tiger.nim");
-	update_103419((&m), (&message), ((NI) 0), (message ? message->Sup.len : 0));
+	result = newseq_101105(((NI) 24));
 	nimln(227, "tiger.nim");
-	result = newseq_102108(((NI) 24));
+	dofinal_102536((&m), (&result), ((NI) 0));
 	nimln(228, "tiger.nim");
-	LOC1 = 0;
-	LOC1 = dofinal_103539((&m), (&result), ((NI) 0));
-	nimln(229, "tiger.nim");
-	memset((void*)(&LOC2), 0, sizeof(LOC2));
-	LOC3 = HEX2EHEX2E_103663(((NI) 16), ((NI) 23));
-	LOC2.Field0 = HEX5BHEX5D_103676(result, LOC3);
-	LOC4 = HEX2EHEX2E_103663(((NI) 8), ((NI) 15));
-	LOC2.Field1 = HEX5BHEX5D_103676(result, LOC4);
-	LOC5 = HEX2EHEX2E_103663(((NI) 0), ((NI) 7));
-	LOC2.Field2 = HEX5BHEX5D_103676(result, LOC5);
+	memset((void*)(&LOC1), 0, sizeof(LOC1));
+	LOC2 = HEX2EHEX2E_102659(((NI) 16), ((NI) 23));
+	LOC1.Field0 = HEX5BHEX5D_102672(result, LOC2);
+	LOC3 = HEX2EHEX2E_102659(((NI) 8), ((NI) 15));
+	LOC1.Field1 = HEX5BHEX5D_102672(result, LOC3);
+	LOC4 = HEX2EHEX2E_102659(((NI) 0), ((NI) 7));
+	LOC1.Field2 = HEX5BHEX5D_102672(result, LOC4);
 	tmp0 = 0;
-	genericSeqAssign((&tmp0), LOC2.Field0, (&NTI102013));
+	genericSeqAssign((&tmp0), LOC1.Field0, (&NTI101010));
 	tmp1 = 0;
-	genericSeqAssign((&tmp1), LOC2.Field1, (&NTI102013));
+	genericSeqAssign((&tmp1), LOC1.Field1, (&NTI101010));
 	tmp2 = 0;
-	genericSeqAssign((&tmp2), LOC2.Field2, (&NTI102013));
-	nimln(230, "tiger.nim");
-	LOC6 = 0;
-	LOC6 = HEX26_103786(tmp0, tmp1);
-	result = HEX26_103786(LOC6, tmp2);
+	genericSeqAssign((&tmp2), LOC1.Field2, (&NTI101010));
+	nimln(229, "tiger.nim");
+	LOC5 = 0;
+	LOC5 = HEX26_102782(tmp0, tmp1);
+	result = HEX26_102782(LOC5, tmp2);
 	popFrame();
 	return result;
 }
 
-N_NIMCALL(TY102013*, tigerbytes_103924)(TY102013* s) {
-	TY102013* result;
-	Tigerdigest102008 m;
-	TY102013* message;
-	NI LOC1;
-	TY103661 LOC2;
+N_NIMCALL(TY101010*, tigerbytes_102920)(TY101010* s) {
+	TY101010* result;
+	Tigerdigest101005 m;
+	TY101010* message;
+	TY102657 LOC1;
+	Slice85461 LOC2;
 	Slice85461 LOC3;
 	Slice85461 LOC4;
-	Slice85461 LOC5;
-	TY102013* tmp0;
-	TY102013* tmp1;
-	TY102013* tmp2;
-	TY102013* LOC6;
+	TY101010* tmp0;
+	TY101010* tmp1;
+	TY101010* tmp2;
+	TY101010* LOC5;
 	nimfr("tigerBytes", "tiger.nim")
 	result = 0;
 	memset((void*)(&m), 0, sizeof(m));
-	nimln(233, "tiger.nim");
+	nimln(232, "tiger.nim");
 	chckNil((void*)(&m));
 	memset((void*)(&m), 0, sizeof(m));
-	inittigerdigest_102103((&m));
+	inittigerdigest_101100((&m));
+	nimln(233, "tiger.nim");
+	genericSeqAssign((&message), s, (&NTI101010));
 	nimln(234, "tiger.nim");
-	genericSeqAssign((&message), s, (&NTI102013));
+	update_102416((&m), (&message), ((NI) 0), (message ? message->Sup.len : 0));
 	nimln(235, "tiger.nim");
-	update_103419((&m), (&message), ((NI) 0), (message ? message->Sup.len : 0));
+	result = newseq_101105(((NI) 24));
 	nimln(236, "tiger.nim");
-	result = newseq_102108(((NI) 24));
+	dofinal_102536((&m), (&result), ((NI) 0));
 	nimln(237, "tiger.nim");
-	LOC1 = 0;
-	LOC1 = dofinal_103539((&m), (&result), ((NI) 0));
-	nimln(238, "tiger.nim");
-	memset((void*)(&LOC2), 0, sizeof(LOC2));
-	LOC3 = HEX2EHEX2E_103663(((NI) 16), ((NI) 23));
-	LOC2.Field0 = HEX5BHEX5D_103676(result, LOC3);
-	LOC4 = HEX2EHEX2E_103663(((NI) 8), ((NI) 15));
-	LOC2.Field1 = HEX5BHEX5D_103676(result, LOC4);
-	LOC5 = HEX2EHEX2E_103663(((NI) 0), ((NI) 7));
-	LOC2.Field2 = HEX5BHEX5D_103676(result, LOC5);
+	memset((void*)(&LOC1), 0, sizeof(LOC1));
+	LOC2 = HEX2EHEX2E_102659(((NI) 16), ((NI) 23));
+	LOC1.Field0 = HEX5BHEX5D_102672(result, LOC2);
+	LOC3 = HEX2EHEX2E_102659(((NI) 8), ((NI) 15));
+	LOC1.Field1 = HEX5BHEX5D_102672(result, LOC3);
+	LOC4 = HEX2EHEX2E_102659(((NI) 0), ((NI) 7));
+	LOC1.Field2 = HEX5BHEX5D_102672(result, LOC4);
 	tmp0 = 0;
-	genericSeqAssign((&tmp0), LOC2.Field0, (&NTI102013));
+	genericSeqAssign((&tmp0), LOC1.Field0, (&NTI101010));
 	tmp1 = 0;
-	genericSeqAssign((&tmp1), LOC2.Field1, (&NTI102013));
+	genericSeqAssign((&tmp1), LOC1.Field1, (&NTI101010));
 	tmp2 = 0;
-	genericSeqAssign((&tmp2), LOC2.Field2, (&NTI102013));
-	nimln(239, "tiger.nim");
-	LOC6 = 0;
-	LOC6 = HEX26_103786(tmp0, tmp1);
-	result = HEX26_103786(LOC6, tmp2);
+	genericSeqAssign((&tmp2), LOC1.Field2, (&NTI101010));
+	nimln(238, "tiger.nim");
+	LOC5 = 0;
+	LOC5 = HEX26_102782(tmp0, tmp1);
+	result = HEX26_102782(LOC5, tmp2);
 	popFrame();
 	return result;
 }
@@ -1024,39 +1014,39 @@ static N_INLINE(void, appendString)(NimStringDesc* dest, NimStringDesc* src) {
 	(*dest).Sup.len += (*src).Sup.len;
 }
 
-N_NIMCALL(NimStringDesc*, tiger_104071)(NimStringDesc* s) {
+N_NIMCALL(NimStringDesc*, tiger_103067)(NimStringDesc* s) {
 	NimStringDesc* result;
-	TY102013* res;
+	TY101010* res;
 	nimfr("tiger", "tiger.nim")
 	result = 0;
+	nimln(241, "tiger.nim");
+	res = tigerbytes_102611(s);
 	nimln(242, "tiger.nim");
-	res = tigerbytes_103615(s);
-	nimln(243, "tiger.nim");
-	result = copyString(((NimStringDesc*) &TMP193));
+	result = copyString(((NimStringDesc*) &TMP191));
 	{
-		NU8 i_104211;
-		NI i_104217;
-		NI L_104219;
-		i_104211 = 0;
+		NU8 i_103211;
+		NI i_103217;
+		NI L_103219;
+		i_103211 = 0;
 		nimln(3085, "system.nim");
-		i_104217 = ((NI) 0);
+		i_103217 = ((NI) 0);
 		nimln(3086, "system.nim");
-		L_104219 = (res ? res->Sup.len : 0);
+		L_103219 = (res ? res->Sup.len : 0);
 		{
 			nimln(3087, "system.nim");
 			while (1) {
 				NimStringDesc* LOC4;
 				NimStringDesc* LOC5;
 				NimStringDesc* LOC6;
-				NI TMP200;
-				if (!(i_104217 < L_104219)) goto LA3;
+				NI TMP198;
+				if (!(i_103217 < L_103219)) goto LA3;
 				nimln(3088, "system.nim");
-				if ((NU)(i_104217) >= (NU)(res->Sup.len)) raiseIndexError();
-				i_104211 = res->data[i_104217];
-				nimln(245, "tiger.nim");
+				if ((NU)(i_103217) >= (NU)(res->Sup.len)) raiseIndexError();
+				i_103211 = res->data[i_103217];
+				nimln(244, "tiger.nim");
 				LOC4 = 0;
 				LOC5 = 0;
-				LOC5 = nsuToHex(((NI64) (((NI) (i_104211)))), ((NI) 2));
+				LOC5 = nsuToHex(((NI64) (((NI) (i_103211)))), ((NI) 2));
 				LOC6 = 0;
 				LOC6 = nsuToLowerStr(LOC5);
 				LOC4 = rawNewString(LOC6->Sup.len + result->Sup.len + 0);
@@ -1064,12 +1054,12 @@ appendString(LOC4, LOC6);
 appendString(LOC4, result);
 				result = LOC4;
 				nimln(3089, "system.nim");
-				TMP200 = addInt(i_104217, ((NI) 1));
-				i_104217 = (NI)(TMP200);
+				TMP198 = addInt(i_103217, ((NI) 1));
+				i_103217 = (NI)(TMP198);
 				nimln(3090, "system.nim");
 				{
-					if (!!(((res ? res->Sup.len : 0) == L_104219))) goto LA9;
-					failedassertimpl_86189(((NimStringDesc*) &TMP201));
+					if (!!(((res ? res->Sup.len : 0) == L_103219))) goto LA9;
+					failedassertimpl_86189(((NimStringDesc*) &TMP199));
 				}
 				LA9: ;
 			} LA3: ;
@@ -1079,39 +1069,39 @@ appendString(LOC4, result);
 	return result;
 }
 
-N_NIMCALL(NimStringDesc*, tiger_104235)(TY102013* s) {
+N_NIMCALL(NimStringDesc*, tiger_103235)(TY101010* s) {
 	NimStringDesc* result;
-	TY102013* res;
+	TY101010* res;
 	nimfr("tiger", "tiger.nim")
 	result = 0;
+	nimln(247, "tiger.nim");
+	res = tigerbytes_102920(s);
 	nimln(248, "tiger.nim");
-	res = tigerbytes_103924(s);
-	nimln(249, "tiger.nim");
-	result = copyString(((NimStringDesc*) &TMP193));
+	result = copyString(((NimStringDesc*) &TMP191));
 	{
-		NU8 i_104251;
-		NI i_104257;
-		NI L_104259;
-		i_104251 = 0;
+		NU8 i_103251;
+		NI i_103257;
+		NI L_103259;
+		i_103251 = 0;
 		nimln(3085, "system.nim");
-		i_104257 = ((NI) 0);
+		i_103257 = ((NI) 0);
 		nimln(3086, "system.nim");
-		L_104259 = (res ? res->Sup.len : 0);
+		L_103259 = (res ? res->Sup.len : 0);
 		{
 			nimln(3087, "system.nim");
 			while (1) {
 				NimStringDesc* LOC4;
 				NimStringDesc* LOC5;
 				NimStringDesc* LOC6;
-				NI TMP202;
-				if (!(i_104257 < L_104259)) goto LA3;
+				NI TMP200;
+				if (!(i_103257 < L_103259)) goto LA3;
 				nimln(3088, "system.nim");
-				if ((NU)(i_104257) >= (NU)(res->Sup.len)) raiseIndexError();
-				i_104251 = res->data[i_104257];
-				nimln(251, "tiger.nim");
+				if ((NU)(i_103257) >= (NU)(res->Sup.len)) raiseIndexError();
+				i_103251 = res->data[i_103257];
+				nimln(250, "tiger.nim");
 				LOC4 = 0;
 				LOC5 = 0;
-				LOC5 = nsuToHex(((NI64) (((NI) (i_104251)))), ((NI) 2));
+				LOC5 = nsuToHex(((NI64) (((NI) (i_103251)))), ((NI) 2));
 				LOC6 = 0;
 				LOC6 = nsuToLowerStr(LOC5);
 				LOC4 = rawNewString(LOC6->Sup.len + result->Sup.len + 0);
@@ -1119,12 +1109,12 @@ appendString(LOC4, LOC6);
 appendString(LOC4, result);
 				result = LOC4;
 				nimln(3089, "system.nim");
-				TMP202 = addInt(i_104257, ((NI) 1));
-				i_104257 = (NI)(TMP202);
+				TMP200 = addInt(i_103257, ((NI) 1));
+				i_103257 = (NI)(TMP200);
 				nimln(3090, "system.nim");
 				{
-					if (!!(((res ? res->Sup.len : 0) == L_104259))) goto LA9;
-					failedassertimpl_86189(((NimStringDesc*) &TMP201));
+					if (!!(((res ? res->Sup.len : 0) == L_103259))) goto LA9;
+					failedassertimpl_86189(((NimStringDesc*) &TMP199));
 				}
 				LA9: ;
 			} LA3: ;
@@ -1176,16 +1166,14 @@ static N_INLINE(void, initStackBottomWith)(void* locals) {
 void PreMainInner() {
 	systemInit();
 	HEX00_sboxesDatInit();
-	stdlib_unsignedDatInit();
-	HEX00_compressDatInit();
 	stdlib_parseutilsDatInit();
 	stdlib_strutilsDatInit();
+	stdlib_unsignedDatInit();
 	tigerDatInit();
 	HEX00_sboxesInit();
-	stdlib_unsignedInit();
-	HEX00_compressInit();
 	stdlib_parseutilsInit();
 	stdlib_strutilsInit();
+	stdlib_unsignedInit();
 }
 
 void PreMain() {
@@ -1220,43 +1208,43 @@ int main(int argc, char** args, char** env) {
 }
 
 NIM_EXTERNC N_NOINLINE(void, tigerInit)(void) {
-	NimStringDesc* LOC1;
+	NimStringDesc* LOC11;
 	nimfr("tiger", "tiger.nim")
-	nimln(253, "tiger.nim");
-	LOC1 = 0;
-	LOC1 = tiger_104071(NIM_NIL);
-	printf("%s\015\012", LOC1? (LOC1)->data:"nil");
-	nimln(255, "tiger.nim");
+	nimln(254, "tiger.nim");
 	{
-		NimStringDesc* LOC4;
-		LOC4 = 0;
-		LOC4 = tiger_104071(((NimStringDesc*) &TMP203));
-		if (!!(eqStrings(LOC4, ((NimStringDesc*) &TMP204)))) goto LA5;
+		NimStringDesc* LOC3;
+		LOC3 = 0;
+		LOC3 = tiger_103067(((NimStringDesc*) &TMP201));
+		if (!!(eqStrings(LOC3, ((NimStringDesc*) &TMP202)))) goto LA4;
+		failedassertimpl_86189(((NimStringDesc*) &TMP203));
+	}
+	LA4: ;
+	nimln(257, "tiger.nim");
+	{
+		NimStringDesc* LOC8;
+		LOC8 = 0;
+		LOC8 = tiger_103067(((NimStringDesc*) &TMP191));
+		if (!!(eqStrings(LOC8, ((NimStringDesc*) &TMP204)))) goto LA9;
 		failedassertimpl_86189(((NimStringDesc*) &TMP205));
 	}
-	LA5: ;
-	nimln(258, "tiger.nim");
-	{
-		NimStringDesc* LOC9;
-		LOC9 = 0;
-		LOC9 = tiger_104071(((NimStringDesc*) &TMP193));
-		if (!!(eqStrings(LOC9, ((NimStringDesc*) &TMP206)))) goto LA10;
-		failedassertimpl_86189(((NimStringDesc*) &TMP207));
-	}
-	LA10: ;
+	LA9: ;
+	nimln(259, "tiger.nim");
+	LOC11 = 0;
+	LOC11 = tiger_103067(((NimStringDesc*) &TMP206));
+	printf("%s\015\012", LOC11? (LOC11)->data:"nil");
 	popFrame();
 }
 
 NIM_EXTERNC N_NOINLINE(void, tigerDatInit)(void) {
-NTI102013.size = sizeof(TY102013*);
-NTI102013.kind = 24;
-NTI102013.base = (&NTI3405);
-NTI102013.flags = 2;
-NTI102013.marker = TMP151;
-NTI102016.size = sizeof(TY102016*);
-NTI102016.kind = 24;
-NTI102016.base = (&NTI126);
-NTI102016.flags = 2;
-NTI102016.marker = TMP152;
+NTI101010.size = sizeof(TY101010*);
+NTI101010.kind = 24;
+NTI101010.base = (&NTI3405);
+NTI101010.flags = 2;
+NTI101010.marker = TMP149;
+NTI101013.size = sizeof(TY101013*);
+NTI101013.kind = 24;
+NTI101013.base = (&NTI126);
+NTI101013.flags = 2;
+NTI101013.marker = TMP150;
 }
 

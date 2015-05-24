@@ -1,11 +1,22 @@
+
 ShimSham
 ========
 
-ShimSham is a Nim module to encompass several different digest/hashing algorithms. So far included are [Sha2](https://en.wikipedia.org/wiki/SHA-2), [Tiger](https://en.wikipedia.org/wiki/Tiger_%28cryptography%29), and [Whirlpool](https://en.wikipedia.org/wiki/Whirlpool_%28cryptography%29). Hopefully there will be some more soon.
+ShimSham is a Nim module to encompass several different digest/hashing algorithms. So far included are [SHA-2](https://en.wikipedia.org/wiki/SHA-2), [Tiger](https://en.wikipedia.org/wiki/Tiger_%28cryptography%29), and [Whirlpool](https://en.wikipedia.org/wiki/Whirlpool_%28cryptography%29). Hopefully there will be some more soon.
 
-Unfortunately, there isn't a common access interface yet. A fuller README and some usage examples will come soon.
+Unfortunately, there isn't a common access interface yet.
 
-For Sha256 (of SHA-2), try:
+For the Tiger hash, here's how you call:
+```nim
+import tiger
+
+echo tiger("") ## gives "24f0130c63ac933216166e76b1bb925ff373de2d49584e7a"
+echo tiger("abc") ## gives "f258c1e88414ab2a527ab541ffc5b8bf935f7b951c132951"
+```
+
+The other hashes work in the same way. The *whirlpool* module provides the `whirlpool` function. The *sha512* module provides `sha512` and `sha384`. The *sha256* module provides `sha256` and `sha224`. 
+
+You can get more fine-tuned control with the following type of code:
 
 ```nim
 import sha256
@@ -20,11 +31,4 @@ You can also use `initSha224` if that's what you want.
 
 `initWhirlpool` works in the same way.
 
-For the Tiger hash, here's how you call:
-```nim
-import tiger
-
-echo tiger("") ## gives "24f0130c63ac933216166e76b1bb925ff373de2d49584e7a"
-```
-
-The Tiger hash way seems cleaner, and all functions might switch to that soon.
+Unfortunately, the Tiger module doesn't support this yet (it also has some various weird problems, which you'll see if you walk through the code).
