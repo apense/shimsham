@@ -22,8 +22,8 @@ You can get more fine-tuned control with the following type of code:
 import sha256
 
 var message = "My message to hash"
-var m = initSha256(message) ## initializes and `Sha256` object with `message`
-echo m ## gives "aefd1872a4eb24a79a1e727aa8c41ebde794451c0ca89a0e3abe82e45a477afc"
+var m = initSha256(message) # initializes a `Sha256` object with `message`
+echo m # gives "aefd1872a4eb24a79a1e727aa8c41ebde794451c0ca89a0e3abe82e45a477afc"
 ```
 You can also use `initSha224` if that's what you want.
 
