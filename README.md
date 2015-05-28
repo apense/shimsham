@@ -2,9 +2,9 @@
 ShimSham
 ========
 
-ShimSham is a Nim module to encompass several different digest/hashing algorithms. So far included are [SHA-2](https://en.wikipedia.org/wiki/SHA-2), [Tiger](https://en.wikipedia.org/wiki/Tiger_%28cryptography%29), and [Whirlpool](https://en.wikipedia.org/wiki/Whirlpool_%28cryptography%29). Hopefully there will be some more soon.
+ShimSham is a Nim module to encompass several different digest/hashing algorithms. So far included are [SHA-2](https://en.wikipedia.org/wiki/SHA-2), [Tiger](https://en.wikipedia.org/wiki/Tiger_%28cryptography%29), [Whirlpool](https://en.wikipedia.org/wiki/Whirlpool_%28cryptography%29), and [SipHash](http://en.wikipedia.org/wiki/SipHash). Hopefully there will be some more soon.
 
-Unfortunately, there isn't a common access interface yet.
+Unfortunately, there isn't a common hashing interface yet.
 
 For the Tiger hash, here's how you call:
 ```nim
@@ -32,3 +32,17 @@ You can also use `initSha224` if that's what you want.
 `initWhirlpool` works in the same way.
 
 Unfortunately, the Tiger module doesn't support this yet (it also has some various weird problems, which you'll see if you walk through the code).
+
+
+SipHash
+-------
+
+SipHash works a little differently. It always outputs a hash that Nim treats as a `uint64`. It uses two `uint64` keys for input. You can do this directly using `initSipState(k0,k1)` where `k0` and `k1` are your `uint64`s, or you can input a long hex string directly (like `initSipState("A8FC63780FB3BA3CA39580EEC5CB43B1")`). After you have your state, you can update your message in various ways using `input()`. If you want to use a hex string for your message, too, you can do that.
+
+Really, though, for SipHash, the easiest thing to do is to use the convenience functions `siphash*` where the `*` represents `24` or `48` for SipHash-2-4 and SipHash-4-8 (slower but more secure). Or you can specify your own SipHash-c-d values with `siphash`.
+
+All you need to do then is something like:
+
+```nim
+echo siphash24("A8FC63780FB3BA3CA39580EEC5CB43B1","6018B63E6DBF9B") # gives "701bdf2ea1c82585"
+```
