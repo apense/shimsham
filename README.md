@@ -55,4 +55,4 @@ echo siphash24("A8FC63780FB3BA3CA39580EEC5CB43B1","6018B63E6DBF9B") # gives "701
 JH
 --
 
-JH is the first SHA-3 finalist to be included here. It is also the beginning of a more unified hashing interface that will be backported to the other modules. It is usable by `import`-ing `shimsham/simple`. ("Simple" is a reference to the fact that there could be some assembly support added in the future.)
+JH is the first SHA-3 finalist to be included here. It is also the beginning of a more unified hashing interface that will be backported to the other modules. It is usable by `import`-ing `shimsham/jh_simple`. ("Simple" is a reference to the fact that there could be some assembly support added in the future.)
