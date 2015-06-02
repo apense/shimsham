@@ -2,11 +2,16 @@
 ShimSham
 ========
 
-ShimSham is a Nim module to encompass several different digest/hashing algorithms. So far included are [SHA-2](https://en.wikipedia.org/wiki/SHA-2), [Tiger](https://en.wikipedia.org/wiki/Tiger_%28cryptography%29), [Whirlpool](https://en.wikipedia.org/wiki/Whirlpool_%28cryptography%29), and [SipHash](http://en.wikipedia.org/wiki/SipHash). Hopefully there will be some more soon.
+ShimSham is a [Nim](http://www.nim-lang.org) module to encompass several different digest/hashing algorithms. So far included are
+  * [JH](https://en.wikipedia.org/wiki/JH_%28hash_function%29)
+  * [SHA-2](https://en.wikipedia.org/wiki/SHA-2)
+  * [SipHash](http://en.wikipedia.org/wiki/SipHash)
+  * [Tiger](https://en.wikipedia.org/wiki/Tiger_%28cryptography%29)
+  * [Whirlpool](https://en.wikipedia.org/wiki/Whirlpool_%28cryptography%29)
 
-Unfortunately, there isn't a common hashing interface yet.
+There will be more soon, as well as a common hashing interface.
 
-For the Tiger hash, here's how you call:
+Using the Tiger hash as an example, here's how you get hashes:
 ```nim
 import shimsham/tiger
 
