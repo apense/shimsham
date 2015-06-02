@@ -1,5 +1,6 @@
-{.passC: "-fopenmp".}
-{.passL: "-fopenmp".}
+# Uncomment/modify these if you want parallel loop support
+#{.passC: "-fopenmp".}
+#{.passL: "-fopenmp".}
 
 import strutils
 
@@ -21,6 +22,7 @@ type
     roundconstant: array[64, byte] ## round constant for one round
     buffer: array[64, byte] ## message block to be hashed
 
+# utility template
 template `||<`(a, b: expr): expr =
   a || <b
 
@@ -184,6 +186,7 @@ proc F8(state: var HashState) =
     state.H[i+64] = (state.H[i+64].int xor state.buffer[i].int).byte
 
 proc initHashState*(hashbitlen: int): HashState =
+  ## Create a JH Hash object
   result.databitlen = 0
   result.datasizeInBuffer = 0
 
@@ -200,6 +203,7 @@ proc initHashState*(hashbitlen: int): HashState =
   F8(result)
 
 proc update*(state: var HashState, data: openarray[BitSequence], databitlen: DataLength) =
+  ## Update `state` with `data` of *bit* length `databitlen` (probably 8 * len(data))
   var index: DataLength
   var databitlen = databitlen
 
@@ -246,7 +250,8 @@ proc update*(state: var HashState, data: openarray[BitSequence], databitlen: Dat
     state.datasizeInBuffer = databitlen
 
 proc final*(state: var HashState, hashval: var openarray[BitSequence]) =
-  ## padding the message, truncate the hash value H and obtain the message digest
+  ## Pad and finialize the message, putting hash into `hashval`
+  # padding the message, truncate the hash value H and obtain the message digest
   
   if (state.databitlen and 0x1ff) == 0:
     # pad the message when databitlen is multiple of 512 bits, then process the padded block
@@ -339,6 +344,7 @@ proc strToBytes(str: string): seq[byte] =
     result.add(ord(i).byte)
 
 proc jh224bytes*(b: openarray[byte]): seq[byte] =
+  ## Hash a sequence of bytes into a sequence of bytes with JH 224
   var state: HashState
   state = initHashState(224)
   let bitlen = b.len * 8 # 8 bits in a byte
@@ -347,10 +353,12 @@ proc jh224bytes*(b: openarray[byte]): seq[byte] =
   final(state, result)
 
 proc jh224*(b: openarray[byte]): string =
+  ## Hash a sequence of bytes, returning a hexadecimal string output
   let resb = jh224bytes(b)
   result = resb.bytesToStr()
 
 proc jh224hex*(b: string): string =
+  ## Hash a string of hex digits, returning a hexadecimal string output
   var b = b
   if b[0..1] == "0x": # strip leading "0x"
     b = b[2..^1]
@@ -359,11 +367,13 @@ proc jh224hex*(b: string): string =
   result = resb.bytesToStr()
 
 proc jh224*(b: string): string =
+  ## Hash a string of byte values (e.g. "\12\240\0x40"), returning a hexadecimal string output
   let bstr = b.strToBytes()
   let resb = jh224bytes(bstr)
   result = resb.bytesToStr()
 
 proc jh256bytes*(b: openarray[byte]): seq[byte] =
+  ## Hash a sequence of bytes into a sequence of bytes with JH 256
   var state: HashState
   state = initHashState(256)
   let bitlen = b.len * 8 # 8 bits in a byte
@@ -372,10 +382,12 @@ proc jh256bytes*(b: openarray[byte]): seq[byte] =
   final(state, result)
 
 proc jh256*(b: openarray[byte]): string =
+  ## Hash a sequence of bytes, returning a hexadecimal string output
   let resb = jh256bytes(b)
   result = resb.bytesToStr()
 
 proc jh256hex*(b: string): string =
+  ## Hash a string of hex digits, returning a hexadecimal string output
   var b = b
   if b[0..1] == "0x": # strip leading "0x"
     b = b[2..^1]
@@ -384,11 +396,13 @@ proc jh256hex*(b: string): string =
   result = resb.bytesToStr()
 
 proc jh256*(b: string): string =
+  ## Hash a string of byte values (e.g. "\12\240\0x40"), returning a hexadecimal string output
   let bstr = b.strToBytes()
   let resb = jh256bytes(bstr)
   result = resb.bytesToStr()
 
 proc jh384bytes*(b: openarray[byte]): seq[byte] =
+  ## Hash a sequence of bytes into a sequence of bytes with JH 384
   var state: HashState
   state = initHashState(384)
   let bitlen = b.len * 8 # 8 bits in a byte
@@ -397,10 +411,12 @@ proc jh384bytes*(b: openarray[byte]): seq[byte] =
   final(state, result)
 
 proc jh384*(b: openarray[byte]): string =
+  ## Hash a sequence of bytes, returning a hexadecimal string output
   let resb = jh384bytes(b)
   result = resb.bytesToStr()
 
 proc jh384hex*(b: string): string =
+  ## Hash a string of hex digits, returning a hexadecimal string output
   var b = b
   if b[0..1] == "0x": # strip leading "0x"
     b = b[2..^1]
@@ -409,11 +425,13 @@ proc jh384hex*(b: string): string =
   result = resb.bytesToStr()
 
 proc jh384*(b: string): string =
+  ## Hash a string of byte values (e.g. "\12\240\0x40"), returning a hexadecimal string output
   let bstr = b.strToBytes()
   let resb = jh384bytes(bstr)
   result = resb.bytesToStr()
 
 proc jh512bytes*(b: openarray[byte]): seq[byte] =
+  ## Hash a sequence of bytes into a sequence of bytes with JH 512
   var state: HashState
   state = initHashState(512)
   let bitlen = b.len * 8 # 8 bits in a byte
@@ -422,10 +440,12 @@ proc jh512bytes*(b: openarray[byte]): seq[byte] =
   final(state, result)
 
 proc jh512*(b: openarray[byte]): string =
+  ## Hash a sequence of bytes, returning a hexadecimal string output
   let resb = jh512bytes(b)
   result = resb.bytesToStr()
 
 proc jh512hex*(b: string): string =
+  ## Hash a string of hex digits, returning a hexadecimal string output
   var b = b
   if b[0..1] == "0x": # strip leading "0x"
     b = b[2..^1]
@@ -434,14 +454,12 @@ proc jh512hex*(b: string): string =
   result = resb.bytesToStr()
 
 proc jh512*(b: string): string =
+  ## Hash a string of byte values (e.g. "\12\240\0x40"), returning a hexadecimal string output
   let bstr = b.strToBytes()
   let resb = jh512bytes(bstr)
   result = resb.bytesToStr()
 
-#var hashres = hash(512, @[49.byte], 8)
-#var res = ""
-#for i in hashres:
-#  res.add(toHex(i.int,2).toLower())
-#echo res
-
-#echo jh512("0x41424344")
+when isMainModule:
+  assert(jh512hex("") == "90ecf2f76f9d2c8017d979ad5ab96b87d58fc8fc4b83060f3f900774faa2c8fab" &
+                         "e69c5f4ff1ec2b61d6b316941cedee117fb04b1f4c5bc1b919ae841c50eec4f")
+  assert(jh256hex("0xa") == jh256hex("a"))
