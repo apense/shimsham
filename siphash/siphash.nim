@@ -211,6 +211,14 @@ proc siphash*(key: string, c = 2, d = 4): string =
   #echo "s.v0: ", s.v0
   result = gethashstr(s, c, d)
 
+proc siphash*(key, message: string, c = 2, d = 4): string =
+  ## produces a hash given a hexadecimal string representation of a 128-bit number
+  var s: SipState
+  s = initSipState(key)
+  s.inputHex(message)
+  #echo "s.v0: ", s.v0
+  result = gethashstr(s, c, d)
+
 proc siphash*(key0, key1: uint64, c = 2, d = 4): string =
   ## produces a hash given two uint64s (based on no input)
   var s = initSipState(key0, key1)
@@ -222,18 +230,30 @@ proc siphash*(key0, key1: uint64, message: openarray[byte], c = 2, d = 4): strin
   s.input(message)
   result = gethashstr(s, c, d)
 
+proc siphash*(key0, key1: uint64, message: string, c = 2, d = 4): string =
+  ## produces a hash given two uint64s (using message as input hex)
+  var s = initSipState(key0, key1)
+  s.inputHex(message)
+  result = gethashstr(s, c, d)
+
 proc siphash24*(key0, key1: uint64): string =
   ## the number-form input of a SipHash-2-4
   result = siphash(key0, key1, 2, 4)
 proc siphash48*(key0, key1: uint64): string =
   ## the number-form input of a SipHash-4-8
   result = siphash(key0, key1, 4, 8)
-proc siphash24*(key: string): string =
+proc siphash24*(key0, key1: uint64, message: string): string =
+  ## the number-form input of a SipHash-2-4
+  result = siphash(key0, key1, message, 2, 4)
+proc siphash48*(key0, key1: uint64, message: string): string =
+  ## the number-form input of a SipHash-4-8
+  result = siphash(key0, key1, message, 4, 8)
+proc siphash24*(key, message: string): string =
   ## the hex string input version of a SipHash-2-4
-  result = siphash(key, 2, 4)
-proc siphash48*(key: string): string =
+  result = siphash(key, message, 2, 4)
+proc siphash48*(key, message: string): string =
   ## the hex string input version of a SipHash-4-8
-  result = siphash(key, 4, 8)
+  result = siphash(key, message, 4, 8)
 
 when isMainModule:
   let buf = newSeq[byte]()
@@ -253,3 +273,5 @@ when isMainModule:
   var blah = initSipState("A8FC63780FB3BA3CA39580EEC5CB43B1")
   blah.inputHex("6018B63E6DBF9B")
   assert(blah.gethashstr() == "701bdf2ea1c82585")
+
+echo siphash24("A8FC63780FB3BA3CA39580EEC5CB43B1","6018B63E6DBF9B")

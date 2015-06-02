@@ -19,32 +19,32 @@ type
     ds*, bs*: int
   Sha224* = object of Sha256
 
-template ROR(x,y): expr =
+template ROR(x,y: int): int =
   (((x and 0xffffffff) shr (y and 31)) or
     (x shl (32 - (y and 31)))) and 0xffffffff
 
-template Ch(x,y,z): expr =
+template Ch(x,y,z: int): int =
   (z xor (x and (y xor z)))
 
-template Maj(x,y,z): expr =
+template Maj(x,y,z: int): int =
   (((x or y) and z) or (x and y))
 
-template S(x, n): expr =
+template S(x, n: int): int =
   ROR(x, n)
 
-template R(x, n): expr = 
+template R(x, n: int): int = 
   (x and 0xffffffff) shr n
 
-template Sigma0(x): expr =
+template Sigma0(x: int): int =
   (S(x, 2) xor S(x, 13) xor S(x, 22))
 
-template Simga1(x): expr =
+template Simga1(x: int): int =
   (S(x, 6) xor S(x, 11) xor S(x, 25))
 
-template Gamma0(x): expr =
+template Gamma0(x: int): int =
   (S(x, 7) xor S(x, 18) xor R(x, 3))
 
-template Gamma1(x): expr =
+template Gamma1(x: int): int =
   (S(x, 17) xor S(x, 19) xor R(x, 10))
 
 proc shaInit(): ShaObject =
@@ -68,7 +68,8 @@ proc shaTransform(shaInfo: var ShaObject) =
 
   var d = shaInfo.data
   for i in 0..15:
-    let m = (ord(d[4*i]) shl 24) + (ord(d[4*i+1]) shl 16) + (ord(d[4*i+2]) shl 8) + ord(d[4*i+3])
+    let m = (ord(d[4*i]) shl 24) + (ord(d[4*i+1]) shl 16) + 
+      (ord(d[4*i+2]) shl 8) + ord(d[4*i+3])
     W.add(m)
 
   for i in 16..63:
@@ -76,7 +77,7 @@ proc shaTransform(shaInfo: var ShaObject) =
 
   var ss = shaInfo.digest
 
-  proc RND(a, b, c: int, d: var int, e, f, g: int, h: var int, i, ki: int): tuple[d, h: int] =
+  proc RND(a, b, c: int, d: var int, e, f, g: int, h: var int, i, ki: int): tuple[d, h: int] {.inline.} =
     var t0 = h + Simga1(e) + Ch(e, f, g) + ki + W[i]
     var t1 = Sigma0(a) + Maj(a, b, c)
     d += t0
@@ -327,7 +328,7 @@ proc shaUpdate(shaInfo: var ShaObject, buffer: seq[char]) =
 proc shaFinal(shaInfo: var ShaObject): string =
   var (loBitCount, hiBitCount) = (shaInfo.countLo, shaInfo.countHi)
 
-  var count = (loBitCount shr 3) and 0x3f
+  var count: int = (loBitCount shr 3) and 0x3f
   shaInfo.data[count] = chr(0x80)
   inc(count)
 
@@ -421,7 +422,6 @@ proc sha224*(s = ""): string =
 when isMainModule:
   var s = initSha256()
   let astr = "just a test string"
-  
   assert(s.hexDigest == "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855")
   s = initSha256("just a test string")
   assert(s.hexDigest == "d7b553c6f09ac85d142415f857c5310f3bbbe7cdd787cce4b985acedd585266f")
@@ -429,3 +429,14 @@ when isMainModule:
   s.update(astr)
   assert(s.hexDigest == "03d9963e05a094593190b6fc794cb1a3e1ac7d7883f0b5855268afeccc70d461")
   assert(sha224() == "d14a028c2a3a2bc9476102bb288234c415a2b01f828ea62ac5b3e42f")
+
+import times
+var first = epochTime()
+var hello = "hello everybody! this is a test for fun.\n" &
+            "hopefully this will give some useful results, but" &
+            " this thing runs so fast, we have to make a long test string. " &
+            "We'll make it even longer for good measure. I mean, we have enough " &
+            "space to fill an int"
+for i in 0..<len(hello):
+  discard sha256(hello[0..i-1])
+echo epochTime()-first
