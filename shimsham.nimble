@@ -1,6 +1,6 @@
 [Package]
 name        = "ShimSham"
-version     = "0.3.0-alpha"
+version     = "0.3.1-alpha"
 author      = "Jonathan Edwards"
 description = "Hash/Digest library with various functions"
 license     = "MIT unless otherwise specified"
