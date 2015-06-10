@@ -5,6 +5,7 @@ ShimSham
 ShimSham is a [Nim](http://www.nim-lang.org) module to encompass several different digest/hashing algorithms. So far included are
   * [JH](https://en.wikipedia.org/wiki/JH_%28hash_function%29)
   * [SHA-2](https://en.wikipedia.org/wiki/SHA-2)
+  * [SHA-3](https://en.wikipedia.org/wiki/SHA-3)
   * [SipHash](http://en.wikipedia.org/wiki/SipHash)
   * [Tiger](https://en.wikipedia.org/wiki/Tiger_%28cryptography%29)
   * [Whirlpool](https://en.wikipedia.org/wiki/Whirlpool_%28cryptography%29)
@@ -55,4 +56,20 @@ echo siphash24("A8FC63780FB3BA3CA39580EEC5CB43B1","6018B63E6DBF9B") # gives "701
 JH
 --
 
-JH is the first SHA-3 finalist to be included here. It is also the beginning of a more unified hashing interface that will be backported to the other modules. It is usable by `import`-ing `shimsham/jh_simple`. ("Simple" is a reference to the fact that there could be some assembly support added in the future.)
+JH is the first SHA-3 finalist to be included here. It is usable by `import`-ing `shimsham/jh_simple`. ("Simple" is a reference to the fact that there could be some assembly support added in the future.)
+
+Skein
+-----
+
+Skein is the second SHA-3 finalist to be added to ShimSham. It is also much more complex than most other modules. I haven't yet had time to document all parameters, but this is based off the wonderful [Skein3Fish](https://github.com/wernerd/Skein3Fish), so you can learn more there. The simple function is `skein()`, which takes in different options. For example, to compute a Skein-256, with a hash length of 256, of an empty message, you can do:
+
+```nim
+import shimsham/skein
+
+echo skein(256, 256, []) # @[0xc8,0x87,0x70,0x87,0xda,0x56,0xe0,0x72,
+                         #   0x87,0x0d,0xaa,0x84,0x3f,0x17,0x6e,0x94,
+                         #   0x53,0x11,0x59,0x29,0x09,0x4c,0x3a,0x40,
+                         #   0xc4,0x63,0xa1,0x96,0xc2,0x9b,0xf7,0xba]
+```
+
+Since Skein is based off ThreeFish, you get Threefish as a bonus. It's located inside the `skein` directory, but it's not really intended to be part of ShimSham. Nevertheless, if you want, it's there.
