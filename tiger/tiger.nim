@@ -142,7 +142,7 @@ proc processWord(t: var TigerDigest, b: seq[byte], off: int) =
 
   t.bOff = 0
 
-proc unpackWord(r: int, outbytes: var seq[byte], outOff: int) =
+proc unpackWord(r: int, outbytes: var seq[byte], outOff: int) {.noSideEffect.} =
   outbytes[outOff + 7] = (r shr 56).byte
   outbytes[outOff + 6] = (r shr 48).byte
   outbytes[outOff + 5] = (r shr 40).byte
@@ -208,7 +208,7 @@ proc doFinal(t: var TigerDigest, outbytes: var seq[byte], outOff: int) =
   t.reset()
 
 
-proc getBytes(s: string): seq[byte] =
+proc getBytes(s: string): seq[byte] {.noSideEffect.} =
   var i = s.len
   var abyte0 = newSeq[byte](i)
   var j = 0

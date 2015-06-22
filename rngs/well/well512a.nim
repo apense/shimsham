@@ -1,3 +1,5 @@
+## Adapted from [Panneton](http://www.iro.umontreal.ca/~panneton/well/WELL512a.c)
+
 import "../rngs"
 
 const
@@ -31,13 +33,13 @@ proc newWell512a*(init: openarray[int]): Well512a =
 
 proc well512a*(w: Well512a): float64 =
   w.z0 = w.state[(w.i+15) and 0x0000000f]
-  w.z1 = mat0neg(-16,w.state[w.i]) xor 
+  w.z1 = mat0neg(-16,w.state[w.i]) xor
          mat0neg(-15,w.state[(w.i+M1) and 0x0000000f])
   w.z2 = mat0pos(11,w.state[(w.i+M2) and 0x0000000f])
   w.state[w.i] = w.z1 xor w.z2
-  w.state[(w.i+15) and 0x0000000f] = mat0neg(-2,w.z0) xor 
-                                     mat0neg(-18,w.z1) xor 
-                                     mat3neg(-28,w.z2) xor 
+  w.state[(w.i+15) and 0x0000000f] = mat0neg(-2,w.z0) xor
+                                     mat0neg(-18,w.z1) xor
+                                     mat3neg(-28,w.z2) xor
                                      mat4neg(-5,0xda442d24,w.state[w.i])
   w.i = (w.i + 15) and 0x0000000f
   result = float64(w.state[w.i]) * Fact

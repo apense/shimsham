@@ -16,8 +16,10 @@ type
   BurtleRot3* = ref BurtleRotObj3
   BurtleRot64* = ref BurtleRotObj64
 
-proc rot(x,k: uint32): uint32 {.inline.} = (x shl k) or (x shr (32u32 - k))
-proc rot64(x,k: uint64): uint64 {.inline.} = (x shl k) or (x shr (64u64 - k))
+proc rot(x,k: uint32): uint32 {.inline, noSideEffect.} =
+  (x shl k) or (x shr (32u32 - k))
+proc rot64(x,k: uint64): uint64 {.inline, noSideEffect.} =
+  (x shl k) or (x shr (64u64 - k))
 
 proc next*(b: BurtleRot2): uint32 =
   var e = (b.a - rot(b.b, 27))

@@ -9,18 +9,18 @@ type
     bufferPos*: int ## current bytes location on buffer
     hash*: array[DigestBytes div 8, uint64] ## hash state
 
-proc getUint64(b: seq[byte]): uint64 =
-  result = (uint64(b[7])       ) or 
-           (uint64(b[6]) shl  8) or 
-           (uint64(b[5]) shl 16) or 
+proc getUint64(b: seq[byte]): uint64 {.noSideEffect.} =
+  result = (uint64(b[7])       ) or
+           (uint64(b[6]) shl  8) or
+           (uint64(b[5]) shl 16) or
            (uint64(b[4]) shl 24) or
-           (uint64(b[3]) shl 32) or 
-           (uint64(b[2]) shl 40) or 
-           (uint64(b[1]) shl 48) or 
+           (uint64(b[3]) shl 32) or
+           (uint64(b[2]) shl 40) or
+           (uint64(b[1]) shl 48) or
            (uint64(b[0]) shl 56)
 
 proc reset*(w: var Whirlpool) =
-  # clean up the buffer
+  ## clean up the buffer
   reset(w.buffer)
   w.bufferBits = 0
   w.bufferPos = 0
@@ -94,7 +94,7 @@ proc transform(w: var Whirlpool) =
     w.hash[i] = w.hash[i] xor (state[i] xor blk[i])
 
 proc write*(w: var Whirlpool, src: openarray[byte]) =
-  ## Write the byte sequence `src` into the Whirlpool object `w` 
+  ## Write the byte sequence `src` into the Whirlpool object `w`
   ## (this is how you will get a hash of some list of bytes)
   var
     sourcePos: int                                              # index of the leftmost source
@@ -139,14 +139,14 @@ proc write*(w: var Whirlpool, src: openarray[byte]) =
     inc(sourcePos)
 
   # 0 <= sourceBits <= 8; all data left over is in source[sourcePos]
-  if sourceBits > 0'u64:
+  if sourceBits > 0u64:
     b = uint32(((uint(src[sourcePos]) shl sourceGap)) and 0xff) # the bits are left-justified
     # process the remaining bits
     w.buffer[w.bufferPos] = w.buffer[w.bufferPos] or byte(b shr uint32(bufferRem))
   else:
     b = 0
 
-  if uint64(bufferRem) + sourceBits < 8'u64:
+  if uint64(bufferRem) + sourceBits < 8u64:
     # the remaining data fits on the buffer[bufferPos]
     w.bufferBits += int(sourceBits)
   else:

@@ -1,15 +1,15 @@
 #/* rng/fishman2x.c
-# * 
+# *
 # * This program is free software; you can redistribute it and/or modify
 # * it under the terms of the GNU General Public License as published by
 # * the Free Software Foundation; either version 3 of the License, or (at
 # * your option) any later version.
-# * 
+# *
 # * This program is distributed in the hope that it will be useful, but
 # * WITHOUT ANY WARRANTY; without even the implied warranty of
 # * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 # * General Public License for more details.
-# * 
+# *
 # * You should have received a copy of the GNU General Public License
 # * along with this program; if not, write to the Free Software
 # * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -27,8 +27,8 @@
 # *
 # * It is called "Fishman - L'Ecuyer"
 # *
-# * This implementation copyright (C) 2015 Jonathan Edwards, 
-# * based on GSL implementation (C) 2001 Carlo Perassi and 
+# * Nim implementation copyright (C) 2015 Jonathan Edwards,
+# * based on GSL implementation (C) 2001 Carlo Perassi and
 # * (C) 2003 Heiko Bauke.
 # */
 
@@ -60,8 +60,8 @@ proc newFishman2x*(seed = 1): Fishman2x =
 
   result.x = seed mod MMM_F
   result.y = seed mod MMM_L
-  result.z = if (result.x >% result.y): 
-                (result.x -% result.y) else: 
+  result.z = if (result.x >% result.y):
+                (result.x -% result.y) else:
                  MMM_F +% result.x -% result.y
 
 proc next*(f: Fishman2x): int =

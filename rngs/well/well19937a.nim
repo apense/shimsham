@@ -1,3 +1,5 @@
+## Adapted from [Panneton](http://www.iro.umontreal.ca/~panneton/well/WELL19937a.c)
+
 import "../rngs"
 import unsigned
 
@@ -80,7 +82,7 @@ proc case2(w: Well19937a): float =
   w.z1 = mat0neg(-25, V0) xor mat0pos(27, VM1)
   w.z2 = mat3pos( 9, VM2) xor mat0pos(1, VM3)
   newV1 = w.z1 xor w.z2
-  newV0 = mat1(w.z0) xor mat0neg(-9, w.z1) xor 
+  newV0 = mat1(w.z0) xor mat0neg(-9, w.z1) xor
           mat0neg(-21, w.z2) xor mat0pos(21, newV1)
   w.i = 0
   w.rng = case1
@@ -97,7 +99,7 @@ proc case3(w: Well19937a): float =
   w.z1 = mat0neg(-25, V0) xor mat0pos(27, VM1Over)
   w.z2 = mat3pos( 9, VM2Over) xor mat0pos(1, VM3Over)
   newV1 = w.z1 xor w.z2
-  newV0 = mat1(w.z0) xor mat0neg(-9, w.z1) xor 
+  newV0 = mat1(w.z0) xor mat0neg(-9, w.z1) xor
           mat0neg(-21, w.z2) xor mat0pos(21, newV1)
   dec w.i
   if (w.i + M1) < R:
@@ -115,7 +117,7 @@ proc case4(w: Well19937a): float =
   w.z1 = mat0neg(-25, V0) xor mat0pos(27, VM1)
   w.z2 = mat3pos( 9, VM2) xor mat0pos(1, VM3Over)
   newV1 = w.z1 xor w.z2
-  newV0 = mat1(w.z0) xor mat0neg(-9, w.z1) xor 
+  newV0 = mat1(w.z0) xor mat0neg(-9, w.z1) xor
           mat0neg(-21, w.z2) xor mat0pos(21, newV1)
   dec w.i
   if (w.i + M3) < R:
@@ -133,7 +135,7 @@ proc case5(w: Well19937a): float =
   w.z1 = mat0neg(-25, V0) xor mat0pos(27, VM1)
   w.z2 = mat3pos( 9, VM2Over) xor mat0pos(1, VM3Over)
   newV1 = w.z1 xor w.z2
-  newV0 = mat1(w.z0) xor mat0neg(-9, w.z1) xor 
+  newV0 = mat1(w.z0) xor mat0neg(-9, w.z1) xor
           mat0neg(-21, w.z2) xor mat0pos(21, newV1)
   dec w.i
   if (w.i + M2) < R:
@@ -151,7 +153,7 @@ proc case6(w: Well19937a): float =
   w.z1 = mat0neg(-25, V0) xor mat0pos(27, VM1)
   w.z2 = mat3pos( 9, VM2) xor mat0pos(1, VM3)
   newV1 = w.z1 xor w.z2
-  newV0 = mat1(w.z0) xor mat0neg(-9, w.z1) xor 
+  newV0 = mat1(w.z0) xor mat0neg(-9, w.z1) xor
           mat0neg(-21, w.z2) xor mat0pos(21, newV1)
   dec w.i
   if w.i == 1:
@@ -171,4 +173,3 @@ proc newWell19937a*(init: openarray[uint32]): Well19937a =
   result.rng = case1
   for j in 0..<R:
     result.state[j] = init[j]
-

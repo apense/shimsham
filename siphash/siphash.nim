@@ -12,10 +12,10 @@ type
     tail: array[8,byte] ## unprocessed bytes
     ntail: int ## valid bytes in tail
 
-proc rotl(x: uint64, b: uint): uint64 {.inline.} =
+proc rotl(x: uint64, b: uint): uint64 {.inline, noSideEffect.} =
   result = (x shl b) or (x shr (64'u64 - b))
 
-proc loadu64(b: openarray[byte], i: int): uint64 {.inline.} =
+proc loadu64(b: openarray[byte], i: int): uint64 {.inline, noSideEffect.} =
   result = (b[0+i].uint64 shl  0) or
            (b[1+i].uint64 shl  8) or
            (b[2+i].uint64 shl 16) or
@@ -25,7 +25,7 @@ proc loadu64(b: openarray[byte], i: int): uint64 {.inline.} =
            (b[6+i].uint64 shl 48) or
            (b[7+i].uint64 shl 56)
 
-proc sipround(v0, v1, v2, v3: var uint64) {.inline.} =
+proc sipround(v0, v1, v2, v3: var uint64) {.inline, noSideEffect.} =
   v0 = v0 + v1; v1 = rotl(v1, 13); v1 = v1 xor v0; v0 = rotl(v0, 32)
   v2 = v2 + v3; v3 = rotl(v3, 16); v3 = v3 xor v2
   v0 = v0 + v3; v3 = rotl(v3, 21); v3 = v3 xor v0
@@ -90,7 +90,7 @@ proc addInput(st: var SipState, msg: openarray[byte]) =
   st.ntail = rem
 
 # helper
-proc `|=`(m: var uint64, p: uint64) =
+proc `|=`(m: var uint64, p: uint64) {.inline, noSideEffect.} =
   m = m or p
 
 proc mkResult(st: var SipState, c, d: int): array[8, byte] =
@@ -273,5 +273,3 @@ when isMainModule:
   var blah = initSipState("A8FC63780FB3BA3CA39580EEC5CB43B1")
   blah.inputHex("6018B63E6DBF9B")
   assert(blah.gethashstr() == "701bdf2ea1c82585")
-
-echo siphash24("A8FC63780FB3BA3CA39580EEC5CB43B1","6018B63E6DBF9B")

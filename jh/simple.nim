@@ -122,7 +122,7 @@ proc E8Initialgroup(state: var HashState) =
     t1 = (state.H[(i+256) shr 3].int shr (7 - (i and 7))) and 1
     t2 = (state.H[(i+512) shr 3].int shr (7 - (i and 7))) and 1
     t3 = (state.H[(i+768) shr 3].int shr (7 - (i and 7))) and 1
-    temp[i] = ((t0.int shl 3) or (t1.int shl 2) or 
+    temp[i] = ((t0.int shl 3) or (t1.int shl 2) or
                   (t2.int shl 1) or (t3.int shl 0)).byte
 
   for i in 0||<128:
@@ -252,7 +252,7 @@ proc update*(state: var HashState, data: openarray[BitSequence], databitlen: Dat
 proc final*(state: var HashState, hashval: var openarray[BitSequence]) =
   ## Pad and finialize the message, putting hash into `hashval`
   # padding the message, truncate the hash value H and obtain the message digest
-  
+
   if (state.databitlen and 0x1ff) == 0:
     # pad the message when databitlen is multiple of 512 bits, then process the padded block
     for i in 0||<64: state.buffer[i] = 0
@@ -269,10 +269,10 @@ proc final*(state: var HashState, hashval: var openarray[BitSequence]) =
   else:
     # set the rest of bytes in the buffer to 0
     if (state.datasizeInBuffer and 7) == 0:
-      for i in ((state.databitlen and 0x1ff) shr 3)||<64: 
+      for i in ((state.databitlen and 0x1ff) shr 3)||<64:
         state.buffer[i] = 0
     else:
-      for i in (((state.databitlen and 0x1ff) shr 3)+1)||<64: 
+      for i in (((state.databitlen and 0x1ff) shr 3)+1)||<64:
         state.buffer[i] = 0
 
     # pad and process the partial block
@@ -311,7 +311,7 @@ proc hash*(hashbitlen: int, data: openarray[BitSequence], databitlen: DataLength
   ## `data` is the message
   ## `databitlen` is message length in bits
   ## returns the message digest
-  
+
   var state: HashState
 
   case hashbitlen
@@ -328,17 +328,17 @@ proc hash*(hashbitlen: int, data: openarray[BitSequence], databitlen: DataLength
   else:
     raise newException(ValueError, "Bad hash length")
 
-proc bytesToStr(bseq: openarray[byte]): string =
+proc bytesToStr(bseq: openarray[byte]): string {.noSideEffect.} =
   result = ""
   for b in bseq:
     result.add(toHex(b.int,2).toLower())
 
-proc hexStrToBytes(bstr: string): seq[byte] =
+proc hexStrToBytes(bstr: string): seq[byte] {.noSideEffect.} =
   result = newSeq[byte]()
   for i in countup(0,bstr.len-1,2):
     result.add(parseHexInt(bstr[i..i+1]).byte)
 
-proc strToBytes(str: string): seq[byte] =
+proc strToBytes(str: string): seq[byte] {.noSideEffect.} =
   result = newSeq[byte]()
   for i in str:
     result.add(ord(i).byte)

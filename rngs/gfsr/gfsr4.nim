@@ -12,10 +12,10 @@
 #    From Robert M. Ziff, "Four-tap shift-register-sequence
 #    random-number generators," Computers in Physics 12(4), Jul/Aug
 #    1998, pp 385-392.  A generalized feedback shift-register (GFSR)
-#    is basically an xor-sum of particular past lagged values.  A 
+#    is basically an xor-sum of particular past lagged values.  A
 #    four-tap register looks like:
 #       ra[nd] = ra[nd-A] ^ ra[nd-B] ^ ra[nd-C] ^ ra[nd-D]
-#    
+#
 #    Ziff notes that "it is now widely known" that two-tap registers
 #    have serious flaws, the most obvious one being the three-point
 #    correlation that comes from the defn of the generator.  Nice
@@ -59,7 +59,7 @@ type
     ra: array[M+1, int] ## state
   Gfsr4* = ref Gfsr4Obj
 
-proc LCG(n: int): int {.inline.} = (69069 *% n)
+proc LCG(n: int): int {.inline, noSideEffect.} = (69069 *% n)
 
 proc newGfsr4*(seed: int = 4357): Gfsr4 =
    new(result)

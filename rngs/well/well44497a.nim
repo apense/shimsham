@@ -1,3 +1,5 @@
+## Adapted from [Panneton](http://www.iro.umontreal.ca/~panneton/well/WELL44497a.c)
+
 import "../rngs"
 import unsigned
 
@@ -29,9 +31,9 @@ const
 proc mat0pos(t: int, v: uint32): uint32 {.inline.} = v xor (v shr t.uint32)
 proc mat0neg(t: int, v: uint32): uint32 {.inline.} = v xor (v shl uint32(-t))
 proc mat1(v: uint32): uint32 {.inline.} = v
-proc mat2(a: int, v: uint32): uint32 {.inline.} = 
-  if ((v and 1) != 0): 
-    ((v shr 1) xor a.uint32) 
+proc mat2(a: int, v: uint32): uint32 {.inline.} =
+  if ((v and 1) != 0):
+    ((v shr 1) xor a.uint32)
   else: (v shr 1)
 proc mat3pos(t: int, v: uint32): uint32 {.inline.} = v shr t.uint32
 proc mat3neg(t: int, v: uint32): uint32 {.inline.} = v shl uint32(-t)
@@ -75,9 +77,9 @@ proc case1(w: Well44497a): float =
   w.z1 = mat0neg(-24,V0) xor mat0pos(30,VM1)
   w.z2 = mat3pos(-10,VM2) xor mat0pos(-26,VM3)
   newV1 = w.z1 xor w.z2
-  newV0Under = mat1(w.z0) xor 
-               mat0pos(20, w.z1) xor 
-               mat5(9,0xb729fcec'u32,0xfbfffff'u32,0x00020000'u32,w.z2) xor 
+  newV0Under = mat1(w.z0) xor
+               mat0pos(20, w.z1) xor
+               mat5(9,0xb729fcec'u32,0xfbfffff'u32,0x00020000'u32,w.z2) xor
                mat1(newV1)
   w.i = R - 1
   w.rng = case3
@@ -94,9 +96,9 @@ proc case2(w: Well44497a): float =
   w.z1 = mat0neg(-24, V0) xor mat0pos(30, VM1)
   w.z2 = mat0neg(-10, VM2) xor mat3neg(-26, VM3)
   newV1 = w.z1 xor w.z2
-  newV0 = mat1(w.z0) xor 
-          mat0pos(-9, w.z1) xor 
-          mat5(9,0xb729fcec'u32,0xfbffffff'u32,0x00020000'u32,w.z2) xor 
+  newV0 = mat1(w.z0) xor
+          mat0pos(-9, w.z1) xor
+          mat5(9,0xb729fcec'u32,0xfbffffff'u32,0x00020000'u32,w.z2) xor
           mat1(newV1)
   w.i = 0
   w.rng = case1
@@ -113,9 +115,9 @@ proc case3(w: Well44497a): float =
   w.z1 = mat0neg(-24, V0) xor mat0pos(30, VM1Over)
   w.z2 = mat0neg(-10, VM2Over) xor mat3neg(-26, VM3Over)
   newV1 = w.z1 xor w.z2
-  newV0 = mat1(w.z0) xor 
-          mat0pos(20, w.z1) xor 
-          mat5(9,0xb729fcec'u32,0xfbffffff'u32,0x00020000'u32,w.z2) xor 
+  newV0 = mat1(w.z0) xor
+          mat0pos(20, w.z1) xor
+          mat5(9,0xb729fcec'u32,0xfbffffff'u32,0x00020000'u32,w.z2) xor
           mat1(newV1)
   dec w.i
   if (w.i + M1) < R:
@@ -133,9 +135,9 @@ proc case4(w: Well44497a): float =
   w.z1 = mat0neg(-24, V0) xor mat0pos(30, VM1)
   w.z2 = mat0neg(-10, VM2Over) xor mat3neg(-26, VM3Over)
   newV1 = w.z1 xor w.z2
-  newV0 = mat1(w.z0) xor 
-          mat0pos(20, w.z1) xor 
-          mat5(9,0xb729fcec'u32,0xfbffffff'u32,0x00020000'u32,w.z2) xor 
+  newV0 = mat1(w.z0) xor
+          mat0pos(20, w.z1) xor
+          mat5(9,0xb729fcec'u32,0xfbffffff'u32,0x00020000'u32,w.z2) xor
           mat1(newV1)
   dec w.i
   if (w.i + M3) < R:
@@ -153,9 +155,9 @@ proc case5(w: Well44497a): float =
   w.z1 = mat0neg(-24, V0) xor mat0pos(30, VM1)
   w.z2 = mat0neg(-10, VM2Over) xor mat3neg(-26, VM3)
   newV1 = w.z1 xor w.z2
-  newV0 = mat1(w.z0) xor 
-          mat0pos(20, w.z1) xor 
-          mat5(9,0xb729fcec'u32,0xfbffffff'u32,0x00020000'u32,w.z2) xor 
+  newV0 = mat1(w.z0) xor
+          mat0pos(20, w.z1) xor
+          mat5(9,0xb729fcec'u32,0xfbffffff'u32,0x00020000'u32,w.z2) xor
           mat1(newV1)
   dec w.i
   if (w.i + M2) < R:
@@ -173,9 +175,9 @@ proc case6(w: Well44497a): float =
   w.z1 = mat0neg(-24, V0) xor mat0pos(30, VM1)
   w.z2 = mat0neg(-10, VM2) xor mat3neg(-26, VM3)
   newV1 = w.z1 xor w.z2
-  newV0 = mat1(w.z0) xor 
-          mat0pos(20, w.z1) xor 
-          mat5(9,0xb729fcec'u32,0xfbffffff'u32,0x00020000'u32,w.z2) xor 
+  newV0 = mat1(w.z0) xor
+          mat0pos(20, w.z1) xor
+          mat5(9,0xb729fcec'u32,0xfbffffff'u32,0x00020000'u32,w.z2) xor
           mat1(newV1)
   dec w.i
   if w.i == 1:

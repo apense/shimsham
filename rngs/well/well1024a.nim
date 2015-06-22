@@ -1,3 +1,5 @@
+## Adapted from [Panneton](http://www.iro.umontreal.ca/~panneton/well/WELL1024a.c)
+
 import "../rngs"
 
 const

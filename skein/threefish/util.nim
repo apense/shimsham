@@ -1,4 +1,6 @@
-proc uint64le(b: openarray[byte], offset: int): uint64 =
+# little-endian helper utilities
+
+proc uint64le(b: openarray[byte], offset: int): uint64 {.noSideEffect.} =
   result = (b[0+offset].int shl  0).uint64 or
            (b[1+offset].int shl  8).uint64 or
            (b[2+offset].int shl 16).uint64 or
