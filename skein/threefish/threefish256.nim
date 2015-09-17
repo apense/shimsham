@@ -26,7 +26,8 @@ proc setKey(c: Cipher, key: openarray[uint64]) =
   var tf = Threefish256(c)
   setKey(key, tf.expandedKey)
 
-proc encrypt(c: Cipher, input: openarray[uint64], output: var openarray[uint64]) =
+proc encrypt(c: Cipher, input: openarray[uint64],
+  output: var openarray[uint64]) {.noSideEffect.} =
   var tf = Threefish256(c)
   var
     b0 = input[0]

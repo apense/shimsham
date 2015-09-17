@@ -31,15 +31,15 @@ proc reset*(w: var Whirlpool) =
   # clean up the number of hashed bits
   reset(w.bitLength)
 
-proc digestsize*(w: Whirlpool): int =
+proc digestsize*(w: Whirlpool): int {.noSideEffect, inline.} =
   ## The Digest Size of `w`
   result = DigestBytes
 
-proc blocksize*(w: Whirlpool): int =
+proc blocksize*(w: Whirlpool): int {.noSideEffect, inline.} =
   ## The Block Size of `w`
   result = WBlockBytes
 
-proc transform(w: var Whirlpool) =
+proc transform(w: var Whirlpool) {.noSideEffect.} =
   var
     K: array[8, uint64] # round key
     blk: array[8, uint64] # μ (the buffer)
@@ -174,7 +174,7 @@ proc write*(w: var Whirlpool, s = "") =
     bytes.add(byte(c))
   w.write(bytes)
 
-proc sum*(w: Whirlpool, data: seq[byte] = nil): seq[byte] =
+proc sum*(w: Whirlpool, data: seq[byte] = nil): seq[byte] {.noSideEffect.} =
   # copy the whirlpool so that the caller doesn't need to be var
   var n = w
 
@@ -218,7 +218,7 @@ proc sum*(w: Whirlpool, data: seq[byte] = nil): seq[byte] =
 
   result = data & digest[0..DigestBytes-1]
 
-proc `$`*(w: Whirlpool): string =
+proc `$`*(w: Whirlpool): string {.noSideEffect.} =
   ## Return the hexadecimal string for the Whirlpool object `w`
   var m = w
   var res = m.sum()

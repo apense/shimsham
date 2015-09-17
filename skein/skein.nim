@@ -32,7 +32,7 @@ type
     ChainedState
     ChainedConfig
 
-type 
+type
   StateSizeError = int
   OutputSizeError = int
   StatusError = int
@@ -61,7 +61,7 @@ const MaxSkeinStateWords = Skein1024 div 64
 
 var NullStateWords: array[MaxSkeinStateWords, uint64]
 
-proc initSkeinConfiguration*(sk: Skein): SkeinConfiguration =
+proc initSkeinConfiguration*(sk: Skein): SkeinConfiguration {.noSideEffect.} =
   result.numStateWords = sk.cipherStateWords
   result.configValue = newSeq[uint64](result.numStateWords)
   result.configString = newSeq[uint64](result.numStateWords)
@@ -98,7 +98,8 @@ proc generateConfigurationState*(c: var SkeinConfiguration, initialState: openar
   c.configValue[1] = c.configValue[1] xor c.configString[1]
   c.configValue[2] = c.configValue[2] xor c.configString[2]
 
-proc setSchema(c: var SkeinConfiguration, schema: openarray[byte]) =
+proc setSchema(c: var SkeinConfiguration, schema: openarray[byte]) {.
+  noSideEffect.} =
   var n = c.configString[0]
 
   # clear the schema bytes
@@ -111,19 +112,21 @@ proc setSchema(c: var SkeinConfiguration, schema: openarray[byte]) =
 
   c.configString[0] = n
 
-proc setVersion(c: var SkeinConfiguration, version: int) =
+proc setVersion(c: var SkeinConfiguration, version: int) {.noSideEffect.} =
   c.configString[0] = c.configString[0] and not (0x03'u64 shl 32)
   c.configString[0] = c.configString[0] or (version.uint64 shl 32)
 
-proc setTreeLeafSize(c: var SkeinConfiguration, size: byte) =
+proc setTreeLeafSize(c: var SkeinConfiguration, size: byte) {.noSideEffect.} =
   c.configString[2] = c.configString[2] and not 0xff'u64
   c.configString[2] = c.configString[2] or size.uint64
 
-proc setTreeFanOutSize(c: var SkeinConfiguration, size: byte) =
+proc setTreeFanOutSize(c: var SkeinConfiguration, size: byte) {.
+  noSideEffect.} =
   c.configString[2] = c.configString[2] and not (0xff'u64 shl 8)
   c.configString[2] = c.configString[2] or (size.uint64 shl 8)
 
-proc setMaxTreeHeigh(c: var SkeinConfiguration, height: byte) =
+proc setMaxTreeHeigh(c: var SkeinConfiguration, height: byte) {.
+  noSideEffect.} =
   c.configString[2] = c.configString[2] and not (0xff'u64 shl 16)
   c.configString[2] = c.configString[2] or (height.uint64 shl 16)
 
@@ -311,7 +314,7 @@ proc initSkeinExtended*(stateSize, outputSize, treeInfo: int, key: openarray[byt
   result.config = initSkeinConfiguration(result)
   result.config.setSchema(Schema) ## SHA3
   result.config.setVersion(1)
-  
+
   result.initializeConf(ChainedConfig)
 
 proc skein*(skeinType, hashLength: int, message: openarray[byte]): seq[byte] =
@@ -350,14 +353,14 @@ when isMainModule:
                           0x00, 0x80, 0x0B, 0xC2, 0x68, 0x4A, 0x43, 0x9A, 0x78, 0xE0, 0xF9, 0x25, 0xEC, 0xE3, 0xDE, 0x86]
   assert skein(1024, 1024, msg) == output10241024
 
-  const output10241024_2047 = @[111.byte, 254, 63, 184, 78, 203, 209, 9, 23, 216, 113, 60, 101, 
-                                238, 153, 228, 174, 93, 186, 29, 194, 136, 176, 167, 10, 39, 
-                                177, 134, 192, 139, 10, 131, 205, 206, 174, 35, 92, 201, 4, 
-                                149, 186, 187, 214, 231, 219, 31, 210, 98, 213, 203, 50, 231, 
-                                39, 138, 159, 54, 61, 254, 50, 78, 227, 226, 195, 81, 24, 233, 
-                                20, 223, 23, 190, 6, 26, 217, 151, 114, 52, 229, 245, 16, 143, 
-                                28, 71, 190, 187, 135, 140, 241, 38, 202, 105, 138, 96, 220, 234, 
-                                163, 145, 100, 18, 195, 253, 60, 255, 99, 234, 110, 76, 104, 16, 
-                                177, 225, 201, 197, 115, 202, 64, 159, 120, 224, 31, 243, 65, 12, 
+  const output10241024_2047 = @[111.byte, 254, 63, 184, 78, 203, 209, 9, 23, 216, 113, 60, 101,
+                                238, 153, 228, 174, 93, 186, 29, 194, 136, 176, 167, 10, 39,
+                                177, 134, 192, 139, 10, 131, 205, 206, 174, 35, 92, 201, 4,
+                                149, 186, 187, 214, 231, 219, 31, 210, 98, 213, 203, 50, 231,
+                                39, 138, 159, 54, 61, 254, 50, 78, 227, 226, 195, 81, 24, 233,
+                                20, 223, 23, 190, 6, 26, 217, 151, 114, 52, 229, 245, 16, 143,
+                                28, 71, 190, 187, 135, 140, 241, 38, 202, 105, 138, 96, 220, 234,
+                                163, 145, 100, 18, 195, 253, 60, 255, 99, 234, 110, 76, 104, 16,
+                                177, 225, 201, 197, 115, 202, 64, 159, 120, 224, 31, 243, 65, 12,
                                 36, 70, 69, 234, 43, 27]
   assert skein(1024,1024,2047,msg) == output10241024_2047

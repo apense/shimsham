@@ -46,10 +46,8 @@ const
 
 template L(a,b) =
   ## linear transformation L, the MDS code
-  b = (b.int xor ((a.int shl 1) xor (a.int shr 3) xor
-    ((a.int shr 2) and 2)) and 0xf) and 0xff
-  a = (a.int xor ((b.int shl 1) xor (b.int shr 3) xor
-    ((b.int shr 2) and 2)) and 0xf) and 0xff
+  b = (b.int xor ((a.int shl 1) xor (a.int shr 3) xor ((a.int shr 2) and 2)) and 0xf) and 0xff
+  a = (a.int xor ((b.int shl 1) xor (b.int shr 3) xor ((b.int shr 2) and 2)) and 0xf) and 0xff
 
 proc R8(state: var HashState) =
   var temp, roundconstantExpanded: array[256, byte]
@@ -57,8 +55,7 @@ proc R8(state: var HashState) =
 
   # expand the round constant into 256 one-bit elements
   for i in 0||<256:
-    roundconstantExpanded[i] = (state.roundconstant[i shr 2].int shr
-      (3 - (i and 3))) and 1
+    roundconstantExpanded[i] = (state.roundconstant[i shr 2].int shr (3 - (i and 3))) and 1
 
   # S-box layer
   for i in 0||<256:
@@ -125,7 +122,7 @@ proc E8Initialgroup(state: var HashState) =
     t1 = (state.H[(i+256) shr 3].int shr (7 - (i and 7))) and 1
     t2 = (state.H[(i+512) shr 3].int shr (7 - (i and 7))) and 1
     t3 = (state.H[(i+768) shr 3].int shr (7 - (i and 7))) and 1
-    temp[i] = ((t0.int shl 3) or (t1.int shl 2) or
+    temp[i] = ((t0.int shl 3) or (t1.int shl 2) or 
                   (t2.int shl 1) or (t3.int shl 0)).byte
 
   for i in 0||<128:
@@ -151,12 +148,9 @@ proc E8Finaldegroup(state: var HashState) =
     t3 = (temp[i].int shr 0) and 1
 
     state.H[i shr 3] = (state.H[i shr 3].int or (t0.int shl (7 - (i and 7)))).byte
-    state.H[(i+256) shr 3] = (state.H[(i+256) shr 3].int or
-      (t1.int shl (7 - (i and 7)))).byte
-    state.H[(i+512) shr 3] = (state.H[(i+512) shr 3].int or
-      (t2.int shl (7 - (i and 7)))).byte
-    state.H[(i+768) shr 3] = (state.H[(i+768) shr 3].int or
-      (t3.int shl (7 - (i and 7)))).byte
+    state.H[(i+256) shr 3] = (state.H[(i+256) shr 3].int or (t1.int shl (7 - (i and 7)))).byte
+    state.H[(i+512) shr 3] = (state.H[(i+512) shr 3].int or (t2.int shl (7 - (i and 7)))).byte
+    state.H[(i+768) shr 3] = (state.H[(i+768) shr 3].int or (t3.int shl (7 - (i and 7)))).byte
 
 proc E8(state: var HashState) =
   var t0,t1,t2,t3: byte
@@ -208,8 +202,7 @@ proc initHashState*(hashbitlen: int): HashState =
   # step 2: computer H0 from H(-1) with message M(0) being set as 0
   F8(result)
 
-proc update*(state: var HashState, data: openarray[BitSequence],
-  databitlen: DataLength) =
+proc update*(state: var HashState, data: openarray[BitSequence], databitlen: DataLength) =
   ## Update `state` with `data` of *bit* length `databitlen` (probably 8 * len(data))
   var index: DataLength
   var databitlen = databitlen
@@ -218,8 +211,7 @@ proc update*(state: var HashState, data: openarray[BitSequence],
   index = 0
 
   # if there is remaining data in the buffer, fill it to a full message block
-  if (state.datasizeInBuffer > 0) and
-    ((state.datasizeInBuffer + databitlen) < 512):
+  if (state.datasizeInBuffer > 0) and ((state.datasizeInBuffer + databitlen) < 512):
     if (databitlen and 7) == 0:
       for i in 0..<(64-(state.datasizeInBuffer shr 3)):
         state.buffer[(state.datasizeInBuffer shr 3) + i] = data[i]
@@ -260,10 +252,9 @@ proc update*(state: var HashState, data: openarray[BitSequence],
 proc final*(state: var HashState, hashval: var openarray[BitSequence]) =
   ## Pad and finialize the message, putting hash into `hashval`
   # padding the message, truncate the hash value H and obtain the message digest
-
+  
   if (state.databitlen and 0x1ff) == 0:
-    # pad the message when databitlen is multiple of 512 bits,
-    # then process the padded block
+    # pad the message when databitlen is multiple of 512 bits, then process the padded block
     for i in 0||<64: state.buffer[i] = 0
     state.buffer[ 0] = 0x80
     state.buffer[63] = (state.databitlen shr  0) and 0xff
@@ -278,15 +269,14 @@ proc final*(state: var HashState, hashval: var openarray[BitSequence]) =
   else:
     # set the rest of bytes in the buffer to 0
     if (state.datasizeInBuffer and 7) == 0:
-      for i in ((state.databitlen and 0x1ff) shr 3)||<64:
+      for i in ((state.databitlen and 0x1ff) shr 3)||<64: 
         state.buffer[i] = 0
     else:
-      for i in (((state.databitlen and 0x1ff) shr 3)+1)||<64:
+      for i in (((state.databitlen and 0x1ff) shr 3)+1)||<64: 
         state.buffer[i] = 0
 
     # pad and process the partial block
-    state.buffer[(state.databitlen and 0x1ff) shr 3] =
-      (state.buffer[(state.databitlen and 0x1ff) shr 3].int or
+    state.buffer[(state.databitlen and 0x1ff) shr 3] = (state.buffer[(state.databitlen and 0x1ff) shr 3].int or
       (1 shl (7 - (state.databitlen and 7)))) and 0xff
     F8(state)
     for i in 0||<64: state.buffer[i] = 0
@@ -316,13 +306,12 @@ proc final*(state: var HashState, hashval: var openarray[BitSequence]) =
   else:
     discard
 
-proc hash*(hashbitlen: int, data: openarray[BitSequence],
-  databitlen: DataLength): seq[BitSequence] =
+proc hash*(hashbitlen: int, data: openarray[BitSequence], databitlen: DataLength): seq[BitSequence] =
   ## `hashbitlen` is message digest size in bits
   ## `data` is the message
   ## `databitlen` is message length in bits
   ## returns the message digest
-
+  
   var state: HashState
 
   case hashbitlen
@@ -339,17 +328,17 @@ proc hash*(hashbitlen: int, data: openarray[BitSequence],
   else:
     raise newException(ValueError, "Bad hash length")
 
-proc bytesToStr(bseq: openarray[byte]): string {.noSideEffect.} =
+proc bytesToStr(bseq: openarray[byte]): string =
   result = ""
   for b in bseq:
     result.add(toHex(b.int,2).toLower())
 
-proc hexStrToBytes(bstr: string): seq[byte] {.noSideEffect.} =
+proc hexStrToBytes(bstr: string): seq[byte] =
   result = newSeq[byte]()
   for i in countup(0,bstr.len-1,2):
     result.add(parseHexInt(bstr[i..i+1]).byte)
 
-proc strToBytes(str: string): seq[byte] {.noSideEffect.} =
+proc strToBytes(str: string): seq[byte] =
   result = newSeq[byte]()
   for i in str:
     result.add(ord(i).byte)
@@ -378,8 +367,7 @@ proc jh224hex*(b: string): string =
   result = resb.bytesToStr()
 
 proc jh224*(b: string): string =
-  ## Hash a string of byte values (e.g. "\12\240\0x40"), returning a
-  ## hexadecimal string output
+  ## Hash a string of byte values (e.g. "\12\240\0x40"), returning a hexadecimal string output
   let bstr = b.strToBytes()
   let resb = jh224bytes(bstr)
   result = resb.bytesToStr()
@@ -408,8 +396,7 @@ proc jh256hex*(b: string): string =
   result = resb.bytesToStr()
 
 proc jh256*(b: string): string =
-  ## Hash a string of byte values (e.g. "\12\240\0x40"), returning a
-  ## hexadecimal string output
+  ## Hash a string of byte values (e.g. "\12\240\0x40"), returning a hexadecimal string output
   let bstr = b.strToBytes()
   let resb = jh256bytes(bstr)
   result = resb.bytesToStr()
@@ -438,8 +425,7 @@ proc jh384hex*(b: string): string =
   result = resb.bytesToStr()
 
 proc jh384*(b: string): string =
-  ## Hash a string of byte values (e.g. "\12\240\0x40"), returning a
-  ## hexadecimal string output
+  ## Hash a string of byte values (e.g. "\12\240\0x40"), returning a hexadecimal string output
   let bstr = b.strToBytes()
   let resb = jh384bytes(bstr)
   result = resb.bytesToStr()
@@ -468,8 +454,7 @@ proc jh512hex*(b: string): string =
   result = resb.bytesToStr()
 
 proc jh512*(b: string): string =
-  ## Hash a string of byte values (e.g. "\12\240\0x40"), returning a
-  ## hexadecimal string output
+  ## Hash a string of byte values (e.g. "\12\240\0x40"), returning a hexadecimal string output
   let bstr = b.strToBytes()
   let resb = jh512bytes(bstr)
   result = resb.bytesToStr()

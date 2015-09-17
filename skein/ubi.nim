@@ -66,7 +66,7 @@ proc setTreeLevel(u: var UbiTweak, value: int) =
 proc getBitsProcessed*(u: UbiTweak): tuple[lo, hi: uint64] =
   ## Gets the number of bytes processed so far, inclusive
   result.lo = u.tweak[0]
-  result.hi = u.tweak[1] and 0xffffffff
+  result.hi = u.tweak[1] and 0xffffffff'u64
 
 proc setBitsProcessed*(u: var UbiTweak, value: uint64) =
   ## Set the number of bytes processed so far
@@ -80,24 +80,24 @@ proc addBytesProcessed*(u: var UbiTweak, value: int) =
 
   var words: array[length, uint64]
 
-  words[0] = u.tweak[0] and 0xffffffff
-  words[1] = (u.tweak[0] shr 32) and 0xffffffff
-  words[2] = u.tweak[1] and 0xffffffff
+  words[0] = u.tweak[0] and 0xffffffff'u64
+  words[1] = (u.tweak[0] shr 32) and 0xffffffff'u64
+  words[2] = u.tweak[1] and 0xffffffff'u64
 
   for i in 0..<length:
     carry += words[i]
     words[i] = carry
     carry = carry shr 32
 
-  u.tweak[0] = words[0] and 0xffffffff
-  u.tweak[0] = u.tweak[0] or ((words[1] and 0xffffffff) shl 32)
-  u.tweak[1] = u.tweak[1] or (words[2] and 0xffffffff)
+  u.tweak[0] = words[0] and 0xffffffff'u64
+  u.tweak[0] = u.tweak[0] or ((words[1] and 0xffffffff'u64) shl 32)
+  u.tweak[1] = u.tweak[1] or (words[2] and 0xffffffff'u64)
 
-proc getBlockType(u: UbiTweak): uint64 =
+proc getBlockType(u: UbiTweak): uint64 {.noSideEffect.} =
   ## Get the current UBI block type
   result = (u.tweak[1] shr 56) and 0x3f
 
-proc setBlockType(u: var UbiTweak, value: uint64) =
+proc setBlockType(u: var UbiTweak, value: uint64) {.noSideEffect.} =
   ## Set the current UBI block type
   u.tweak[1] = value shl 56
 
@@ -108,9 +108,9 @@ proc startNewBlockType*(u: var UbiTweak, t: uint64) =
   u.setBlockType(t)
   u.setFirstBlock(true)
 
-proc getTweak*(u: UbiTweak): array[2, uint64] =
+proc getTweak*(u: UbiTweak): array[2, uint64] {.noSideEffect.} =
   result = u.tweak
 
-proc setTweak(u: var UbiTweak, tw: openarray[uint64]) =
+proc setTweak(u: var UbiTweak, tw: openarray[uint64]) {.noSideEffect.} =
   u.tweak[0] = tw[0]
   u.tweak[1] = tw[1]

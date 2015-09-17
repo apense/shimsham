@@ -17,7 +17,7 @@ type
     x: seq[uint64]
     xOff: int
 
-proc reset*(t: var TigerDigest) =
+proc reset*(t: var TigerDigest) {.noSideEffect.} =
   t.a = 0x0123456789abcdef'u64
   t.b = 0xfedcba9876543210'u64
   t.c = 0xf096a5b4c3b2e187'u64
@@ -29,14 +29,14 @@ proc reset*(t: var TigerDigest) =
     t.buf[i] = 0.byte
   t.byteCount = 0
 
-proc initTigerDigest*(): TigerDigest =
+proc initTigerDigest*(): TigerDigest {.noSideEffect.} =
   result.buf = newSeq[byte](8)
   result.x = newSeq[uint64](8)
   result.bOff = 0
   result.xOff = 0
   result.reset()
 
-proc roundABC(t: var TigerDigest, x, mul: uint64) =
+proc roundABC(t: var TigerDigest, x, mul: uint64) {.noSideEffect.} =
   t.c = t.c xor x.uint64
   t.a -= Table1[t.c.int and 0xff].uint64 xor Table2[(t.c shr 16).int and 0xff].uint64 xor
          Table3[(t.c shr 32).int and 0xff].uint64 xor Table4[(t.c shr 48).int and 0xff].uint64
@@ -44,7 +44,7 @@ proc roundABC(t: var TigerDigest, x, mul: uint64) =
          Table2[(t.c shr 40).int and 0xff].uint64 xor Table1[(t.c shr 56).int and 0xff].uint64
   t.b *= mul.uint64
 
-proc roundBCA(t: var TigerDigest, x, mul: uint64) =
+proc roundBCA(t: var TigerDigest, x, mul: uint64) {.noSideEffect.} =
   t.a = t.a xor x
   t.b -= Table1[t.a.int and 0xff].uint64 xor Table2[(t.a shr 16).int and 0xff].uint64 xor
          Table3[(t.a shr 32).int and 0xff].uint64 xor Table4[(t.a shr 48).int and 0xff].uint64
@@ -52,7 +52,7 @@ proc roundBCA(t: var TigerDigest, x, mul: uint64) =
          Table2[(t.a shr 40).int and 0xff].uint64 xor Table1[(t.a shr 56).int and 0xff].uint64
   t.c *= mul
 
-proc roundCAB(t: var TigerDigest, x, mul: uint64) =
+proc roundCAB(t: var TigerDigest, x, mul: uint64) {.noSideEffect.} =
   t.b = t.b xor x
   t.c -= Table1[t.b.int and 0xff].uint64 xor Table2[(t.b shr 16).int and 0xff].uint64 xor
          Table3[(t.b shr 32).int and 0xff].uint64 xor Table4[(t.b shr 48).int and 0xff].uint64
@@ -60,7 +60,7 @@ proc roundCAB(t: var TigerDigest, x, mul: uint64) =
          Table2[(t.b shr 40).int and 0xff].uint64 xor Table1[(t.b shr 56).int and 0xff].uint64
   t.a *= mul
 
-proc keySchedule(t: var TigerDigest) =
+proc keySchedule(t: var TigerDigest) {.noSideEffect.} =
   t.x[0] -= t.x[7] xor 0xa5a5a5a5a5a5a5a5'u64
   t.x[1] = t.x[1] xor t.x[0]
   t.x[2] += t.x[1]
@@ -76,7 +76,7 @@ proc keySchedule(t: var TigerDigest) =
   t.x[4] -= t.x[3] xor (not(t.x[2]) shr 23)
   t.x[5] = t.x[5] xor t.x[4]
   t.x[6] += t.x[5]
-  t.x[7] -= t.x[6] xor 0x0123456789abcdef
+  t.x[7] -= t.x[6] xor 0x0123456789abcdef'u64
 
 proc processBlock(t: var TigerDigest) =
   # save a,b,c
@@ -152,7 +152,7 @@ proc unpackWord(r: int, outbytes: var seq[byte], outOff: int) {.noSideEffect.} =
   outbytes[outOff + 1] = (r shr  8).byte
   outbytes[outOff + 0] = (r).byte
 
-proc processLength(t: var TigerDigest, bitLength: int) =
+proc processLength(t: var TigerDigest, bitLength: int) {.noSideEffect.} =
   t.x[7] = bitLength.uint64
 
 proc update*(t: var TigerDigest, inbyte: byte) =

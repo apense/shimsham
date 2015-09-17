@@ -1,18 +1,19 @@
 #/* rng/borosh13.c
-# * 
+# *
 # * This program is free software; you can redistribute it and/or modify
 # * it under the terms of the GNU General Public License as published by
 # * the Free Software Foundation; either version 3 of the License, or (at
 # * your option) any later version.
-# * 
+# *
 # * This program is distributed in the hope that it will be useful, but
 # * WITHOUT ANY WARRANTY; without even the implied warranty of
 # * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 # * General Public License for more details.
-# * 
+# *
 # * You should have received a copy of the GNU General Public License
 # * along with this program; if not, write to the Free Software
-# * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+# * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301,
+# * USA.
 # */
 #
 #/*
@@ -27,8 +28,9 @@
 # *
 # * It is called "Borosh - Niederreiter"
 # *
-# * This implementation copyright (C) 2015 Jonathan Edwards, based on GSL implementation
-# * (C) 2001 Carlo Perassi and (C) 2003 Heiko Bauke.
+# * This implementation copyright (C) 2015 Jonathan Edwards,
+# * based on GSL implementation (C) 2001 Carlo Perassi and
+# * (C) 2003 Heiko Bauke.
 # */
 
 import "../rngs"
@@ -42,13 +44,13 @@ type
     val: int ## state
   Borosh13* = ref Borosh13Obj
 
-proc newBorosh13*(seed = 1): Borosh13 =
+proc newBorosh13*(seed = 1): Borosh13 {.noSideEffect.} =
   new(result)
   result.val = seed
 
-proc next*(b: Borosh13): int =
+proc next*(b: Borosh13): int {.noSideEffect, inline.} =
   b.val = (AA * b.val) and MM
   result = b.val
 
-proc nextFloat*(b: Borosh13): float =
+proc nextFloat*(b: Borosh13): float {.noSideEffect, inline.} =
   result = next(b).toFloat / 4294967296.0

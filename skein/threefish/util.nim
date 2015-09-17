@@ -9,7 +9,8 @@ proc uint64le(b: openarray[byte], offset: int): uint64 {.noSideEffect.} =
            (b[5+offset].int shl 40).uint64 or
            (b[6+offset].int shl 48).uint64 or
            (b[7+offset].int shl 56).uint64
-proc putUint64le(b: var openarray[byte], offset: int, v: uint64) =
+proc putUint64le(b: var openarray[byte], offset: int,
+  v: uint64) {.noSideEffect.} =
   b[0+offset] = byte(v)
   b[1+offset] = byte(v shr  8)
   b[2+offset] = byte(v shr 16)

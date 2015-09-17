@@ -31,7 +31,7 @@ proc sipround(v0, v1, v2, v3: var uint64) {.inline, noSideEffect.} =
   v0 = v0 + v3; v3 = rotl(v3, 21); v3 = v3 xor v0
   v2 = v2 + v1; v1 = rotl(v1, 17); v1 = v1 xor v2; v2 = rotl(v2, 32)
 
-proc addInput(st: var SipState, msg: openarray[byte]) =
+proc addInput(st: var SipState, msg: openarray[byte]) {.noSideEffect.} =
   let length = len(msg)
   st.length += length
   var needed = 0
@@ -93,7 +93,7 @@ proc addInput(st: var SipState, msg: openarray[byte]) =
 proc `|=`(m: var uint64, p: uint64) {.inline, noSideEffect.} =
   m = m or p
 
-proc mkResult(st: var SipState, c, d: int): array[8, byte] =
+proc mkResult(st: var SipState, c, d: int): array[8, byte] {.noSideEffect.} =
   var v0 = st.v0
   var v1 = st.v1
   var v2 = st.v2
@@ -147,7 +147,7 @@ proc mkResult(st: var SipState, c, d: int): array[8, byte] =
     (h shr 56).byte,
   ]
 
-proc initSipState*(key0, key1: uint64): SipState =
+proc initSipState*(key0, key1: uint64): SipState {.noSideEffect.} =
   ## initializes a SipState using two uint64s
   result.k0 = key0
   result.k1 = key1
@@ -158,18 +158,18 @@ proc initSipState*(key0, key1: uint64): SipState =
   result.v3 = key1 xor 0x7465646279746573'u64
   result.ntail = 0
 
-proc input*(st: var SipState, msg: openarray[byte]) =
+proc input*(st: var SipState, msg: openarray[byte]) {.noSideEffect.} =
   ## inputs a byte array message into `st`
   st.addInput(msg)
 
-proc input*(st: var SipState, msg: string) =
+proc input*(st: var SipState, msg: string) {.noSideEffect.} =
   ## inputs a string containing byte information into `st`
   var msgb = newSeq[byte]()
   for i in msg:
     msgb.add(ord(i).byte)
   st.addInput(msgb)
 
-proc inputHex*(st: var SipState, msg: string) =
+proc inputHex*(st: var SipState, msg: string) {.noSideEffect.} =
   ## inputs a string with hex information into `st`
   assert(len(msg) mod 2 == 0)
   var msgb = newSeq[byte](msg.len div 2)
@@ -177,11 +177,12 @@ proc inputHex*(st: var SipState, msg: string) =
     msgb[i] = parseHexInt(msg[i*2..i*2+1]).byte
   st.input(msgb)
 
-proc gethash*(st: var SipState, c = 2, d = 4): array[8, byte] =
+proc gethash*(st: var SipState, c = 2, d = 4): array[8, byte] {.
+  noSideEffect.} =
   ## returns the byte array of the SipHash of `st`
   result = st.mkResult(c, d)
 
-proc gethashstr*(st: var SipState, c = 2, d = 4): string =
+proc gethashstr*(st: var SipState, c = 2, d = 4): string {.noSideEffect.} =
   ## returns the string-ified hex result of the SipHash of `st`
   let r = st.mkResult(c, d)
   var s = ""
@@ -189,7 +190,7 @@ proc gethashstr*(st: var SipState, c = 2, d = 4): string =
     s.add(toHex(b.int, 2).toLower)
   result = s
 
-proc initSipState*(key: string): SipState =
+proc initSipState*(key: string): SipState {.noSideEffect.} =
   ## initializes a SipState with a hexadecimal string representing its keys
   assert(key.len == 32)
   var keyb = newSeq[byte](16)
@@ -204,14 +205,14 @@ proc initSipState*(key: string): SipState =
   #echo "key1: ", toHex(key1.int,16)
   result = initSipState(key0, key1)
 
-proc siphash*(key: string, c = 2, d = 4): string =
+proc siphash*(key: string, c = 2, d = 4): string {.noSideEffect.} =
   ## produces a hash given a hexadecimal string representation of a 128-bit number
   var s: SipState
   s = initSipState(key)
   #echo "s.v0: ", s.v0
   result = gethashstr(s, c, d)
 
-proc siphash*(key, message: string, c = 2, d = 4): string =
+proc siphash*(key, message: string, c = 2, d = 4): string {.noSideEffect.} =
   ## produces a hash given a hexadecimal string representation of a 128-bit number
   var s: SipState
   s = initSipState(key)
@@ -219,39 +220,41 @@ proc siphash*(key, message: string, c = 2, d = 4): string =
   #echo "s.v0: ", s.v0
   result = gethashstr(s, c, d)
 
-proc siphash*(key0, key1: uint64, c = 2, d = 4): string =
+proc siphash*(key0, key1: uint64, c = 2, d = 4): string {.noSideEffect.} =
   ## produces a hash given two uint64s (based on no input)
   var s = initSipState(key0, key1)
   result = gethashstr(s, c, d)
 
-proc siphash*(key0, key1: uint64, message: openarray[byte], c = 2, d = 4): string =
+proc siphash*(key0, key1: uint64, message: openarray[byte],
+  c = 2, d = 4): string {.noSideEffect.} =
   ## produces a hash given two uint64s (using message as input)
   var s = initSipState(key0, key1)
   s.input(message)
   result = gethashstr(s, c, d)
 
-proc siphash*(key0, key1: uint64, message: string, c = 2, d = 4): string =
+proc siphash*(key0, key1: uint64, message: string,
+  c = 2, d = 4): string {.noSideEffect.} =
   ## produces a hash given two uint64s (using message as input hex)
   var s = initSipState(key0, key1)
   s.inputHex(message)
   result = gethashstr(s, c, d)
 
-proc siphash24*(key0, key1: uint64): string =
+proc siphash24*(key0, key1: uint64): string {.noSideEffect.} =
   ## the number-form input of a SipHash-2-4
   result = siphash(key0, key1, 2, 4)
-proc siphash48*(key0, key1: uint64): string =
+proc siphash48*(key0, key1: uint64): string {.noSideEffect.} =
   ## the number-form input of a SipHash-4-8
   result = siphash(key0, key1, 4, 8)
-proc siphash24*(key0, key1: uint64, message: string): string =
+proc siphash24*(key0, key1: uint64, message: string): string {.noSideEffect.} =
   ## the number-form input of a SipHash-2-4
   result = siphash(key0, key1, message, 2, 4)
-proc siphash48*(key0, key1: uint64, message: string): string =
+proc siphash48*(key0, key1: uint64, message: string): string {.noSideEffect.} =
   ## the number-form input of a SipHash-4-8
   result = siphash(key0, key1, message, 4, 8)
-proc siphash24*(key, message: string): string =
+proc siphash24*(key, message: string): string {.noSideEffect.} =
   ## the hex string input version of a SipHash-2-4
   result = siphash(key, message, 2, 4)
-proc siphash48*(key, message: string): string =
+proc siphash48*(key, message: string): string {.noSideEffect.} =
   ## the hex string input version of a SipHash-4-8
   result = siphash(key, message, 4, 8)
 

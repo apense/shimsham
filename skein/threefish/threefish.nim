@@ -10,8 +10,10 @@ const
 type
   Cipher* = ref CipherInternal
   CipherInternal* = object of RootObj
-    encryptImpl*: proc (c: Cipher, input: openarray[uint64], output: var openarray[uint64]) {.nimcall.}
-    decryptImpl*: proc (c: Cipher, input: openarray[uint64], output: var openarray[uint64]) {.nimcall.}
+    encryptImpl*: proc (c: Cipher, input: openarray[uint64],
+      output: var openarray[uint64]) {.nimcall.}
+    decryptImpl*: proc (c: Cipher, input: openarray[uint64],
+      output: var openarray[uint64]) {.nimcall.}
     getTempDataImpl*: proc (c: Cipher): tuple[a, b: seq[uint64]] {.nimcall.}
     setTweakImpl*: proc (c: Cipher, tweak: openarray[uint64]) {.nimcall.}
     setKeyImpl*: proc (c: Cipher, key: openarray[uint64]) {.nimcall.}
@@ -20,19 +22,21 @@ type
 type
   KeySizeError* = int
 
-proc raiseKeySizeError*(k: KeySizeError) {.raises: [ValueError].} = 
+proc raiseKeySizeError*(k: KeySizeError) {.raises: [ValueError].} =
   raise newException(ValueError, "threefish: invalid key size " & $k)
 
-proc blocksize*(c: Cipher): int =
+proc blocksize*(c: Cipher): int {.noSideEffect.} =
   result = c.stateSize div 8
 
-proc setTweak*(tweak: openarray[uint64], expandedTweak: var openarray[uint64]) =
+proc setTweak*(tweak: openarray[uint64],
+  expandedTweak: var openarray[uint64]) {.noSideEffect.} =
   if tweak.len > 0:
     expandedTweak[0] = tweak[0]
     expandedTweak[1] = tweak[1]
     expandedTweak[2] = tweak[0] xor tweak[1]
 
-proc setKey*(key: openarray[uint64], expandedKey: var openarray[uint64]) =
+proc setKey*(key: openarray[uint64],
+  expandedKey: var openarray[uint64]) {.noSideEffect.} =
   var parity = KeyScheduleConst.uint64
 
   var i: int
@@ -127,17 +131,17 @@ when isMainModule:
   let tweak256 = @[0x0706050403020100'u64,0x0F0E0D0C0B0A0908'u64]
   let result256 = @[0x277610F5036C2E1F'u64, 0x25FB2ADD1267773E'u64,
       0x9E1D67B3E4B06872'u64, 0x3F76BC7651B39682'u64]
-  
+
   var key = newSeq[byte](256 div 8)
   var dataIn = newSeq[byte](256 div 8)
   var dataOut = newSeq[byte](256 div 8)
   var result = newSeq[byte](256 div 8)
-  
+
   for i in 0..<len(input256):
     putUint64le(dataIn, i*8, input256[i])
     putUint64le(key, i*8, key256[i])
     putUint64le(result, i*8, result256[i])
-  
+
   var cipher = newThreefish256(key, tweak256)
   cipher.encrypt(dataOut, dataIn)
   # plaintext feed forward
@@ -148,6 +152,6 @@ when isMainModule:
   # plaintext feed backward
   for i in 0..<len(dataIn):
     dataOut[i] = dataOut[i] xor dataIn[i]
-  
+
   cipher.decrypt(result, dataOut)
-  assert (dataIn == result)  
+  assert (dataIn == result)
